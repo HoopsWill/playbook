@@ -214,9 +214,11 @@ input, textarea, select { font-family: var(--font-ui); }
   display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
 }
 #home-court-wm {
-  position: absolute; right: -10px; top: -18px; width: 240px;
-  opacity: .05; pointer-events: none; user-select: none;
-  color: var(--brand);
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px; height: auto;
+  opacity: .09; pointer-events: none; user-select: none;
+  color: var(--brand); z-index: 0;
 }
 .home-hero-left { position: relative; z-index: 1; }
 #home-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 14px; }
@@ -1109,7 +1111,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   border-radius: 4px;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  /* Aspect ratio ~11:8.5 for landscape preview on screen */
   position: relative;
 }
 
@@ -1117,82 +1118,125 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-header {
   display: flex;
   align-items: stretch;
-  border-bottom: 3px solid #1A3660;
   background: #1A3660;
-  min-height: 68px;
+  position: relative;
+  overflow: hidden;
 }
+/* Subtle court watermark in header background */
+.ps-header-wm {
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  width: 120px; height: auto;
+  opacity: .06;
+  pointer-events: none;
+  color: #fff;
+}
+/* Left accent stripe — team color */
+.ps-header-accent {
+  width: 5px;
+  flex-shrink: 0;
+  background: var(--team-p, #E07828);
+}
+/* Play identity — name, category, coverages, tags */
 .ps-header-main {
   flex: 1;
-  padding: 10px 20px;
+  padding: 7px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 2px;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 .ps-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   font-size: 26px;
-  letter-spacing: .04em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: #fff;
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .ps-subtitle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 .ps-cat {
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,.5);
 }
 .ps-cov-pill {
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 700;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  padding: 1px 6px;
+  padding: 1.5px 7px;
   border-radius: 10px;
-  background: rgba(255,255,255,.15);
-  color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.14);
+  color: rgba(255,255,255,.88);
+  border: 1px solid rgba(255,255,255,.12);
 }
+.ps-tags {
+  font-size: 7px;
+  font-weight: 600;
+  color: rgba(255,255,255,.38);
+  letter-spacing: .03em;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Description panel */
 .ps-header-desc {
-  width: 320px;
-  flex-shrink: 0;
-  padding: 10px 16px 10px 0;
+  max-width: 320px;
+  flex-shrink: 1;
+  padding: 7px 14px;
   display: flex;
   align-items: center;
-  border-left: 1px solid rgba(255,255,255,.12);
-  padding-left: 16px;
+  border-left: 1px solid rgba(255,255,255,.1);
+  position: relative;
+  z-index: 1;
 }
 .ps-desc-text {
-  font-size: 8.5px;
-  color: rgba(255,255,255,.70);
-  line-height: 1.55;
+  font-size: 7.5px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+/* Logo block */
 .ps-header-logo {
-  width: 72px;
+  width: 56px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid rgba(255,255,255,.12);
-  padding: 0 12px;
-  gap: 3px;
+  border-left: 1px solid rgba(255,255,255,.1);
+  padding: 0 8px;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
 }
 .ps-logo-text {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: 9px;
+  font-size: 7px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.3);
   text-align: center;
   line-height: 1.2;
 }
@@ -1200,20 +1244,65 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 /* ── Frame Grid ── */
 .ps-frames {
   display: grid;
-  padding: 10px 12px;
-  gap: 10px;
-  background: #F2F0EB;
+  padding: 8px;
+  gap: 6px;
+  background: #EDEAE4;
 }
-/* Column counts — set by JS */
 .ps-cols-1 { grid-template-columns: 1fr; }
 .ps-cols-2 { grid-template-columns: 1fr 1fr; }
 .ps-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 .ps-cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
 
+/* ── Final-frame side-panel layout ── */
+.ps-final-layout {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  background: #fff;
+}
+.ps-final-diagram { flex: 1; min-width: 0; background: #C08828; }
+.ps-final-diagram svg { display: block; width: 100%; height: auto; }
+.ps-final-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  border-left: 1px solid #E2DED6;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ps-final-desc {
+  padding: 10px 14px;
+  border-bottom: 1px solid #E2DED6;
+  background: #FAFAF8;
+}
+.ps-final-desc-text {
+  font-size: 8.5px;
+  color: #3D3830;
+  line-height: 1.55;
+}
+.ps-final-notes {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 12px;
+}
+.ps-final-notes .ps-fn-group { margin-bottom: 6px; }
+.ps-final-notes .ps-fn-group:last-child { margin-bottom: 0; }
+.ps-fn-hdr {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9E9488;
+  margin-bottom: 3px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #EDEAE4;
+}
+
 /* ── Individual Frame Card ── */
 .ps-frame {
   background: #fff;
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
   border: 1px solid #DDD9D1;
   display: flex;
@@ -1222,20 +1311,19 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-frame-header {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 8px 5px 0;
+  gap: 6px;
+  padding: 3px 8px 3px 0;
   background: #F8F7F4;
-  border-bottom: 1px solid #DDD9D1;
+  border-bottom: 1px solid #E8E5DF;
 }
 .ps-fnum {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: 18px;
   line-height: 1;
   color: #fff;
   background: #1A3660;
-  padding: 4px 8px;
-  min-width: 36px;
+  padding: 3px 7px;
+  min-width: 28px;
   text-align: center;
   align-self: stretch;
   display: flex;
@@ -1246,7 +1334,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-flabel {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 15px;
   letter-spacing: .04em;
   text-transform: uppercase;
   color: #131109;
@@ -1256,156 +1343,102 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   white-space: nowrap;
 }
 .ps-ball-badge {
-  font-size: 7.5px;
+  font-size: 7px;
   font-weight: 700;
   letter-spacing: .05em;
   text-transform: uppercase;
   color: #7A4A00;
   background: #FFF3CC;
-  padding: 2px 6px;
+  padding: 1px 5px;
   border-radius: 8px;
   border: 1px solid #E8C800;
   white-space: nowrap;
   flex-shrink: 0;
-  margin-right: 6px;
+  margin-right: 4px;
 }
 .ps-frame-body {
   display: flex;
+  flex-direction: column;
   flex: 1;
 }
 .ps-diagram {
   flex-shrink: 0;
-  background: #1A1610;
+  background: #C08828;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
+  align-items: stretch;
+  justify-content: stretch;
 }
-.ps-diagram svg { display: block; }
+.ps-diagram svg { display: block; width: 100%; height: auto; }
+
+/* Notes strip — compact rows beneath diagram */
 .ps-notes {
-  flex: 1;
-  padding: 8px 10px;
+  padding: 4px 8px 3px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 2px;
   min-width: 0;
-  border-left: 1px solid #E2DED6;
-  background: #fff;
+  border-top: 1px solid #E2DED6;
+  background: #FAFAF8;
 }
-
-/* Consolidated notes — one flowing block */
 .ps-note-row {
   display: flex;
-  gap: 5px;
-  margin-bottom: 5px;
-  align-items: flex-start;
-  line-height: 1.45;
+  gap: 4px;
+  align-items: baseline;
+  line-height: 1.35;
 }
-.ps-note-row:last-child { margin-bottom: 0; }
 .ps-note-label {
-  font-size: 6.5px;
+  font-size: 5.5px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  padding: 2px 4px;
+  padding: 1px 3px;
   border-radius: 2px;
   white-space: nowrap;
   flex-shrink: 0;
-  margin-top: 1px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .ps-note-action  .ps-note-label { background: #1A3660; color: #fff; }
 .ps-note-read    .ps-note-label { background: #14A868; color: #fff; }
 .ps-note-spacing .ps-note-label { background: #C49410; color: #fff; }
 .ps-note-coach   .ps-note-label { background: #C03050; color: #fff; }
 .ps-note-text {
-  font-size: 8px;
+  font-size: 7px;
   color: #3D3830;
-  line-height: 1.5;
+  line-height: 1.4;
   flex: 1;
   min-width: 0;
 }
-.ps-no-notes {
-  font-size: 8px;
-  color: #9E9488;
-  font-style: italic;
-}
-
-/* Compact frame cards — diagram only, no side notes column */
-.ps-frame-compact .ps-frame-body { flex-direction: column; }
-.ps-frame-compact .ps-diagram { width: 100%; }
-.ps-frame-compact .ps-notes { display: none; }
-
-/* Consolidated notes section — appears below grid in diagram-only mode */
-.ps-consolidated-notes {
-  margin-top: 6px;
-  padding: 6px 10px 4px;
-  background: #fff;
-  border: 1px solid #DDD9D1;
-  border-radius: 4px;
-}
-.ps-cn-header {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 9px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: #1A3660;
-  border-bottom: 1px solid #E2DED6;
-  padding-bottom: 3px;
-  margin-bottom: 4px;
-}
-.ps-cn-body { display: flex; flex-direction: column; gap: 2px; }
-.ps-cn-group {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  line-height: 1.45;
-}
-.ps-cn-fnum {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 10px;
-  color: #fff;
-  background: #1A3660;
-  padding: 1px 4px;
-  border-radius: 2px;
-  flex-shrink: 0;
-  line-height: 1.3;
-}
-.ps-cn-entries {
-  flex: 1;
-  font-size: 7.5px;
-  min-width: 0;
+/* Truncation — applied by JS class for dense layouts */
+.ps-note-clamp .ps-note-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
-/* (removed: .ps-notes-more — no longer generated; all note categories
-   are now shown with per-row text truncation in renderCardView) */
+.ps-no-notes { display: none; }
 
 /* ── Sheet Footer ── */
 .ps-footer {
   display: flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 4px 12px;
   background: #fff;
   border-top: 1px solid #DDD9D1;
-  gap: 16px;
+  gap: 10px;
 }
 .ps-legend {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
 }
 .ps-legend-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 .ps-legend-item span {
-  font-size: 7px;
+  font-size: 6.5px;
   font-weight: 600;
   letter-spacing: .04em;
   text-transform: uppercase;
@@ -1414,7 +1447,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-footer-right {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: #BDB6AB;
@@ -1432,6 +1465,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   #play-sheet,
   #play-sheet svg,
   .ps-header,
+  .ps-header-accent,
   .ps-fnum,
   .ps-note-label,
   .ps-ball-badge,
@@ -1598,22 +1632,40 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 <div id="home">
   <div id="home-inner">
     <div id="home-hero">
-      <svg id="home-court-wm" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="20" y="20" width="460" height="230" fill="none" stroke="currentColor" stroke-width="6"></rect>
-        <line x1="20" y1="20" x2="480" y2="20" stroke="currentColor" stroke-width="6"></line>
-        <path d="M 190,20 A 60,60 0 0,0 310,20" fill="none" stroke="currentColor" stroke-width="6"></path>
-        <rect x="168" y="90" width="164" height="160" fill="none" stroke="currentColor" stroke-width="5"></rect>
-        <line x1="168" y1="90" x2="332" y2="90" stroke="currentColor" stroke-width="5"></line>
-        <path d="M 188,90 A 62,62 0 0,1 312,90" fill="none" stroke="currentColor" stroke-width="5"></path>
-        <path d="M 188,90 A 62,62 0 0,0 312,90" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="14,12"></path>
-        <line x1="40" y1="250" x2="40" y2="138" stroke="currentColor" stroke-width="5"></line>
-        <line x1="460" y1="250" x2="460" y2="138" stroke="currentColor" stroke-width="5"></line>
-        <path d="M 40,138 A 218,218 0 0,1 460,138" fill="none" stroke="currentColor" stroke-width="5"></path>
-        <circle cx="250" cy="220" r="13" fill="none" stroke="currentColor" stroke-width="5"></circle>
-        <rect x="224" y="248" width="52" height="5" fill="none" stroke="currentColor" stroke-width="5" rx="1"></rect>
+      <!-- Court watermark: exact main-court coordinate space (viewBox 0 0 500 510),
+           cropped to the in-bounds half-court with 8-unit padding so boundary
+           lines are never clipped. All coordinates are identical to the live court SVG. -->
+      <svg id="home-court-wm" viewBox="20 20 460 452" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <!-- Court boundary -->
+        <rect x="28" y="28" width="444" height="436" fill="none" stroke="currentColor" stroke-width="5"/>
+        <!-- Half-court line -->
+        <line x1="28" y1="28" x2="472" y2="28" stroke="currentColor" stroke-width="5"/>
+        <!-- Centre circle -->
+        <circle cx="250" cy="28" r="53" fill="none" stroke="currentColor" stroke-width="4"/>
+        <!-- Centre tip arc (solid half, toward play) -->
+        <path d="M 197,28 A 53,53 0 0,0 303,28" fill="none" stroke="currentColor" stroke-width="5"/>
+        <!-- Paint box -->
+        <rect x="179" y="295" width="142" height="169" fill="none" stroke="currentColor" stroke-width="5"/>
+        <!-- FT line -->
+        <line x1="179" y1="295" x2="321" y2="295" stroke="currentColor" stroke-width="5"/>
+        <!-- FT arc solid (toward basket) -->
+        <path d="M 197,295 A 53,53 0 0,1 303,295" fill="none" stroke="currentColor" stroke-width="5"/>
+        <!-- FT arc dashed (toward paint) -->
+        <path d="M 197,295 A 53,53 0 0,0 303,295" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="14,12"/>
+        <!-- 3pt sideline segments: x=55 and x=445, baseline y=464 up to break y=336 -->
+        <line x1="55" y1="464" x2="55" y2="336" stroke="currentColor" stroke-width="5"/>
+        <line x1="445" y1="464" x2="445" y2="336" stroke="currentColor" stroke-width="5"/>
+        <!-- 3pt arc: center(250,417) r=211, from (55,336) to (445,336) -->
+        <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="currentColor" stroke-width="5"/>
+        <!-- Restricted area arc -->
+        <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="currentColor" stroke-width="4"/>
+        <!-- Backboard -->
+        <rect x="227" y="459" width="46" height="4" fill="none" stroke="currentColor" stroke-width="5" rx="1"/>
+        <!-- Basket ring -->
+        <circle cx="250" cy="417" r="11" fill="none" stroke="currentColor" stroke-width="5"/>
       </svg>
       <div class="home-hero-left">
-        <div id="home-eyebrow">Personal · NBA Schematics</div>
+        <div id="home-eyebrow">Personal · Schematics</div>
         <div id="home-wordmark">
           <span class="wm-small">Will's</span>
           <span class="wm-big">Playbook</span>
@@ -1783,7 +1835,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
       </div>
     </div>
 
-    <!-- Court SVG: NBA Half-Court · 500×472 · 8.88px/ft
+    <!-- Court SVG: Half-Court · 500×510 coordinate space
          Basket (250,417) · FT line y=295 · Lane x=179→321
          3pt: center(250,417) r=211, corners x=55,445 at y=336 -->
     <div id="court-center">
@@ -2118,19 +2170,29 @@ select#family-parent-sel:focus { border-color: var(--brand); }
     <div id="print-orientation-hint" style="display:none">↔ For best results, set your printer to <strong>Landscape</strong> orientation</div>
     <div id="play-sheet">
       <div class="ps-header">
+        <div class="ps-header-accent" id="ps-accent"></div>
+        <svg class="ps-header-wm" viewBox="20 20 460 452" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <rect x="28" y="28" width="444" height="436" fill="none" stroke="currentColor" stroke-width="6"/>
+          <rect x="179" y="295" width="142" height="169" fill="none" stroke="currentColor" stroke-width="6"/>
+          <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="currentColor" stroke-width="6"/>
+          <line x1="55" y1="464" x2="55" y2="336" stroke="currentColor" stroke-width="6"/>
+          <line x1="445" y1="464" x2="445" y2="336" stroke="currentColor" stroke-width="6"/>
+          <circle cx="250" cy="417" r="11" fill="none" stroke="currentColor" stroke-width="5"/>
+        </svg>
         <div class="ps-header-main">
           <div class="ps-title" id="ps-title">Play Name</div>
           <div class="ps-subtitle" id="ps-subtitle"></div>
+          <div class="ps-tags" id="ps-tags"></div>
         </div>
         <div class="ps-header-desc" id="ps-header-desc" style="display:none">
           <div class="ps-desc-text" id="ps-desc-text"></div>
         </div>
         <div class="ps-header-logo">
-          <svg width="28" height="28" viewBox="0 0 500 472" xmlns="http://www.w3.org/2000/svg" opacity=".35">
-            <rect x="28" y="28" width="444" height="436" fill="none" stroke="white" stroke-width="8"></rect>
-            <rect x="179" y="295" width="142" height="169" fill="none" stroke="white" stroke-width="7"></rect>
-            <circle cx="250" cy="417" r="35" fill="none" stroke="white" stroke-width="7"></circle>
-            <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="white" stroke-width="7"></path>
+          <svg width="24" height="24" viewBox="20 20 460 452" xmlns="http://www.w3.org/2000/svg" opacity=".3">
+            <rect x="28" y="28" width="444" height="436" fill="none" stroke="white" stroke-width="8"/>
+            <rect x="179" y="295" width="142" height="169" fill="none" stroke="white" stroke-width="7"/>
+            <circle cx="250" cy="417" r="35" fill="none" stroke="white" stroke-width="7"/>
+            <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="white" stroke-width="7"/>
           </svg>
           <div class="ps-logo-text">WILL'S<br>PLAYBOOK</div>
         </div>
@@ -4014,19 +4076,21 @@ function setPrintMode(mode) {
 
 // ══════════════════════════════════════════════════
 // PLAY SHEET — renderCardView
-// Landscape 11×8.5" play sheet.
-// Grid columns + court dimensions scale dynamically
-// based on frame count so all frames fit on one page.
-// Notes are consolidated into a single typographic block.
+// Landscape 11×8.5" play sheet. Fits one page.
 //
-// Print spacing constants (standardized):
-const PS_HEADER_H   = 68;   // header bar height px
-const PS_FOOTER_H   = 32;   // footer bar height px
-const PS_GRID_PAD   = 12;   // grid outer padding px
-const PS_GAP        = 10;   // gap between frame cards px
-const PS_FRAME_HDR  = 32;   // frame header row height px
-const PS_NOTES_MIN  = 50;   // minimum notes column height px
-const PS_PAGE_H     = 749;  // usable landscape page height px (8.5" - margins @ 96dpi)
+// Layout modes:
+//   Final Frame: large diagram left, sidebar right (desc + all-frame notes)
+//   Key/All:     grid of frame cards, each = header + diagram + notes strip
+//
+// Notes are truncated to 1 line per category when >=5 frames to guarantee fit.
+//
+const PS_HEADER_H   = 56;   // header bar height px
+const PS_FOOTER_H   = 24;   // footer bar height px
+const PS_GRID_PAD   = 8;    // grid outer padding px
+const PS_GAP        = 6;    // gap between frame cards px
+const PS_FRAME_HDR  = 26;   // frame header row height px
+const PS_NOTE_H     = 13;   // estimated height per note row px
+const PS_PAGE_H     = 749;  // usable landscape page height (8.5" @ 96dpi - margins)
 // ══════════════════════════════════════════════════
 
 function renderCardView() {
@@ -4037,12 +4101,24 @@ function renderCardView() {
   document.getElementById('ps-title').textContent = pl.name.toUpperCase();
   document.getElementById('card-play-name').textContent = pl.name;
 
-  // Subtitle: category + coverage pills
+  // Category + coverage pills
   const catHtml = `<span class="ps-cat">${escapeHtml(pl.category)}</span>`;
-  const covHtml  = (pl.coverages||[]).map(c => `<span class="ps-cov-pill">${escapeHtml(c)}</span>`).join('');
+  const covHtml = (pl.coverages||[]).map(c => `<span class="ps-cov-pill">${escapeHtml(c)}</span>`).join('');
   document.getElementById('ps-subtitle').innerHTML = catHtml + covHtml;
 
-  // Description — hide if empty
+  // Tags row — show only if tags exist
+  const tagsEl = document.getElementById('ps-tags');
+  if (tagsEl) {
+    const tags = (pl.tags || '').trim();
+    tagsEl.textContent = tags ? tags : '';
+    tagsEl.style.display = tags ? '' : 'none';
+  }
+
+  // Accent stripe — team primary color
+  const accentEl = document.getElementById('ps-accent');
+  if (accentEl) accentEl.style.background = team().p;
+
+  // Description — clamped to 3 lines via CSS
   const descEl  = document.getElementById('ps-header-desc');
   const descTxt = document.getElementById('ps-desc-text');
   if (pl.desc && pl.desc.trim()) {
@@ -4052,215 +4128,151 @@ function renderCardView() {
     descEl.style.display = 'none';
   }
 
-  // ── Determine which frames to render ────────────
+  // ── Frame selection ─────────────────────────────
   const allFrames = pl.frames;
   const isFinalMode = S.printMode === 'final' && allFrames.length > 1;
-  const isKeyMode = S.printMode === 'key' && allFrames.length > 2;
+  const isKeyMode   = S.printMode === 'key'   && allFrames.length > 2;
 
-  let framesToRender;
-  let frameIndices; // original indices for numbering
+  let framesToRender, frameIndices;
   if (isFinalMode) {
     framesToRender = [allFrames[allFrames.length - 1]];
-    frameIndices = [allFrames.length - 1];
+    frameIndices   = [allFrames.length - 1];
   } else if (isKeyMode) {
-    // Every other frame, always include first and last
-    framesToRender = [];
-    frameIndices = [];
+    framesToRender = []; frameIndices = [];
     for (let i = 0; i < allFrames.length; i++) {
       if (i === 0 || i === allFrames.length - 1 || i % 2 === 0) {
-        framesToRender.push(allFrames[i]);
-        frameIndices.push(i);
+        framesToRender.push(allFrames[i]); frameIndices.push(i);
       }
     }
   } else {
     framesToRender = allFrames;
-    frameIndices = allFrames.map((_, i) => i);
+    frameIndices   = allFrames.map((_, i) => i);
   }
 
-  // Footer info
+  // Footer
   const fi = document.getElementById('ps-footer-info');
   if (fi) {
-    var unitLabel = isActionPlay(pl) ? 'Step' : 'Frame';
-    var modeLabel = isFinalMode ? ' (Final)' : isKeyMode ? ` (${framesToRender.length} of ${allFrames.length})` : '';
-    fi.textContent = allFrames.length + ' ' + unitLabel + (allFrames.length!==1?'s':'') + modeLabel + ' \u00B7 ' + pl.category;
+    const uLbl = isActionPlay(pl) ? 'Step' : 'Frame';
+    const mLbl = isFinalMode ? ' (Final)' : isKeyMode ? ` (${framesToRender.length} of ${allFrames.length})` : '';
+    fi.textContent = allFrames.length + ' ' + uLbl + (allFrames.length !== 1 ? 's' : '') + mLbl + ' \u00B7 ' + pl.category;
   }
 
-  // ── Dynamic sizing — optimized for larger diagrams ──
-  const n = framesToRender.length;
-  let cols, courtW, noteCharLimit;
-  // For 4+ frames, use diagram-only layout (no side notes) — diagrams get full card width
-  let diagramOnly = n > 3;
-
-  if      (n <= 1) { cols = 1; courtW = 420; noteCharLimit = 0;   }
-  else if (n <= 2) { cols = 2; courtW = 320; noteCharLimit = 0;   }
-  else if (n <= 3) { cols = 3; courtW = 260; noteCharLimit = 120; }
-  else if (n <= 4) { cols = 2; courtW = 300; noteCharLimit = 0;   }
-  else if (n <= 6) { cols = 3; courtW = 240; noteCharLimit = 0;   }
-  else if (n <= 9) { cols = 3; courtW = 200; noteCharLimit = 0;   }
-  else             { cols = 4; courtW = 180; noteCharLimit = 0;   }
-
-  // ── Page-height budget guard ──────────────────────
-  const CHROME_PX = PS_HEADER_H + PS_FOOTER_H + PS_GRID_PAD * 2;
-  const rows = Math.ceil(n / cols);
-  const courtHFromW = (w) => Math.round(w * 472 / 500);
-  // For diagram-only, notes don't add height — just court + header
-  const notesEstPx = diagramOnly ? 0 : PS_NOTES_MIN;
-
-  function estimatedGridHeight(cW) {
-    const cH = courtHFromW(cW);
-    const rowH = Math.max(cH, notesEstPx) + PS_FRAME_HDR;
-    return rows * rowH + (rows - 1) * PS_GAP;
-  }
-
-  // Reserve space for consolidated notes section below grid when in diagram-only mode
-  const consolidatedNotesH = diagramOnly ? 90 : 0;
-  const availableH = PS_PAGE_H - CHROME_PX - consolidatedNotesH;
-  while (courtW > 80 && estimatedGridHeight(courtW) > availableH) {
-    courtW -= 10;
-  }
-
-  // In final-frame mode, give more space to the diagram
-  if (isFinalMode) {
-    courtW = Math.max(courtW, 400);
-    noteCharLimit = 0;
-    diagramOnly = false;
-  }
-
-  // Font sizes scale with density
-  const noteFontSize = n > 6 ? '7px' : n > 3 ? '7.5px' : '8.5px';
-  const noteLabelSize = n > 6 ? '5.5px' : n > 3 ? '6px' : '7px';
-  const finalNoteFontSize = isFinalMode ? '9px' : noteFontSize;
-  const finalNoteLabelSize = isFinalMode ? '7.5px' : noteLabelSize;
-  // Frame label font size — larger for fewer frames
-  const frameLabelSize = n <= 2 ? '16px' : n <= 4 ? '14px' : '13px';
-  const frameNumSize = n <= 2 ? '20px' : n <= 4 ? '17px' : '16px';
-
-  const courtH = courtHFromW(courtW);
-
-  // Set grid column class
   const grid = document.getElementById('ps-frames');
-  grid.className = `ps-frames ps-cols-${cols}`;
+  const courtHFromW = (w) => Math.round(w * 472 / 500);
 
-  // ── Build frame cards ─────────────────────────────
-  const finalAllNotes = isFinalMode ? allFrames : null;
+  // ── Helper: build per-frame notes HTML ──────────
+  function buildNotesHtml(notes, clamp) {
+    const rs = [
+      { label: 'ACTION',   cls: 'ps-note-action',   val: (notes||{}).action     },
+      { label: 'READ',     cls: 'ps-note-read',     val: (notes||{}).keyRead    },
+      { label: 'SPACING',  cls: 'ps-note-spacing',  val: (notes||{}).spacingCue },
+      { label: 'COACHING', cls: 'ps-note-coach',    val: (notes||{}).coachPoint },
+    ].filter(r => r.val && r.val.trim());
+    if (!rs.length) return '';
+    const cls = clamp ? ' ps-note-clamp' : '';
+    return `<div class="ps-notes${cls}">${rs.map(r =>
+      `<div class="ps-note-row ${r.cls}"><span class="ps-note-label">${r.label}</span><span class="ps-note-text">${escapeHtml(r.val)}</span></div>`
+    ).join('')}</div>`;
+  }
 
-  let cardsHtml = framesToRender.map((fr, i) => {
-    const realIdx = frameIndices[i];
-    // Ball holder label
-    const bh = fr.ballHolder;
-    const bhLabel = bh ? fr.players.find(p=>p.id===bh)?.label : null;
-    const bhBadge = bhLabel
-      ? `<span class="ps-ball-badge">\u25CF ${bhLabel}</span>`
-      : '';
+  // ════════════════════════════════════════════════
+  // FINAL FRAME MODE — diagram + sidebar layout
+  // ════════════════════════════════════════════════
+  if (isFinalMode) {
+    grid.className = 'ps-frames';
+    grid.style.cssText = 'padding:0;gap:0;display:block;background:#fff';
 
-    // Notes rendering
-    let notesHtml;
-    if (diagramOnly) {
-      // No per-frame notes in diagram-only mode — they go in the consolidated section below
-      notesHtml = '';
-    } else if (isFinalMode && finalAllNotes) {
-      // Gather all non-empty notes across all frames
-      const consolidated = [];
-      finalAllNotes.forEach((f, fi2) => {
-        const notes = f.notes || {};
-        const entries = [
-          { key: 'action',     label: 'ACTION',   cls: 'ps-note-action',   val: notes.action     },
-          { key: 'keyRead',    label: 'READ',     cls: 'ps-note-read',     val: notes.keyRead    },
-          { key: 'spacingCue', label: 'SPACING',  cls: 'ps-note-spacing',  val: notes.spacingCue },
-          { key: 'coachPoint', label: 'COACHING', cls: 'ps-note-coach',    val: notes.coachPoint },
-        ].filter(r => r.val && r.val.trim());
-        if (entries.length) {
-          consolidated.push({ frameLabel: f.label || ('Frame ' + (fi2+1)), entries });
-        }
-      });
+    const cW = 600, cH = courtHFromW(cW);
+    const lastFr = allFrames[allFrames.length - 1];
 
-      if (consolidated.length) {
-        notesHtml = consolidated.map(group => {
-          const hdr = `<div style="font-family:Barlow Condensed,sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#9E9488;margin-top:5px;margin-bottom:2px">${escapeHtml(group.frameLabel)}</div>`;
-          const rows2 = group.entries.map(r =>
-            `<div class="ps-note-row ${r.cls}">
-              <span class="ps-note-label" style="font-size:${finalNoteLabelSize}">${r.label}</span>
-              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${escapeHtml(r.val)}</span>
-            </div>`
-          ).join('');
-          return hdr + rows2;
-        }).join('');
-      } else {
-        notesHtml = `<span class="ps-no-notes">\u2014</span>`;
-      }
-    } else {
-      // Standard per-frame notes
-      const notes = fr.notes || {};
-      const noteRows = [
-        { key: 'action',     label: 'ACTION',   cls: 'ps-note-action',   val: notes.action     },
-        { key: 'keyRead',    label: 'READ',     cls: 'ps-note-read',     val: notes.keyRead    },
-        { key: 'spacingCue', label: 'SPACING',  cls: 'ps-note-spacing',  val: notes.spacingCue },
-        { key: 'coachPoint', label: 'COACHING', cls: 'ps-note-coach',    val: notes.coachPoint },
-      ].filter(r => r.val && r.val.trim());
-
-      notesHtml = noteRows.length
-        ? noteRows.map(r => {
-            let text = r.val;
-            if (noteCharLimit > 0 && text.length > noteCharLimit) {
-              text = text.substring(0, noteCharLimit).trimEnd() + '\u2026';
-            }
-            return `
-            <div class="ps-note-row ${r.cls}">
-              <span class="ps-note-label" style="font-size:${finalNoteLabelSize}">${r.label}</span>
-              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${escapeHtml(text)}</span>
-            </div>`;
-          }).join('')
-        : `<span class="ps-no-notes">\u2014</span>`;
+    // Sidebar: play description + notes from every frame
+    let sidebarHtml = '';
+    if (pl.desc && pl.desc.trim()) {
+      sidebarHtml += `<div class="ps-final-desc"><div class="ps-final-desc-text">${escapeHtml(pl.desc)}</div></div>`;
     }
 
-    const frameTitle = isFinalMode ? 'Final' : (fr.label || `Frame ${realIdx+1}`);
-    const notesSection = diagramOnly ? '' : `<div class="ps-notes"${isFinalMode ? ' style="overflow-y:auto;max-height:'+courtH+'px"' : ''}>${notesHtml}</div>`;
-
-    return `<div class="ps-frame${diagramOnly ? ' ps-frame-compact' : ''}">
-      <div class="ps-frame-header">
-        <div class="ps-fnum" style="font-size:${frameNumSize}">${String(realIdx+1).padStart(2,'0')}</div>
-        <span class="ps-flabel" style="font-size:${frameLabelSize}">${escapeHtml(frameTitle)}</span>
-        ${bhBadge}
-      </div>
-      <div class="ps-frame-body">
-        <div class="ps-diagram">${cardCourtSVG(fr, courtW, courtH, realIdx)}</div>
-        ${notesSection}
-      </div>
-    </div>`;
-  }).join('');
-
-  // ── Consolidated notes section (for diagram-only mode) ──
-  // Collects notes from all rendered frames into a compact block below the grid
-  if (diagramOnly) {
-    const allNotes = [];
-    framesToRender.forEach((fr, i) => {
-      const realIdx = frameIndices[i];
-      const notes = fr.notes || {};
-      const entries = [
+    const noteGroups = allFrames.map((f, idx) => {
+      const notes = f.notes || {};
+      const rows = [
         { label: 'ACTION',   cls: 'ps-note-action',   val: notes.action },
         { label: 'READ',     cls: 'ps-note-read',     val: notes.keyRead },
         { label: 'SPACING',  cls: 'ps-note-spacing',  val: notes.spacingCue },
         { label: 'COACHING', cls: 'ps-note-coach',    val: notes.coachPoint },
       ].filter(r => r.val && r.val.trim());
-      if (entries.length) {
-        allNotes.push({ frameLabel: fr.label || ('Frame ' + (realIdx+1)), frameNum: realIdx+1, entries });
-      }
-    });
-
-    if (allNotes.length) {
-      cardsHtml += `<div class="ps-consolidated-notes">
-        <div class="ps-cn-header">COACHING NOTES</div>
-        <div class="ps-cn-body">${allNotes.map(group =>
-          `<div class="ps-cn-group">
-            <span class="ps-cn-fnum">${String(group.frameNum).padStart(2,'0')}</span>
-            <div class="ps-cn-entries">${group.entries.map(r =>
-              `<span class="ps-note-label" style="font-size:${noteLabelSize}">${r.label}</span> <span style="font-size:${noteFontSize};color:#3D3830">${escapeHtml(r.val)}</span>`
-            ).join(' &nbsp;\u00B7&nbsp; ')}</div>
-          </div>`
-        ).join('')}</div>
+      if (!rows.length) return '';
+      const lbl = f.label || ('Frame ' + (idx + 1));
+      return `<div class="ps-fn-group">
+        <div class="ps-fn-hdr">${escapeHtml(lbl)}</div>
+        ${rows.map(r => `<div class="ps-note-row ${r.cls}"><span class="ps-note-label">${r.label}</span><span class="ps-note-text">${escapeHtml(r.val)}</span></div>`).join('')}
       </div>`;
+    }).filter(Boolean).join('');
+
+    if (noteGroups) {
+      sidebarHtml += `<div class="ps-final-notes">${noteGroups}</div>`;
     }
+
+    grid.innerHTML = `<div class="ps-final-layout">
+      <div class="ps-final-diagram">${cardCourtSVG(lastFr, cW, cH, allFrames.length - 1)}</div>
+      ${sidebarHtml ? `<div class="ps-final-sidebar">${sidebarHtml}</div>` : ''}
+    </div>`;
+    return;
   }
+
+  // ════════════════════════════════════════════════
+  // KEY / ALL FRAMES MODE — grid of frame cards
+  // ════════════════════════════════════════════════
+  const n = framesToRender.length;
+  let cols, courtW;
+
+  if      (n <= 1) { cols = 1; courtW = 480; }
+  else if (n <= 2) { cols = 2; courtW = 400; }
+  else if (n <= 3) { cols = 3; courtW = 290; }
+  else if (n <= 4) { cols = 2; courtW = 350; }
+  else if (n <= 6) { cols = 3; courtW = 270; }
+  else if (n <= 9) { cols = 3; courtW = 210; }
+  else             { cols = 4; courtW = 180; }
+
+  // Truncate notes to 1 line when dense
+  const clampNotes = n >= 5;
+
+  // Page-height budget guard
+  const CHROME_PX = PS_HEADER_H + PS_FOOTER_H + PS_GRID_PAD * 2;
+  const rows = Math.ceil(n / cols);
+  const notesEst = clampNotes ? PS_NOTE_H * 2 : PS_NOTE_H * 3;
+
+  function gridH(cW) {
+    return rows * (courtHFromW(cW) + PS_FRAME_HDR + notesEst) + (rows - 1) * PS_GAP;
+  }
+  const availH = PS_PAGE_H - CHROME_PX;
+  while (courtW > 80 && gridH(courtW) > availH) courtW -= 10;
+
+  const courtH = courtHFromW(courtW);
+  const frameLabelSize = n <= 2 ? '15px' : n <= 4 ? '13px' : '11px';
+  const frameNumSize   = n <= 2 ? '18px' : n <= 4 ? '15px' : '13px';
+
+  grid.className = `ps-frames ps-cols-${cols}`;
+  grid.style.cssText = '';
+
+  const cardsHtml = framesToRender.map((fr, i) => {
+    const realIdx = frameIndices[i];
+    const bh = fr.ballHolder;
+    const bhLabel = bh ? fr.players.find(p => p.id === bh)?.label : null;
+    const bhBadge = bhLabel ? `<span class="ps-ball-badge">\u25CF ${bhLabel}</span>` : '';
+    const frameTitle = fr.label || ('Frame ' + (realIdx + 1));
+    const notesHtml = buildNotesHtml(fr.notes, clampNotes);
+
+    return `<div class="ps-frame">
+      <div class="ps-frame-header">
+        <div class="ps-fnum" style="font-size:${frameNumSize}">${realIdx + 1}</div>
+        <span class="ps-flabel" style="font-size:${frameLabelSize}">${escapeHtml(frameTitle)}</span>
+        ${bhBadge}
+      </div>
+      <div class="ps-frame-body">
+        <div class="ps-diagram">${cardCourtSVG(fr, courtW, courtH, realIdx)}</div>
+        ${notesHtml}
+      </div>
+    </div>`;
+  }).join('');
 
   grid.innerHTML = cardsHtml;
 }
@@ -4420,55 +4432,86 @@ function gotoHome() { if (anim.playing) stopPlay(); setView('home'); }
 // HOME SCREEN
 // ══════════════════════════════════════════════════
 
-// Card thumbnail — larger court diagram for home screen cards (200×150)
+// Card thumbnail — home screen cards.
+// Strategy: use the main court's native coordinate space (viewBox 0 0 500 510)
+// with a viewBox crop to exactly the in-bounds half-court rectangle (28,28 → 472,464).
+// The browser applies a single uniform scale — no manual sx/sy math, no distortion.
+// All arc radii are native court units so geometry is always correct.
+// preserveAspectRatio="xMidYMid meet" letterboxes if card aspect differs; "slice" fills.
 function cardThumbSVG(p) {
-  const W = 200, H = 150;
   const t = team();
   const fr = p.frames?.[0];
+
+  // In-bounds half-court in native court coords. Small 4px pad on all sides.
+  // viewBox = "x y width height"
+  const VX = 24, VY = 24, VW = 452, VH = 444; // 28-4=24 … 472+4=476 → w=452; 28-4=24 … 464+4=468 → h=444
+
+  const lc = 'rgba(255,255,255,.72)';
+  const lw = '2.2';   // stroke-width in court-space units (renders ~1px at thumbnail scale)
+  const lws = '3';    // boundary / key lines
+
   if (!fr) {
-    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-      <rect width="${W}" height="${H}" fill="#C08828"/>
-      <rect x="6" y="6" width="${W-12}" height="${H-12}" fill="#D4A840" rx="2"/>
+    return `<svg viewBox="${VX} ${VY} ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <rect x="${VX}" y="${VY}" width="${VW}" height="${VH}" fill="#C08828"/>
     </svg>`;
   }
-  const sx = W/500, sy = H/510;
-  const pr = 6, bdr = 3.5, sw = 1.4;
+
   const bh = fr.ballHolder;
+  // Player radius / ball dot in court-space units
+  const pr = 14, bdr = 8;
 
   const players = (fr.players||[]).map(q => {
-    const cx = (q.x*sx).toFixed(1), cy = (q.y*sy).toFixed(1);
     const isH = q.id === bh;
-    const fill = q.off ? t.p : '#B82020';
+    const fill   = q.off ? t.p : '#B82020';
     const stroke = q.off ? t.s : '#E05050';
-    return `<circle cx="${cx}" cy="${cy}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
-      <text x="${cx}" y="${(q.y*sy+1).toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="6" fill="#fff">${escapeHtml(q.label||'')}</text>
-      ${isH ? `<circle cx="${(q.x*sx+pr+1).toFixed(1)}" cy="${(q.y*sy-pr).toFixed(1)}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width=".7"/>` : ''}`;
+    return `<circle cx="${q.x}" cy="${q.y}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+      <text x="${q.x}" y="${q.y}" text-anchor="middle" dominant-baseline="central"
+        font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="14" fill="#fff">${escapeHtml(q.label||'')}</text>
+      ${isH ? `<circle cx="${q.x + pr + 2}" cy="${q.y - pr}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width="1.5"/>` : ''}`;
   }).join('');
 
+  const sw = 3.2; // arrow stroke in court-space units
   const arrows = (fr.arrows||[]).map(a => {
     const c = AC[a.type] || '#C4D4EE';
     if (a.type === 'cut' && a.points?.length >= 2) {
-      const scaled = a.points.map(q => ({x:q.x*sx, y:q.y*sy}));
-      const d = cardinalSplinePath(scaled);
-      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity=".8"/>` : '';
+      const d = cardinalSplinePath(a.points);
+      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity=".85"/>` : '';
     }
     if (a.type === 'screen') {
-      const mx = ((a.x1+a.x2)/2*sx).toFixed(1), my = ((a.y1+a.y2)/2*sy).toFixed(1);
-      return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="${sw*1.5}" opacity=".8"/>`;
+      return `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${c}" stroke-width="${sw*1.5}" opacity=".85"/>`;
     }
-    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="4,3"' : '';
-    return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="${sw}"${dash} opacity=".8"/>`;
+    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="12,8"' : '';
+    return `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${c}" stroke-width="${sw}"${dash} opacity=".85"/>`;
   }).join('');
 
-  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${W}" height="${H}" fill="#C08828"/>
-    <rect x="${(28*sx).toFixed(1)}" y="${(28*sy).toFixed(1)}" width="${(444*sx).toFixed(1)}" height="${(436*sy).toFixed(1)}" fill="#D4A840" rx="2"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${t.p}" opacity=".15"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
-    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
-    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
-    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.6)" stroke-width="1"/>
-    <line x1="${(28*sx).toFixed(1)}" y1="${(464*sy).toFixed(1)}" x2="${(472*sx).toFixed(1)}" y2="${(464*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
+  return `<svg viewBox="${VX} ${VY} ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <!-- Court surface -->
+    <rect x="0" y="0" width="500" height="510" fill="#BC9038"/>
+    <rect x="28" y="28" width="444" height="436" fill="#D4A840"/>
+    <!-- Boundary box -->
+    <rect x="28" y="28" width="444" height="436" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <!-- Half-court line -->
+    <line x1="28" y1="28" x2="472" y2="28" stroke="${lc}" stroke-width="${lws}"/>
+    <!-- Centre circle (faint) -->
+    <circle cx="250" cy="28" r="53" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="${lw}"/>
+    <!-- Paint box -->
+    <rect x="179" y="295" width="142" height="169" fill="${t.p}" opacity=".2"/>
+    <rect x="179" y="295" width="142" height="169" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <!-- FT line -->
+    <line x1="179" y1="295" x2="321" y2="295" stroke="${lc}" stroke-width="${lws}"/>
+    <!-- FT arc (upper solid half) -->
+    <path d="M 197,295 A 53,53 0 0,1 303,295" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <!-- 3pt sideline segments: x=55 and x=445, from baseline y=464 up to break y=336 -->
+    <line x1="55"  y1="464" x2="55"  y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <line x1="445" y1="464" x2="445" y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <!-- 3pt arc: center(250,417) r=211, endpoints (55,336) and (445,336) -->
+    <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <!-- Restricted area arc -->
+    <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <!-- Backboard -->
+    <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
+    <!-- Basket ring -->
+    <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="4"/>
     ${arrows}${players}
   </svg>`;
 }
@@ -4478,26 +4521,40 @@ function homeThumbSVG(p, w, h) {
   const t = team();
   const players = p.frames[0]?.players || [];
   const bh = p.frames[0]?.ballHolder;
-  const sx = w/500, sy = h/472;
-  const pr = w > 60 ? 4.5 : 3.8;   // larger dots for bigger thumbnails
-  const bdr = w > 60 ? 3 : 2.2;    // ball dot radius
-  const sw = w > 60 ? 1.1 : .8;    // arrow stroke
+
+  // Use native court coordinate space — viewBox crops to the in-bounds half-court.
+  // The browser scales uniformly; no manual sx/sy = no arc distortion.
+  const lc  = 'rgba(255,255,255,.72)';
+  const lw  = '2.5';   // court-space stroke units
+  const lws = '3.5';
+  const pr  = w > 60 ? 13 : 11;   // player radius in court-space units
+  const bdr = w > 60 ? 7  : 6;
+  const sw  = w > 60 ? 3  : 2.5;  // arrow stroke
+
   const pl = players.map(q => {
     const isHolder = q.id === bh;
-    return `<circle cx="${q.x*sx}" cy="${q.y*sy}" r="${pr}" fill="${q.off?t.p:'#B82020'}"/>
-      ${isHolder ? `<circle cx="${q.x*sx+pr}" cy="${q.y*sy-pr}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width=".6"/>` : ''}`;
+    return `<circle cx="${q.x}" cy="${q.y}" r="${pr}" fill="${q.off?t.p:'#B82020'}"/>
+      ${isHolder ? `<circle cx="${q.x + pr + 2}" cy="${q.y - pr}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width="1.5"/>` : ''}`;
   }).join('');
+
   const arrows = (p.frames[0]?.arrows||[]).map(a =>
-    `<line x1="${a.x1*sx}" y1="${a.y1*sy}" x2="${a.x2*sx}" y2="${a.y2*sy}" stroke="${AC[a.type]||'#C4D4EE'}" stroke-width="${sw}" opacity=".8"/>`
+    `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${AC[a.type]||'#C4D4EE'}" stroke-width="${sw}" opacity=".85"/>`
   ).join('');
-  return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${w}" height="${h}" fill="#C89838"/>
-    <rect x="3" y="3" width="${w-6}" height="${h-6}" fill="#D4A840" opacity=".7"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${t.p}" opacity=".22"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
-    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
-    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
-    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.7)" stroke-width="1.2"/>
+
+  return `<svg viewBox="24 24 452 444" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <rect x="0"  y="0"   width="500" height="510" fill="#BC9038"/>
+    <rect x="28" y="28"  width="444" height="436" fill="#D4A840"/>
+    <rect x="28" y="28"  width="444" height="436" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <line x1="28"  y1="28" x2="472" y2="28"  stroke="${lc}" stroke-width="${lws}"/>
+    <circle cx="250" cy="28" r="53" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="${lw}"/>
+    <rect x="179" y="295" width="142" height="169" fill="${t.p}" opacity=".2"/>
+    <rect x="179" y="295" width="142" height="169" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <line x1="179" y1="295" x2="321" y2="295" stroke="${lc}" stroke-width="${lws}"/>
+    <path d="M 197,295 A 53,53 0 0,1 303,295" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <line x1="55"  y1="464" x2="55"  y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <line x1="445" y1="464" x2="445" y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <circle cx="250" cy="417" r="11" fill="none" stroke="rgba(220,120,40,.9)" stroke-width="4"/>
     ${arrows}${pl}
   </svg>`;
 }
@@ -4641,8 +4698,8 @@ function _renderHomeScreenInner() {
           return `<div class="hs-card" onclick="openPlay('${safeId}')" onmouseenter="cardAnimStart(this,'${safeId}')" onmouseleave="cardAnimStop()">
             <div class="hs-card-thumb">${thumb}</div>
             <div class="hs-card-body">
-              ${catLabel ? `<div class="hs-card-eyebrow"><span class="hs-card-cat-dot"></span><span class="hs-card-cat">${escapeHtml(catLabel)}</span></div>` : ''}
               <div class="hs-card-name">${escapeHtml(p.name||'Untitled')}</div>
+              ${catLabel ? `<div class="hs-card-eyebrow"><span class="hs-card-cat-dot"></span><span class="hs-card-cat">${escapeHtml(catLabel)}</span></div>` : ''}
               <div class="hs-card-foot">
                 <span class="hs-card-stat">
                   <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1"/></svg>
@@ -4836,15 +4893,18 @@ function cardAnimTick(ts) {
   const raw = Math.min((ts - cardAnim.segStart) / segSpeed, 1);
   const t = ease(raw);
 
-  // Render interpolated frame into thumbnail
+  // Render interpolated frame into thumbnail.
+  // Uses native court coordinate space (viewBox "24 24 452 444") — identical to
+  // cardThumbSVG — so court geometry, proportions, and arc accuracy are always in sync.
   const thumb = cardAnim.active.querySelector('.hs-card-thumb');
   if (!thumb) { cardAnimStop(); return; }
 
-  const W = 200, H = 150, sx = W/500, sy = H/510;
   const tm = team();
-  const pr = 6, bdr = 3.5;
+  // Court-space sizes — same values as cardThumbSVG
+  const pr = 14, bdr = 8, sw = 3.2;
+  const lc = 'rgba(255,255,255,.72)', lw = '2.2', lws = '3';
 
-  // Interpolate player positions
+  // Interpolate player positions (already in court-space — no sx/sy needed)
   const players = fromF.players.map(p => {
     const to = toF.players.find(q => q.id === p.id);
     if (!to) return p;
@@ -4860,52 +4920,53 @@ function cardAnimTick(ts) {
     return { ...p, x, y };
   });
 
-  // Determine ball holder (transitions at t > 0.5 if it changes)
+  // Ball holder transitions at t > 0.5 if it changes between frames
   let bh = fromF.ballHolder;
   if (toF.ballHolder && toF.ballHolder !== fromF.ballHolder && t > 0.5) bh = toF.ballHolder;
 
-  // Render arrows from destination frame with opacity based on progress
+  // Arrows from destination frame, fading in with progress
   const arrowOp = (0.15 + 0.85 * raw).toFixed(2);
   const arrows = (toF.arrows||[]).map(a => {
     const c = AC[a.type] || '#C4D4EE';
     if (a.type === 'cut' && a.points?.length >= 2) {
-      const scaled = a.points.map(q => ({x:q.x*sx, y:q.y*sy}));
-      const d = cardinalSplinePath(scaled);
-      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="1.2" opacity="${arrowOp}"/>` : '';
+      const d = cardinalSplinePath(a.points); // points already in court-space
+      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity="${arrowOp}"/>` : '';
     }
     if (a.type === 'screen') {
-      return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="2" opacity="${arrowOp}"/>`;
+      return `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${c}" stroke-width="${sw*1.5}" opacity="${arrowOp}"/>`;
     }
-    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="4,3"' : '';
-    return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="1.2"${dash} opacity="${arrowOp}"/>`;
+    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="12,8"' : '';
+    return `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${c}" stroke-width="${sw}"${dash} opacity="${arrowOp}"/>`;
   }).join('');
 
   const playersSvg = players.map(q => {
-    const cx = (q.x*sx).toFixed(1), cy = (q.y*sy).toFixed(1);
     const isH = q.id === bh;
-    const fill = q.off ? tm.p : '#B82020';
+    const fill   = q.off ? tm.p : '#B82020';
     const stroke = q.off ? tm.s : '#E05050';
-    return `<circle cx="${cx}" cy="${cy}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
-      <text x="${cx}" y="${(q.y*sy+1).toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="6" fill="#fff">${escapeHtml(q.label||'')}</text>
-      ${isH ? `<circle cx="${(q.x*sx+pr+1).toFixed(1)}" cy="${(q.y*sy-pr).toFixed(1)}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width=".7"/>` : ''}`;
+    return `<circle cx="${q.x}" cy="${q.y}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+      <text x="${q.x}" y="${q.y}" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="14" fill="#fff">${escapeHtml(q.label||'')}</text>
+      ${isH ? `<circle cx="${q.x + pr + 2}" cy="${q.y - pr}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width="1.5"/>` : ''}`;
   }).join('');
 
-  // Progress bar
-  // Progress bar — guarded against divide-by-zero. Upstream cardAnimStart()
-  // enforces frames.length >= 2, but a frame deletion mid-animation could
-  // leave us with totalSegs === 0; Math.max keeps the SVG attr finite.
   const totalSegs = Math.max(1, pl.frames.length - 1);
   const progress = ((cardAnim.segFrom + raw) / totalSegs * 100).toFixed(1);
 
-  thumb.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${W}" height="${H}" fill="#C08828"/>
-    <rect x="${(28*sx).toFixed(1)}" y="${(28*sy).toFixed(1)}" width="${(444*sx).toFixed(1)}" height="${(436*sy).toFixed(1)}" fill="#D4A840" rx="2"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${tm.p}" opacity=".15"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
-    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
-    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
-    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.6)" stroke-width="1"/>
-    <line x1="${(28*sx).toFixed(1)}" y1="${(464*sy).toFixed(1)}" x2="${(472*sx).toFixed(1)}" y2="${(464*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
+  thumb.innerHTML = `<svg viewBox="24 24 452 444" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
+    <rect x="0"   y="0"   width="500" height="510" fill="#BC9038"/>
+    <rect x="28"  y="28"  width="444" height="436" fill="#D4A840"/>
+    <rect x="28"  y="28"  width="444" height="436" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <line x1="28"  y1="28" x2="472" y2="28"  stroke="${lc}" stroke-width="${lws}"/>
+    <circle cx="250" cy="28" r="53" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="${lw}"/>
+    <rect x="179" y="295" width="142" height="169" fill="${tm.p}" opacity=".2"/>
+    <rect x="179" y="295" width="142" height="169" fill="none" stroke="${lc}" stroke-width="${lws}"/>
+    <line x1="179" y1="295" x2="321" y2="295" stroke="${lc}" stroke-width="${lws}"/>
+    <path d="M 197,295 A 53,53 0 0,1 303,295" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <line x1="55"  y1="464" x2="55"  y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <line x1="445" y1="464" x2="445" y2="336" stroke="${lc}" stroke-width="${lw}"/>
+    <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="${lc}" stroke-width="${lw}"/>
+    <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
+    <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="4"/>
     ${arrows}${playersSvg}
   </svg><div class="card-anim-bar" style="width:${progress}%"></div>`;
 
@@ -5462,21 +5523,39 @@ function delPlay(id, e) {
 
 function renderCourt() { applyTeam(); renderPlayNameLabel(); renderPlayers(); renderArrows(); }
 
-// Play name label on court — positioned near half-court, out of the way
+// Play name label on court — no background pill; uses text shadows for legibility
+// directly on the wood surface. Category above, name below, centered near half-court.
 function renderPlayNameLabel() {
   const layer = document.getElementById('play-name-layer');
   if (!layer) return;
   const pl = play();
   if (!pl || !pl.name) { layer.innerHTML = ''; return; }
+
   const name = pl.name.toUpperCase();
-  const cat = (pl.category || '').toUpperCase();
-  // Position at top-center of court, just below the half-court line area
-  // Background pill + text for readability on the wood texture
+  const cat  = (pl.category || '').toUpperCase();
+
+  // Shadow filter: soft dark halo gives legibility without a background block
+  const filterId = 'pnl-shadow';
+  const catY  = 40;   // category line
+  const nameY = 52;   // play name line
+
   layer.innerHTML = `
-    <rect x="70" y="36" width="360" height="20" rx="3" fill="rgba(20,18,16,.55)"/>
-    <text x="250" y="49" text-anchor="middle" font-family="Barlow Condensed,sans-serif"
-      font-weight="900" font-size="11" letter-spacing=".08em"
-      fill="rgba(255,255,255,.7)">${cat ? cat + ' \u2014 ' : ''}${name}</text>
+    <defs>
+      <filter id="${filterId}" x="-30%" y="-60%" width="160%" height="320%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+        <feFlood flood-color="rgba(10,8,4,.72)" result="color"/>
+        <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+        <feMerge><feMergeNode in="shadow"/><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    ${cat ? `<text x="250" y="${catY}" text-anchor="middle"
+      font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="8"
+      letter-spacing=".18em" fill="rgba(255,255,255,.55)"
+      filter="url(#${filterId})">${cat}</text>` : ''}
+    <text x="250" y="${nameY}" text-anchor="middle"
+      font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="13"
+      letter-spacing=".05em" fill="rgba(255,255,255,.82)"
+      filter="url(#${filterId})">${name}</text>
   `;
 }
 
