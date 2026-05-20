@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will's Playbook</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@600;700;900&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════════════
    DESIGN SYSTEM v2 — Professional Sports Analytics
@@ -76,8 +76,15 @@
   --t-slow:  280ms;
 
   /* ── Type ── */
-  --font-ui:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-disp: 'Barlow Condensed', sans-serif;
+  --font-ui:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-disp:   'Barlow Condensed', sans-serif;
+  --font-marker: 'Permanent Marker', 'Caveat', 'Comic Sans MS', cursive;
+
+  /* ── Section accent colors — tokenized for theming ── */
+  --sec-man:   #2A5CB8;
+  --sec-zone:  #1A9E70;
+  --sec-blob:  #C03050;
+  --sec-drill: #7C3AED;
 
   /* ── Radius ── */
   --r-sm: 4px; --r: 6px; --r-lg: 10px; --r-xl: 14px;
@@ -194,158 +201,349 @@ input, textarea, select { font-family: var(--font-ui); }
 
 /* HOME */
 #home { flex: 1; overflow-y: auto; background: var(--bg); position: relative; }
-/* Subtle top-down brand gradient wash — creates depth and light source */
-#home::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 420px;
-  background: radial-gradient(ellipse 120% 100% at 50% -10%, rgba(26,54,96,.06) 0%, rgba(26,54,96,.02) 45%, transparent 100%);
-  pointer-events: none; z-index: 0;
-}
-#home-inner { max-width: 720px; margin: 0 auto; padding: 52px 28px 80px; position: relative; z-index: 1; }
+#home-inner { max-width: 1280px; margin: 0 auto; padding: 40px 32px 80px; position: relative; z-index: 1; }
 
-/* Hero — contained surface with subtle brand tint */
+/* Hero — refined, more compact */
 #home-hero {
-  padding: 32px 32px 28px;
+  padding: 28px 32px 24px;
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, rgba(26,54,96,.04) 0%, rgba(26,54,96,.015) 40%, rgba(255,255,255,.5) 100%);
   border: 1px solid rgba(26,54,96,.08);
   border-radius: var(--r-xl);
   box-shadow: 0 2px 12px rgba(26,54,96,.05), 0 1px 3px rgba(0,0,0,.03);
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
 }
 #home-court-wm {
-  position: absolute; right: -10px; top: -18px; width: 280px;
-  opacity: .06; pointer-events: none; user-select: none;
+  position: absolute; right: -10px; top: -18px; width: 240px;
+  opacity: .05; pointer-events: none; user-select: none;
   color: var(--brand);
 }
-#home-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: var(--sp-2); }
-#home-wordmark { font-family: var(--font-disp); font-weight: 900; text-transform: uppercase; line-height: 1; }
-#home-wordmark .wm-small { display: block; font-size: 18px; letter-spacing: .28em; color: var(--ink-4); font-weight: 600; margin-bottom: 2px; }
-#home-wordmark .wm-big   { display: block; font-size: 92px; letter-spacing: -.02em; line-height: .84; color: var(--brand); }
+.home-hero-left { position: relative; z-index: 1; }
+#home-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 14px; }
+#home-wordmark { line-height: 1; }
+#home-wordmark .wm-small {
+  display: block;
+  font-family: var(--font-marker);
+  font-size: 22px;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+#home-wordmark .wm-big {
+  display: block;
+  font-family: var(--font-marker);
+  font-size: 76px;
+  line-height: .9;
+  color: var(--brand);
+  letter-spacing: .005em;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+  text-shadow: 0 1px 0 rgba(26,54,96,.08);
+}
 
-/* Rule with basketball icon */
-#home-rule { display: flex; align-items: center; gap: var(--sp-3); margin-top: 20px; }
-#home-rule-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line) 0%, rgba(26,54,96,.12) 50%, var(--line) 100%); }
-#home-rule-icon { flex-shrink: 0; opacity: .18; color: var(--brand); display: flex; align-items: center; }
-
-/* Stats — dashboard-style metric cards */
-#home-meta { display: flex; align-items: stretch; gap: 10px; margin-top: 18px; }
+/* Stats — vertical compact column on the right */
+#home-meta {
+  display: flex; flex-direction: row; align-items: stretch; gap: 8px;
+  margin-top: 0; position: relative; z-index: 1;
+}
 .home-stat {
-  flex: 1;
+  flex: 0 0 auto; min-width: 88px;
   display: flex; flex-direction: column; align-items: center;
-  padding: 10px 8px 9px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(26,54,96,.06);
-  border-radius: var(--r-lg);
+  padding: 12px 14px 10px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(26,54,96,.08);
+  border-radius: 10px;
   transition: background var(--t-fast), border-color var(--t-fast);
 }
-.home-stat:hover { background: rgba(255,255,255,.8); border-color: rgba(26,54,96,.1); }
+.home-stat:hover { background: rgba(255,255,255,.95); border-color: rgba(26,54,96,.15); }
 .home-stat strong {
   font-family: var(--font-disp); font-weight: 900;
-  font-size: 24px; letter-spacing: -.01em;
+  font-size: 28px; letter-spacing: -.01em;
   color: var(--brand); line-height: 1;
 }
 .home-stat .stat-label {
   font-size: 9px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--ink-4); margin-top: 3px;
+  text-transform: uppercase; color: var(--ink-4); margin-top: 4px;
 }
-.meta-sep { display: none; }
+#home-updated-stat strong { font-size: 22px; }
 
-/* Accordion — section color threading */
-#home-secs { margin-top: 28px; }
+/* Toolbar — global view toggle */
+#home-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 36px; margin-bottom: 8px; padding: 4px 4px 16px;
+  border-bottom: 1px solid var(--line);
+}
+#home-toolbar-label {
+  font-family: var(--font-marker);
+  font-size: 22px;
+  color: var(--ink-2);
+  letter-spacing: .005em;
+  transform: rotate(-1deg);
+  transform-origin: left center;
+}
+.ht-toggle {
+  display: flex; gap: 1px; background: var(--line); border-radius: 6px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.ht-btn {
+  padding: 6px 12px; cursor: pointer; border: none;
+  background: var(--surface); color: var(--ink-3);
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  font-family: var(--font-ui);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.ht-btn:hover { color: var(--ink); background: var(--surface-hover); }
+.ht-btn.on { background: var(--brand); color: #fff; }
+.ht-btn svg { flex-shrink: 0; }
+
+/* Accordion — section containers, content-first */
+#home-secs { margin-top: 24px; }
 .hs {
-  margin-bottom: 12px; border-radius: var(--r-lg); overflow: hidden;
-  background: var(--surface); box-shadow: var(--elev-1);
-  transition: box-shadow var(--t-mid);
+  margin-bottom: 16px; border-radius: 10px;
+  background: transparent;
 }
-.hs:hover { box-shadow: var(--elev-2); }
+/* Section header.
+   --sec-color is set inline per section (man/zone/blob/drill) and drives
+   the left stripe, the tinted row background, the underline color, and the
+   count number — single source of truth for color per row. */
 .hs-hdr {
-  display: flex; align-items: center; gap: var(--sp-3);
-  height: 58px; padding: 0 var(--sp-4) 0 0;
+  display: flex; align-items: baseline; gap: 14px;
+  min-height: 62px; padding: 10px 16px 14px 0;
   cursor: pointer; user-select: none;
-  transition: background var(--t-fast); border-radius: var(--r-lg);
-  border-left: 4px solid transparent;
+  position: relative;
+  transition: background var(--t-fast);
+  border-left: 6px solid var(--sec-color, var(--brand));
+  border-radius: 8px;
+  /* Subtle tinted wash — color-mix gives a per-section background tint
+     without needing a different bg value per section. Falls back to a
+     light wash on browsers without color-mix support. */
+  background: color-mix(in srgb, var(--sec-color, var(--brand)) 5%, transparent);
 }
-.hs-hdr:hover { background: var(--surface-2); }
-.hs-hdr.open { border-radius: var(--r-lg) var(--r-lg) 0 0; }
-.hs-chev { color: var(--ink-4); font-size: 11px; width: 16px; text-align: center; flex-shrink: 0; transition: transform var(--t-slow) var(--ease-out), color var(--t-fast); margin-left: 12px; }
-.hs-hdr.open .hs-chev { transform: rotate(90deg); }
-.hs-lbl { font-family: var(--font-disp); font-weight: 700; font-size: 16px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); flex: 1; transition: color var(--t-fast); }
-.hs-ct { font-size: 10px; font-weight: 700; color: var(--ink-3); background: var(--surface-2); padding: 2px 9px; border-radius: 20px; letter-spacing: .04em; transition: background var(--t-fast), color var(--t-fast); }
-.hs-body { max-height: 0; overflow: hidden; transition: max-height var(--t-slow) var(--ease-out); }
-.hs-body.open { max-height: 1200px; }
+.hs-hdr:hover {
+  background: color-mix(in srgb, var(--sec-color, var(--brand)) 9%, transparent);
+}
+.hs-hdr.open {
+  background: color-mix(in srgb, var(--sec-color, var(--brand)) 7%, transparent);
+}
+.hs-chev {
+  color: var(--sec-color, var(--ink-4)); font-size: 22px; width: 18px; text-align: center; flex-shrink: 0;
+  transition: transform var(--t-slow) var(--ease-out), color var(--t-fast);
+  margin-left: 18px; font-weight: 700; align-self: center;
+  font-family: var(--font-disp);
+  opacity: .55;
+}
+.hs-hdr.open .hs-chev { transform: rotate(90deg); opacity: 1; }
+.hs-hdr:hover .hs-chev { opacity: 1; }
+/* Label wraps an inline-flex column so the marker-style underline SVG
+   sits directly beneath the text width (not stretched across the whole
+   row). flex:1 stays on a separate spacer so the count pins to the right. */
+.hs-lbl-wrap {
+  display: inline-flex; flex-direction: column; align-items: stretch;
+  gap: 4px; line-height: 1;
+  transform: rotate(-1deg);
+  transform-origin: left center;
+}
+.hs-lbl-spacer { flex: 1; }
+.hs-lbl {
+  font-family: var(--font-marker);
+  font-size: 32px;
+  color: var(--ink-2);
+  transition: color var(--t-fast);
+  line-height: 1;
+  letter-spacing: .01em;
+}
+.hs-hdr:hover .hs-lbl,
+.hs-hdr.open .hs-lbl { color: var(--ink); }
+/* Marker-style underline — squiggly SVG path tinted with the section color.
+   Width matches the label via display:inline-block on the wrapper above. */
+.hs-underline {
+  display: block;
+  width: 100%;
+  height: 8px;
+  color: var(--sec-color, var(--brand));
+  opacity: .85;
+  transition: opacity var(--t-fast);
+}
+.hs-hdr:hover .hs-underline,
+.hs-hdr.open .hs-underline { opacity: 1; }
+.hs-ct {
+  font-family: var(--font-marker);
+  font-size: 26px;
+  color: var(--sec-color, var(--ink-4));
+  background: transparent; padding: 0 4px; border-radius: 0;
+  letter-spacing: 0;
+  align-self: center;
+  transform: rotate(-2deg);
+  transition: color var(--t-fast);
+}
+.hs-body { display: none; }
+.hs-body.open { display: block; }
 
-/* Play rows — refined hover and thumbnail */
-.hs-play {
-  display: flex; align-items: center; gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4); cursor: pointer;
-  border-top: 1px solid var(--line); position: relative;
-  transition: background var(--t-fast), transform var(--t-mid) var(--ease-spring);
+/* ── Card grid — responsive, scales from 1 to 5 columns ── */
+.hs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 8px 14px 16px;
 }
-.hs-play:hover { background: var(--surface-hover); transform: translateX(3px); }
+@media (min-width: 1200px) { .hs-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 980px)  { .hs-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px)  { .hs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px)  { .hs-grid { grid-template-columns: 1fr; } }
+
+/* ── Play card — name as hero element ── */
+.hs-card {
+  background: var(--surface); border-radius: 10px;
+  overflow: hidden; cursor: pointer;
+  box-shadow: 0 1px 2px rgba(20,18,16,.06), 0 4px 14px rgba(20,18,16,.04);
+  transition: box-shadow var(--t-mid) var(--ease), transform var(--t-mid) var(--ease-spring), border-color var(--t-fast);
+  border: 1px solid rgba(26,54,96,.06);
+  position: relative;
+}
+.hs-card:hover {
+  box-shadow: 0 6px 20px rgba(20,18,16,.1), 0 12px 36px rgba(20,18,16,.06);
+  transform: translateY(-4px);
+  border-color: rgba(26,54,96,.15);
+}
+.hs-card:active { transform: translateY(-1px); }
+.hs-card-thumb { width: 100%; height: 160px; overflow: hidden; background: #C08828; position: relative; }
+.hs-card-thumb svg { display: block; width: 100%; height: 100%; }
+/* Animation playing indicator */
+.hs-card-thumb .card-anim-bar {
+  position: absolute; bottom: 0; left: 0; height: 3px;
+  background: var(--brand-3); border-radius: 0;
+  transition: width 80ms linear;
+  box-shadow: 0 -1px 4px rgba(26,54,96,.4);
+}
+.hs-card-body {
+  padding: 14px 14px 12px;
+  position: relative;
+}
+.hs-card-eyebrow {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 6px;
+}
+.hs-card-cat {
+  font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--brand);
+}
+.hs-card-cat-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--brand); opacity: .5;
+}
+.hs-card-name {
+  font-family: var(--font-disp); font-weight: 900; font-size: 19px;
+  letter-spacing: -.005em; color: var(--ink); line-height: 1.15;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  transition: color var(--t-fast);
+}
+.hs-card:hover .hs-card-name { color: var(--brand); }
+.hs-card-foot {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line);
+}
+.hs-card-stat {
+  font-size: 10px; font-weight: 600; color: var(--ink-4);
+  display: flex; align-items: center; gap: 4px;
+  letter-spacing: .01em;
+}
+.hs-card-stat svg { opacity: .5; flex-shrink: 0; }
+.hs-card-dot { width: 2px; height: 2px; border-radius: 50%; background: var(--ink-4); opacity: .4; }
+
+/* Section add card */
+.hs-add-card {
+  background: transparent; border: 2px dashed var(--line);
+  border-radius: 10px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  min-height: 250px;
+  transition: border-color var(--t-fast), background var(--t-fast), transform var(--t-mid) var(--ease-spring);
+}
+.hs-add-card:hover { border-color: var(--brand-light); background: var(--brand-bg); transform: translateY(-2px); }
+.hs-add-card svg { color: var(--ink-4); transition: color var(--t-fast); }
+.hs-add-card:hover svg { color: var(--brand); }
+.hs-add-card span { font-size: 11px; font-weight: 600; color: var(--ink-4); transition: color var(--t-fast); }
+.hs-add-card:hover span { color: var(--brand); }
+
+/* ── List view rows ── */
+.hs-play {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 18px; cursor: pointer;
+  background: var(--surface);
+  border: 1px solid rgba(26,54,96,.06);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  transition: background var(--t-fast), transform var(--t-mid) var(--ease-spring), box-shadow var(--t-fast), border-color var(--t-fast);
+}
+.hs-play:hover { background: var(--surface); transform: translateX(3px); box-shadow: 0 2px 8px rgba(20,18,16,.06); border-color: rgba(26,54,96,.15); }
 .hs-play:hover .hs-arr { color: var(--brand); transform: translateX(4px); }
-.hs-play-stripe { width: 3px; align-self: stretch; border-radius: 0 2px 2px 0; flex-shrink: 0; opacity: .6; }
+.hs-play:hover .hs-play-name { color: var(--brand); }
+.hs-play-stripe { width: 3px; align-self: stretch; border-radius: 2px; flex-shrink: 0; opacity: .7; }
 .hs-play-thumb {
-  width: 64px; height: 48px; border-radius: var(--r); overflow: hidden; flex-shrink: 0;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,.12), var(--elev-1);
+  width: 64px; height: 48px; border-radius: 5px; overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
   transition: box-shadow var(--t-mid), transform var(--t-mid) var(--ease-spring);
 }
-.hs-play:hover .hs-play-thumb { box-shadow: inset 0 1px 3px rgba(0,0,0,.12), var(--elev-3); transform: scale(1.06); }
-
-/* Continue Working — prominent card above sections */
-#home-continue {
-  margin-top: 24px; margin-bottom: 8px;
-}
-.hc-card {
-  display: flex; align-items: center; gap: var(--sp-4);
-  padding: 14px 18px; cursor: pointer;
-  background: var(--surface); border-radius: var(--r-lg);
-  border: 1.5px solid var(--brand-light); box-shadow: var(--elev-2);
-  transition: box-shadow var(--t-mid), transform var(--t-mid) var(--ease-spring), border-color var(--t-fast);
-}
-.hc-card:hover { box-shadow: var(--elev-3); transform: translateY(-2px); border-color: var(--brand); }
-.hc-label {
-  font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--ink-4); margin-bottom: 6px;
-}
-.hc-thumb {
-  width: 80px; height: 60px; border-radius: var(--r); overflow: hidden; flex-shrink: 0;
-  box-shadow: var(--elev-2);
-}
-.hc-info { flex: 1; min-width: 0; }
-.hc-name {
-  font-family: var(--font-disp); font-weight: 900; font-size: 19px;
-  letter-spacing: .03em; color: var(--ink); white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis; line-height: 1.1;
-}
-.hc-meta { font-size: 11px; color: var(--ink-3); margin-top: 3px; }
-.hc-arrow {
-  font-family: var(--font-disp); font-weight: 700; font-size: 22px;
-  color: var(--brand-light); flex-shrink: 0;
-  transition: color var(--t-fast), transform var(--t-mid) var(--ease-spring);
-}
-.hc-card:hover .hc-arrow { color: var(--brand); transform: translateX(4px); }
+.hs-play:hover .hs-play-thumb { box-shadow: 0 2px 8px rgba(0,0,0,.18); transform: scale(1.05); }
 .hs-play-info { flex: 1; min-width: 0; }
-.hs-play-name { font-family: var(--font-disp); font-weight: 700; font-size: 15px; letter-spacing: .02em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
-.hs-play-sub { font-size: 10px; font-weight: 500; color: var(--ink-4); margin-top: 2px; display: block; }
-.hs-arr { color: var(--line-2); font-size: 14px; flex-shrink: 0; padding-right: var(--sp-2); transition: color var(--t-fast), transform var(--t-mid) var(--ease-spring); }
+.hs-play-name { font-family: var(--font-disp); font-weight: 800; font-size: 17px; letter-spacing: -.005em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; line-height: 1.15; transition: color var(--t-fast); }
+.hs-play-sub { font-size: 11px; font-weight: 500; color: var(--ink-4); margin-top: 4px; display: block; }
+.hs-arr { color: var(--line-2); font-size: 18px; flex-shrink: 0; padding-right: 4px; transition: color var(--t-fast), transform var(--t-mid) var(--ease-spring); }
+.hs-foot { padding: 8px 4px 4px; }
+.hs-add { font-size: 11px; font-weight: 700; color: var(--ink-4); padding: 8px 14px; border-radius: 6px; background: transparent; cursor: pointer; transition: color var(--t-fast), background var(--t-fast); letter-spacing: .05em; text-transform: uppercase; }
+.hs-add:hover { color: var(--brand); background: var(--brand-bg); }
 
-/* Empty state — more inviting */
-.hs-empty { padding: 24px var(--sp-4) 24px 26px; border-top: 1px solid var(--line); }
+/* Empty section state */
+.hs-empty-sec { padding: 32px 20px; text-align: center; }
+.hs-empty-sec p { font-size: 12px; color: var(--ink-4); line-height: 1.5; margin-bottom: 14px; }
 .hs-empty-cta {
-  display: flex; align-items: center; gap: var(--sp-3);
+  display: inline-flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 600; color: var(--ink-3);
-  padding: 14px var(--sp-5);
+  padding: 10px 20px;
   border: 1.5px dashed var(--line-2); border-radius: var(--r-lg);
-  cursor: pointer; transition: all var(--t-mid); width: 100%;
+  cursor: pointer; transition: all var(--t-mid);
 }
 .hs-empty-cta:hover { color: var(--brand); border-color: var(--brand-light); background: var(--brand-bg); transform: translateY(-1px); box-shadow: var(--elev-1); }
 .hs-empty-cta svg { opacity: .55; flex-shrink: 0; }
-.hs-foot { padding: var(--sp-2) var(--sp-2) var(--sp-4) 26px; border-top: 1px solid var(--line); }
-.hs-add { font-size: 11px; font-weight: 600; color: var(--ink-3); padding: 5px 10px; border-radius: var(--r); background: transparent; cursor: pointer; transition: color var(--t-fast), background var(--t-fast); }
-.hs-add:hover { color: var(--brand); background: var(--brand-bg); }
-.hs-cov-badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
-.hs-cov-badge { font-size: 8px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 1px 5px; border-radius: 10px; background: var(--brand-bg); color: var(--brand); }
+
+/* Continue Working — featured card */
+#home-continue { margin-top: 28px; margin-bottom: 8px; }
+.hc-card {
+  display: flex; align-items: stretch; gap: 0;
+  cursor: pointer;
+  background: var(--surface); border-radius: 12px;
+  border: 1px solid var(--brand-light); box-shadow: 0 2px 8px rgba(26,54,96,.06), 0 8px 24px rgba(26,54,96,.04);
+  transition: box-shadow var(--t-mid), transform var(--t-mid) var(--ease-spring), border-color var(--t-fast);
+  overflow: hidden;
+}
+.hc-card:hover { box-shadow: 0 6px 18px rgba(26,54,96,.1), 0 14px 36px rgba(26,54,96,.07); transform: translateY(-2px); border-color: var(--brand); }
+.hc-label {
+  font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--brand-3); margin-bottom: 8px; display: block;
+}
+.hc-thumb { width: 140px; height: 105px; overflow: hidden; flex-shrink: 0; background: #C08828; }
+.hc-thumb svg { display: block; width: 100%; height: 100%; }
+.hc-body { flex: 1; min-width: 0; padding: 18px 22px 16px; display: flex; flex-direction: column; justify-content: center; }
+.hc-name {
+  font-family: var(--font-disp); font-weight: 900; font-size: 24px;
+  letter-spacing: -.01em; color: var(--ink); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; line-height: 1.1;
+  transition: color var(--t-fast);
+}
+.hc-card:hover .hc-name { color: var(--brand); }
+.hc-meta { font-size: 11px; color: var(--ink-3); margin-top: 6px; font-weight: 500; }
+.hc-arrow-col {
+  display: flex; align-items: center; padding: 0 22px 0 8px; flex-shrink: 0;
+}
+.hc-arrow {
+  font-family: var(--font-disp); font-weight: 700; font-size: 26px;
+  color: var(--brand-light); flex-shrink: 0;
+  transition: color var(--t-fast), transform var(--t-mid) var(--ease-spring);
+}
+.hc-card:hover .hc-arrow { color: var(--brand); transform: translateX(6px); }
+.hs-cov-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.hs-cov-badge { font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; background: var(--brand-bg); color: var(--brand); }
 
 /* EDITOR */
 #editor { flex: 1; display: none; overflow: hidden; }
@@ -354,7 +552,6 @@ input, textarea, select { font-family: var(--font-ui); }
 /* Library */
 #lib { width: 340px; flex-shrink: 0; background: #FAFAF8; border-right: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
 #lib-hdr { height: 46px; padding: 0 var(--sp-4); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: var(--surface); box-shadow: 0 1px 0 var(--line); }
-.lib-hdr-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
 /* Plays / Drills segmented toggle */
 #lib-type-toggle { display: flex; gap: 1px; background: var(--line); border-radius: var(--r); overflow: hidden; }
 .lib-type-btn {
@@ -500,7 +697,6 @@ input, textarea, select { font-family: var(--font-ui); }
 .lib-sec-hdr:hover::before { opacity: .8; }
 .lib-sec-hdr.open { border-bottom: 1px solid var(--line); }
 .lib-sec-hdr.open::before { opacity: 1; }
-.lib-sec-stripe { display: none; /* replaced by ::before */ }
 .lib-sec-lbl {
   font-family: var(--font-disp); font-size: 12px; font-weight: 800; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink-3); flex: 1;
@@ -584,7 +780,7 @@ input, textarea, select { font-family: var(--font-ui); }
 .plabel { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; fill: rgba(255,255,255,.97); text-anchor: middle; dominant-baseline: central; pointer-events: none; user-select: none; }
 /* Court flip — baseline at top */
 #court-svg.flipped { transform: rotate(180deg); }
-#court-svg.flipped .plabel, #court-svg.flipped .pname, #court-svg.flipped #play-name-layer, #court-svg.flipped .shot-label { transform: rotate(180deg); transform-box: fill-box; transform-origin: center; }
+#court-svg.flipped .plabel, #court-svg.flipped .pname, #court-svg.flipped #play-name-layer, #court-svg.flipped .shot-label, #court-svg.flipped #court-wordmark { transform: rotate(180deg); transform-box: fill-box; transform-origin: center; }
 .apath { cursor: pointer; }
 .apath .hit { fill: transparent; stroke: transparent; stroke-width: 16; }
 .apath .vis { transition: opacity var(--t-fast), stroke-width var(--t-fast), filter var(--t-fast); }
@@ -660,7 +856,6 @@ input, textarea, select { font-family: var(--font-ui); }
 .ss-del:hover { opacity: 1 !important; color: var(--danger); }
 
 /* Group bracket for simultaneous actions */
-.ss-group-start { margin-top: 2px; }
 .ss.grouped { margin-left: 18px; border-left: 2px solid var(--brand-light); border-radius: 0 6px 6px 0; }
 .ss.grouped.group-last { margin-bottom: 2px; }
 /* Link button between adjacent actions */
@@ -805,8 +1000,6 @@ input, textarea, select { font-family: var(--font-ui); }
   gap: 8px;
 }
 
-/* rp-sec kept for compatibility with any remaining uses */
-.rp-sec { padding: var(--sp-4); border-bottom: 1px solid var(--line); }
 .rp-lbl { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
 .rp-field {
   width: 100%; background: var(--bg); border: 1px solid var(--line);
@@ -888,7 +1081,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 #card-topbar { display: flex; align-items: center; gap: var(--sp-3); padding: 0 var(--sp-6); height: 50px; background: var(--surface); box-shadow: 0 1px 0 var(--line), 0 4px 16px rgba(0,0,0,.06); flex-shrink: 0; position: sticky; top: 0; z-index: 10; }
 #card-play-name { font-family: var(--font-disp); font-weight: 900; font-size: 18px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 #card-topbar-meta { display: flex; align-items: center; gap: var(--sp-2); flex-shrink: 0; }
-.card-meta-pill { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; background: var(--brand-bg); color: var(--brand); }
 #card-topbar-actions { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
 /* Print mode toggle */
 #print-mode-toggle { display: flex; align-items: center; gap: 2px; background: var(--surface-2); border-radius: var(--r); padding: 2px; margin-right: 4px; }
@@ -1420,32 +1612,21 @@ select#family-parent-sel:focus { border-color: var(--brand); }
         <circle cx="250" cy="220" r="13" fill="none" stroke="currentColor" stroke-width="5"></circle>
         <rect x="224" y="248" width="52" height="5" fill="none" stroke="currentColor" stroke-width="5" rx="1"></rect>
       </svg>
-      <div id="home-eyebrow">Personal · NBA Schematics</div>
-      <div id="home-wordmark">
-        <span class="wm-small">Will's</span>
-        <span class="wm-big">Playbook</span>
-      </div>
-      <div id="home-rule">
-        <div id="home-rule-line"></div>
-        <div id="home-rule-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.6"></circle>
-            <!-- Horizontal seam -->
-            <path d="M1.5 12 C5 9, 8 8.5, 12 8.5 S19 9, 22.5 12" stroke="currentColor" stroke-width="1.3" fill="none"></path>
-            <path d="M1.5 12 C5 15, 8 15.5, 12 15.5 S19 15, 22.5 12" stroke="currentColor" stroke-width="1.3" fill="none"></path>
-            <!-- Vertical seam -->
-            <line x1="12" y1="1.5" x2="12" y2="22.5" stroke="currentColor" stroke-width="1.3"></line>
-          </svg>
+      <div class="home-hero-left">
+        <div id="home-eyebrow">Personal · NBA Schematics</div>
+        <div id="home-wordmark">
+          <span class="wm-small">Will's</span>
+          <span class="wm-big">Playbook</span>
         </div>
-        <div id="home-rule-line"></div>
       </div>
       <div id="home-meta">
         <span class="home-stat"><strong id="home-cnt">0</strong><span class="stat-label">Plays</span></span>
         <span class="home-stat"><strong id="home-frames">0</strong><span class="stat-label">Frames</span></span>
-        <span class="home-stat" id="home-updated-stat"><strong id="home-updated-name" style="font-size:13px;letter-spacing:.02em">—</strong><span class="stat-label">Last Edited</span></span>
+        <span class="home-stat" id="home-updated-stat"><strong id="home-updated-time">—</strong><span class="stat-label">Last Edited</span></span>
       </div>
     </div>
     <div id="home-continue"></div>
+    <div id="home-toolbar"></div>
     <div id="home-secs"></div>
   </div>
 </div>
@@ -1641,11 +1822,11 @@ select#family-parent-sel:focus { border-color: var(--brand); }
         <rect x="0" y="0" width="500" height="510" fill="url(#oob)"></rect>
         <rect x="28" y="28" width="444" height="436" fill="url(#hw)"></rect>
         <rect x="28" y="28" width="444" height="436" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></rect>
-        <text x="250" y="17" text-anchor="middle" dominant-baseline="middle" font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="9" letter-spacing="4" fill="rgba(255,255,255,.12)">WILL'S PLAYBOOK</text>
+        <text id="court-wordmark" x="250" y="17" text-anchor="middle" dominant-baseline="middle" font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="9" letter-spacing="4" fill="rgba(255,255,255,.22)">WILL'S PLAYBOOK</text>
         <line x1="28" y1="28" x2="472" y2="28" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></line>
         <path d="M 197,28 A 53,53 0 0,0 303,28" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></path>
-        <circle cx="250" cy="28" r="53" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"></circle>
-        <circle cx="250" cy="28" r="22" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.2"></circle>
+        <circle cx="250" cy="28" r="53" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1"></circle>
+        <circle cx="250" cy="28" r="22" fill="none" stroke="rgba(255,255,255,.26)" stroke-width="1.2"></circle>
         <rect id="paint-fill" x="179" y="295" width="142" height="169" fill="url(#paint-grad)"></rect>
         <rect x="179" y="295" width="142" height="169" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></rect>
         <line x1="179" y1="295" x2="321" y2="295" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></line>
@@ -2020,6 +2201,23 @@ const _pageSource = (function() {
   return '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
 })();
 
+// ── Time formatting utility ──
+function timeAgo(ts) {
+  if (!ts) return '';
+  const diff = Date.now() - new Date(ts).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return hrs + 'h ago';
+  const days = Math.floor(hrs / 24);
+  if (days < 7) return days + 'd ago';
+  const wks = Math.floor(days / 7);
+  if (wks < 5) return wks + 'w ago';
+  const mos = Math.floor(days / 30);
+  return mos + 'mo ago';
+}
+
 // ══════════════════════════════════════════════════
 // CONSTANTS
 // ══════════════════════════════════════════════════
@@ -2038,7 +2236,17 @@ const HOME_SECS = [
   {id:'zone', lbl:'Zone Offense',       cats:['Zone Offense']},
   {id:'blob', lbl:'BLOB',               cats:['BLOB / SLOB']},
 ];
-const SEC_COLORS = {man:'#2A5CB8', zone:'#1A9E70', blob:'#C03050'};
+// Section colors — read once from CSS custom properties so theming stays in :root
+const SEC_COLORS = (function(){
+  const cs = getComputedStyle(document.documentElement);
+  const read = (name, fallback) => (cs.getPropertyValue(name).trim() || fallback);
+  return {
+    man:   read('--sec-man',   '#2A5CB8'),
+    zone:  read('--sec-zone',  '#1A9E70'),
+    blob:  read('--sec-blob',  '#C03050'),
+    drill: read('--sec-drill', '#7C3AED'),
+  };
+})();
 
 const DEF_OFF = [
   {id:'pg',label:'PG',x:250,y:128,off:true},
@@ -2143,6 +2351,7 @@ const S = {
   ti:             1,
   view:           'home',
   openSecs:       new Set(), // sections start collapsed; persist after user interaction
+  homeViewMode:   'cards',   // 'list' or 'cards' — home screen play display mode
   rpOpen:         new Set(), // all sections collapsed by default
   showDef:        false,
   showGhost:      true,
@@ -2191,16 +2400,52 @@ let _lastToolSwitchMs = 0;
 // ══════════════════════════════════════════════════
 
 const uid   = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+
+// ── Security: HTML/attribute escaping ──────────────────────────────────────
+// Play names, categories, labels, and notes are user input that flows into
+// innerHTML strings. Without escaping, a name like `<img src=x onerror=...>`
+// executes when the home/library renders. This is a real risk because (a)
+// savePlaybook() emits a downloadable HTML file that embeds the data, and
+// (b) anything else on the same origin can write to our localStorage key.
+//
+// escapeHtml: safe for both text-content AND attribute contexts (covers ", ', &, <, >).
+// isSafeId:   ids are interpolated into onclick="fn('${id}')" — must be alphanumeric only.
+const _HTML_ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"']/g, ch => _HTML_ESC[ch]);
+}
+// uid() produces base36 strings (a-z0-9). Anything else means hand-edited or
+// imported data — refuse to embed it in JS-string contexts.
+const _SAFE_ID_RE = /^[A-Za-z0-9_-]+$/;
+function isSafeId(id) { return typeof id === 'string' && _SAFE_ID_RE.test(id); }
 const clone = o => structuredClone(o);
 // Cached play lookup — avoids O(n) linear scan on every call.
 // Invalidated automatically when S.pid changes.
 let _playCache = { pid: null, ref: null };
 const play  = () => {
   if (_playCache.pid === S.pid && _playCache.ref && _playCache.ref.id === S.pid) return _playCache.ref;
-  _playCache.ref = S.plays.find(p => p.id === S.pid) || null;
+  _playCache.ref = playById(S.pid);
   _playCache.pid = S.pid;
   return _playCache.ref;
 };
+
+// O(1) play lookup by id. Index is rebuilt lazily when S.plays length changes
+// (add/delete) — cheaper than rebuilding on every mutation and avoids manual
+// invalidation calls scattered through the codebase. For pure in-place edits
+// (renaming a play, moving a frame), the index entries remain valid because
+// they're references, not copies.
+let _playIndex = null, _playIndexLen = -1;
+function playById(id) {
+  if (!id) return null;
+  if (_playIndex === null || _playIndexLen !== S.plays.length) {
+    _playIndex = new Map();
+    for (const p of S.plays) _playIndex.set(p.id, p);
+    _playIndexLen = S.plays.length;
+  }
+  return _playIndex.get(id) || null;
+}
+function invalidatePlayIndex() { _playIndex = null; _playIndexLen = -1; }
 const team  = () => TEAMS[S.ti];
 
 // Action-based play detection
@@ -3664,7 +3909,7 @@ function cardCourtSVG(fr, W, H, frameIdx) {
     return `<g>
       <circle cx="${p.x}" cy="${p.y}" r="${PR+2}" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
       <text x="${p.x}" y="${p.y}" text-anchor="middle" dominant-baseline="central"
-        font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="15" fill="rgba(255,255,255,.97)">${p.label}</text>
+        font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="15" fill="rgba(255,255,255,.97)">${escapeHtml(p.label)}</text>
       ${bh ? `<circle cx="${p.x+PR*.65}" cy="${p.y-PR*.65}" r="7" fill="#F8A820" stroke="#9A6000" stroke-width="1.4"/>` : ''}
     </g>`;
   }).join('');
@@ -3793,8 +4038,8 @@ function renderCardView() {
   document.getElementById('card-play-name').textContent = pl.name;
 
   // Subtitle: category + coverage pills
-  const catHtml = `<span class="ps-cat">${pl.category}</span>`;
-  const covHtml  = (pl.coverages||[]).map(c => `<span class="ps-cov-pill">${c}</span>`).join('');
+  const catHtml = `<span class="ps-cat">${escapeHtml(pl.category)}</span>`;
+  const covHtml  = (pl.coverages||[]).map(c => `<span class="ps-cov-pill">${escapeHtml(c)}</span>`).join('');
   document.getElementById('ps-subtitle').innerHTML = catHtml + covHtml;
 
   // Description — hide if empty
@@ -3931,11 +4176,11 @@ function renderCardView() {
 
       if (consolidated.length) {
         notesHtml = consolidated.map(group => {
-          const hdr = `<div style="font-family:Barlow Condensed,sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#9E9488;margin-top:5px;margin-bottom:2px">${group.frameLabel}</div>`;
+          const hdr = `<div style="font-family:Barlow Condensed,sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#9E9488;margin-top:5px;margin-bottom:2px">${escapeHtml(group.frameLabel)}</div>`;
           const rows2 = group.entries.map(r =>
             `<div class="ps-note-row ${r.cls}">
               <span class="ps-note-label" style="font-size:${finalNoteLabelSize}">${r.label}</span>
-              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${r.val}</span>
+              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${escapeHtml(r.val)}</span>
             </div>`
           ).join('');
           return hdr + rows2;
@@ -3962,7 +4207,7 @@ function renderCardView() {
             return `
             <div class="ps-note-row ${r.cls}">
               <span class="ps-note-label" style="font-size:${finalNoteLabelSize}">${r.label}</span>
-              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${r.val}</span>
+              <span class="ps-note-text" style="font-size:${finalNoteFontSize}">${escapeHtml(text)}</span>
             </div>`;
           }).join('')
         : `<span class="ps-no-notes">\u2014</span>`;
@@ -3974,7 +4219,7 @@ function renderCardView() {
     return `<div class="ps-frame${diagramOnly ? ' ps-frame-compact' : ''}">
       <div class="ps-frame-header">
         <div class="ps-fnum" style="font-size:${frameNumSize}">${String(realIdx+1).padStart(2,'0')}</div>
-        <span class="ps-flabel" style="font-size:${frameLabelSize}">${frameTitle}</span>
+        <span class="ps-flabel" style="font-size:${frameLabelSize}">${escapeHtml(frameTitle)}</span>
         ${bhBadge}
       </div>
       <div class="ps-frame-body">
@@ -4009,7 +4254,7 @@ function renderCardView() {
           `<div class="ps-cn-group">
             <span class="ps-cn-fnum">${String(group.frameNum).padStart(2,'0')}</span>
             <div class="ps-cn-entries">${group.entries.map(r =>
-              `<span class="ps-note-label" style="font-size:${noteLabelSize}">${r.label}</span> <span style="font-size:${noteFontSize};color:#3D3830">${r.val}</span>`
+              `<span class="ps-note-label" style="font-size:${noteLabelSize}">${r.label}</span> <span style="font-size:${noteFontSize};color:#3D3830">${escapeHtml(r.val)}</span>`
             ).join(' &nbsp;\u00B7&nbsp; ')}</div>
           </div>`
         ).join('')}</div>
@@ -4042,9 +4287,10 @@ function init() {
 
   if (d) {
     S.plays = migratePlays(d.plays || []);
+    invalidatePlayIndex();   // S.plays replaced wholesale on load
     S.ti    = d.ti ?? 1;
     if (Array.isArray(d.rpOpen))   S.rpOpen   = new Set(d.rpOpen);
-    if (Array.isArray(d.openSecs)) S.openSecs = new Set(d.openSecs);
+    // openSecs intentionally NOT restored — all sections start collapsed on load
     if (typeof d.showDef   === 'boolean') S.showDef   = d.showDef;
     if (typeof d.showGhost === 'boolean') S.showGhost = d.showGhost;
     if (typeof d.showPath  === 'boolean') S.showPath  = d.showPath;
@@ -4054,6 +4300,7 @@ function init() {
     if (d.printMode === 'final' || d.printMode === 'full' || d.printMode === 'key') S.printMode = d.printMode;
     if (['manual','az','za','newest','oldest'].includes(d.libSort)) S.libSort = d.libSort;
     if (d.libGroup === 'section' || d.libGroup === 'flat') S.libGroup = d.libGroup;
+    if (d.homeViewMode === 'list' || d.homeViewMode === 'cards') S.homeViewMode = d.homeViewMode;
     if (d.roster && typeof d.roster === 'object') S.roster = d.roster;
     savedMv  = d._mv || 0;
     savedPid = d.pid || null;
@@ -4173,14 +4420,57 @@ function gotoHome() { if (anim.playing) stopPlay(); setView('home'); }
 // HOME SCREEN
 // ══════════════════════════════════════════════════
 
-function playsFor(sec) {
-  return S.plays.filter(p => {
-    // Drills never appear in play sections
-    if ((p.playType || 'play') === 'drill') return false;
-    if (sec.cats.includes(p.category)) return true;
-    if (sec.id === HOME_SECS[0].id) return !HOME_SECS.some(s => s.cats.includes(p.category));
-    return false;
-  });
+// Card thumbnail — larger court diagram for home screen cards (200×150)
+function cardThumbSVG(p) {
+  const W = 200, H = 150;
+  const t = team();
+  const fr = p.frames?.[0];
+  if (!fr) {
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${W}" height="${H}" fill="#C08828"/>
+      <rect x="6" y="6" width="${W-12}" height="${H-12}" fill="#D4A840" rx="2"/>
+    </svg>`;
+  }
+  const sx = W/500, sy = H/510;
+  const pr = 6, bdr = 3.5, sw = 1.4;
+  const bh = fr.ballHolder;
+
+  const players = (fr.players||[]).map(q => {
+    const cx = (q.x*sx).toFixed(1), cy = (q.y*sy).toFixed(1);
+    const isH = q.id === bh;
+    const fill = q.off ? t.p : '#B82020';
+    const stroke = q.off ? t.s : '#E05050';
+    return `<circle cx="${cx}" cy="${cy}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <text x="${cx}" y="${(q.y*sy+1).toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="6" fill="#fff">${escapeHtml(q.label||'')}</text>
+      ${isH ? `<circle cx="${(q.x*sx+pr+1).toFixed(1)}" cy="${(q.y*sy-pr).toFixed(1)}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width=".7"/>` : ''}`;
+  }).join('');
+
+  const arrows = (fr.arrows||[]).map(a => {
+    const c = AC[a.type] || '#C4D4EE';
+    if (a.type === 'cut' && a.points?.length >= 2) {
+      const scaled = a.points.map(q => ({x:q.x*sx, y:q.y*sy}));
+      const d = cardinalSplinePath(scaled);
+      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity=".8"/>` : '';
+    }
+    if (a.type === 'screen') {
+      const mx = ((a.x1+a.x2)/2*sx).toFixed(1), my = ((a.y1+a.y2)/2*sy).toFixed(1);
+      return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="${sw*1.5}" opacity=".8"/>`;
+    }
+    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="4,3"' : '';
+    return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="${sw}"${dash} opacity=".8"/>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <rect width="${W}" height="${H}" fill="#C08828"/>
+    <rect x="${(28*sx).toFixed(1)}" y="${(28*sy).toFixed(1)}" width="${(444*sx).toFixed(1)}" height="${(436*sy).toFixed(1)}" fill="#D4A840" rx="2"/>
+    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${t.p}" opacity=".15"/>
+    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
+    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
+    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
+    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.6)" stroke-width="1"/>
+    <line x1="${(28*sx).toFixed(1)}" y1="${(464*sy).toFixed(1)}" x2="${(472*sx).toFixed(1)}" y2="${(464*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
+    ${arrows}${players}
+  </svg>`;
 }
 
 function homeThumbSVG(p, w, h) {
@@ -4213,126 +4503,230 @@ function homeThumbSVG(p, w, h) {
 }
 
 function renderHomeScreen() {
-  const allPlays = S.plays.filter(p => (p.playType || 'play') === 'play');
-  const allDrills = S.plays.filter(p => p.playType === 'drill');
-  document.getElementById('home-cnt').textContent = allPlays.length;
-  const totalFrames = allPlays.reduce((sum, p) => sum + p.frames.length, 0);
+  try { _renderHomeScreenInner(); } catch(e) {
+    console.error('renderHomeScreen error:', e);
+    const el = document.getElementById('home-secs');
+    if (el) el.innerHTML = `<div style="padding:20px;color:red;font-size:14px">Render error: ${e.message}<br><br><button onclick="S.homeViewMode='list';renderHomeScreen()">Reset to List View</button></div>`;
+  }
+}
+function _renderHomeScreenInner() {
+  // Single-pass classification — one iteration replaces 4-5 filter()/reduce() passes
+  // (playType bucket, total frame count, drill bucket). Builds a `buckets[secId]` map
+  // so we can render each section without re-scanning S.plays.
+  const buckets = { man: [], zone: [], blob: [], drill: [] };
+  let playCount = 0, totalFrames = 0;
+  for (const p of S.plays) {
+    const isDrill = (p.playType === 'drill');
+    if (isDrill) {
+      buckets.drill.push(p);
+      continue;
+    }
+    playCount++;
+    totalFrames += p.frames.length;
+    // Categorize plays into man/zone/blob; default to man (matches HOME_SECS[0] fallback rule)
+    let secId = 'man';
+    if (HOME_SECS[1].cats.includes(p.category)) secId = 'zone';
+    else if (HOME_SECS[2].cats.includes(p.category)) secId = 'blob';
+    buckets[secId].push(p);
+  }
+  document.getElementById('home-cnt').textContent = playCount;
   document.getElementById('home-frames').textContent = totalFrames;
 
   // ── Continue Working — most recently edited play ───
   const continueEl = document.getElementById('home-continue');
-  // Find the most recently edited play by updatedAt timestamp, fallback to last in array
   let lastPlay = null;
   if (S.plays.length) {
-    const withTime = S.plays.filter(p => p.updatedAt);
-    if (withTime.length) {
-      lastPlay = withTime.reduce((a, b) => (a.updatedAt > b.updatedAt ? a : b));
-    } else {
-      lastPlay = S.plays[S.plays.length - 1];
+    // Single-pass max by updatedAt; falls back to last array entry if no timestamps exist
+    let bestTs = -Infinity;
+    for (const p of S.plays) {
+      if (p.updatedAt && p.updatedAt > bestTs) { bestTs = p.updatedAt; lastPlay = p; }
     }
+    if (!lastPlay) lastPlay = S.plays[S.plays.length - 1];
   }
-  const updName = document.getElementById('home-updated-name');
-  if (updName) updName.textContent = lastPlay ? lastPlay.name : '\u2014';
+  const updTime = document.getElementById('home-updated-time');
+  if (updTime) updTime.textContent = lastPlay && lastPlay.updatedAt ? (timeAgo(lastPlay.updatedAt) || '—') : '—';
 
   if (lastPlay && continueEl) {
-    const covs = (lastPlay.coverages||[]).slice(0,2);
-    const covBadges = covs.map(c => `<span class="hs-cov-badge" style="margin-left:4px">${c}</span>`).join('');
+    const covs = Array.isArray(lastPlay.coverages) ? lastPlay.coverages.slice(0,3) : [];
+    const covBadges = covs.map(c => `<span class="hs-cov-badge">${escapeHtml(c)}</span>`).join('');
+    const edited = timeAgo(lastPlay.updatedAt);
+    const safeId = isSafeId(lastPlay.id) ? lastPlay.id : '';
     continueEl.innerHTML = `
-      <div class="hc-label">Continue Working</div>
-      <div class="hc-card" onclick="openPlay('${lastPlay.id}')">
-        <div class="hc-thumb">${homeThumbSVG(lastPlay, 80, 60)}</div>
-        <div class="hc-info">
-          <div class="hc-name">${lastPlay.name}</div>
-          <div class="hc-meta">${lastPlay.frames.length} frame${lastPlay.frames.length!==1?'s':''} \u00B7 ${lastPlay.category}${covBadges}</div>
+      <div class="hc-card" onclick="openPlay('${safeId}')">
+        <div class="hc-thumb">${homeThumbSVG(lastPlay, 140, 105)}</div>
+        <div class="hc-body">
+          <span class="hc-label">Continue Working</span>
+          <div class="hc-name">${escapeHtml(lastPlay.name)}</div>
+          <div class="hc-meta">${lastPlay.frames.length} frame${lastPlay.frames.length!==1?'s':''} \u00B7 ${escapeHtml(lastPlay.category)}${edited ? ' \u00B7 Edited ' + escapeHtml(edited) : ''}</div>
+          ${covs.length ? `<div class="hs-cov-badges">${covBadges}</div>` : ''}
         </div>
-        <span class="hc-arrow">\u203A</span>
+        <div class="hc-arrow-col"><span class="hc-arrow">\u203A</span></div>
       </div>`;
   } else if (continueEl) {
     continueEl.innerHTML = '';
   }
 
-  // ── Accordion sections ──
-  document.getElementById('home-secs').innerHTML = HOME_SECS.map(sec => {
-    const plays = playsFor(sec), open = S.openSecs.has(sec.id);
-    const stripe = SEC_COLORS[sec.id] || '#2A5CB8';
-    // Section descriptions for empty states
-    const secDesc = {
-      man: 'Sets designed to exploit man-to-man defense with screens, cuts and off-ball movement.',
-      zone: 'Zone-breaking schemes that attack gaps and overload defensive zones.',
-      blob: 'Baseline and sideline out-of-bounds plays for dead-ball situations.',
-    };
-    const rows = plays.length
-      ? plays.map(p => {
-          const covs = (p.coverages||[]).slice(0,3); // max 3 badges shown
-          const famKids = familyChildren(p.id);
-          return `
-          <div class="hs-play" onclick="openPlay('${p.id}')">
-            <div class="hs-play-stripe" style="background:${stripe}"></div>
-            <div class="hs-play-thumb">${homeThumbSVG(p, 64, 48)}</div>
-            <div class="hs-play-info">
-              <span class="hs-play-name">${p.name}${famKids.length?` <span style="font-size:9px;font-weight:600;color:var(--brand);background:var(--brand-bg);border:1px solid var(--brand-light);padding:1px 5px;border-radius:10px;vertical-align:middle">${famKids.length} var.</span>`:''}</span>
-              <span class="hs-play-sub">${p.frames.length} frame${p.frames.length!==1?'s':''} · ${p.category}</span>
-              ${covs.length?`<div class="hs-cov-badges">${covs.map(c=>`<span class="hs-cov-badge">${c}</span>`).join('')}</div>`:''}
+  // ── Add card helper ──
+  function addCard(onclick, label) {
+    return `
+      <div class="hs-add-card" onclick="${onclick}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>${label}</span>
+      </div>`;
+  }
+
+  // Short category labels for card tags
+  const catShortLabels = {
+    'Offensive Sets': 'SETS', 'M2M Offense': 'M2M', 'Transition': 'TRANS',
+    'Press Break': 'PRESS BRK', 'End of Game': 'EOG', 'Custom': 'CUSTOM',
+    'Zone Offense': 'VS ZONE', 'BLOB / SLOB': 'BLOB'
+  };
+
+  const vm = S.homeViewMode; // 'list' or 'cards'
+  const listIcon = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="11" x2="13" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+  const gridIcon = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>`;
+
+  // ── Global toolbar with view toggle ──
+  document.getElementById('home-toolbar').innerHTML = `
+    <span id="home-toolbar-label">Your Playbook</span>
+    <div class="ht-toggle">
+      <button class="ht-btn${vm==='list'?' on':''}" onclick="setHomeView('list')">${listIcon} List</button>
+      <button class="ht-btn${vm==='cards'?' on':''}" onclick="setHomeView('cards')">${gridIcon} Cards</button>
+    </div>`;
+
+  // ── Section helpers ──
+  const secDesc = {
+    man: 'Sets designed to exploit man-to-man defense with screens, cuts and off-ball movement.',
+    zone: 'Zone-breaking schemes that attack gaps and overload defensive zones.',
+    blob: 'Baseline and sideline out-of-bounds plays for dead-ball situations.',
+    drills: 'Practice drills, skill work, and conditioning exercises.',
+  };
+
+  function listRow(p, stripe) {
+    const edited = timeAgo(p.updatedAt);
+    const covs = Array.isArray(p.coverages) ? p.coverages.slice(0,2) : [];
+    const covBadges = covs.map(c => `<span class="hs-cov-badge">${escapeHtml(c)}</span>`).join('');
+    const safeId = isSafeId(p.id) ? p.id : '';
+    return `
+      <div class="hs-play" onclick="openPlay('${safeId}')">
+        <div class="hs-play-stripe" style="background:${stripe}"></div>
+        <div class="hs-play-thumb">${homeThumbSVG(p, 56, 42)}</div>
+        <div class="hs-play-info">
+          <span class="hs-play-name">${escapeHtml(p.name)}</span>
+          <span class="hs-play-sub">${p.frames.length} frame${p.frames.length!==1?'s':''} · ${escapeHtml(p.category)}${edited ? ' · ' + escapeHtml(edited) : ''}</span>
+          ${covs.length ? `<div class="hs-cov-badges">${covBadges}</div>` : ''}
+        </div>
+        <span class="hs-arr">›</span>
+      </div>`;
+  }
+
+  function sectionBody(plays, sec, stripe, addOnclick, addLabel) {
+    if (plays.length === 0) {
+      return `<div class="hs-empty-sec">
+        <p>${secDesc[sec]||''}</p>
+        <button class="hs-empty-cta" onclick="${addOnclick}">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><line x1="7" y1="4" x2="7" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="7" x2="10" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          ${addLabel}
+        </button>
+      </div>`;
+    }
+    if (S.homeViewMode === 'cards') {
+      try {
+        const cards = plays.map(p => {
+          const edited = timeAgo(p.updatedAt);
+          const catLabel = catShortLabels[p.category] || p.category || '';
+          const safeId = isSafeId(p.id) ? p.id : '';
+          let thumb;
+          try { thumb = cardThumbSVG(p); } catch(e) { thumb = `<svg viewBox="0 0 200 150"><rect width="200" height="150" fill="#C08828"/></svg>`; }
+          return `<div class="hs-card" onclick="openPlay('${safeId}')" onmouseenter="cardAnimStart(this,'${safeId}')" onmouseleave="cardAnimStop()">
+            <div class="hs-card-thumb">${thumb}</div>
+            <div class="hs-card-body">
+              ${catLabel ? `<div class="hs-card-eyebrow"><span class="hs-card-cat-dot"></span><span class="hs-card-cat">${escapeHtml(catLabel)}</span></div>` : ''}
+              <div class="hs-card-name">${escapeHtml(p.name||'Untitled')}</div>
+              <div class="hs-card-foot">
+                <span class="hs-card-stat">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1"/></svg>
+                  ${p.frames.length} Frames
+                </span>
+                ${edited ? `<span class="hs-card-dot"></span><span class="hs-card-stat">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  ${escapeHtml(edited)}
+                </span>` : ''}
+              </div>
             </div>
-            <span class="hs-arr">›</span>
           </div>`;
-        }).join('')
-      : `<div class="hs-empty">
-           <div style="font-size:11px;color:var(--ink-4);line-height:1.5;margin-bottom:12px">${secDesc[sec.id]||''}</div>
-           <button class="hs-empty-cta" onclick="newInSec('${sec.id}',event)">
-             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><line x1="7" y1="4" x2="7" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="7" x2="10" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-             Build your first ${sec.lbl} play →
-           </button>
-         </div>`;
+        }).join('');
+        return `<div class="hs-grid">${cards}${addCard(addOnclick, addLabel)}</div>`;
+      } catch(e) {
+        console.error('Card render error:', e);
+        return `<div style="padding:16px;color:red">Card render error: ${escapeHtml(e.message)}</div>`;
+      }
+    }
+    // List mode
+    return `<div style="padding:8px 14px 12px">` +
+      plays.map(p => listRow(p, stripe)).join('') +
+      `<div class="hs-foot"><button class="hs-add" onclick="${addOnclick}">+ ${addLabel}</button></div>` +
+      `</div>`;
+  }
+
+  // Marker-style straight underline. Uses a simple line but renders with
+  // the whiteboard marker font aesthetic to maintain the hand-drawn feel.
+  // The SVG uses currentColor to inherit color from the .hs-underline rule (--sec-color).
+  // ViewBox is wide and short; preserveAspectRatio='none' lets it stretch to
+  // whatever width the label needs while keeping the line height fixed.
+  const markerUnderlineSVG = `<svg class="hs-underline" viewBox="0 0 300 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2,4 L298,4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+
+  // Build all sections (plays + drills) in one pass; assign innerHTML once.
+  // Previous code did `innerHTML +=` for the drill section, which re-parsed the
+  // entire home-secs subtree on every render — expensive when SVG thumbnails
+  // are present. Now: single string concat, single DOM write.
+  //
+  // Per-section accent color is set ONCE on the header via --sec-color, then
+  // inherited by the stripe, background tint, chevron, underline, and count.
+  // This replaces the previous pattern of setting inline style on every child.
+  const playSectionsHtml = HOME_SECS.map(sec => {
+    const plays = buckets[sec.id] || [];
+    const open = S.openSecs.has(sec.id);
+    const stripe = SEC_COLORS[sec.id] || '#2A5CB8';
+
     return `
       <div class="hs">
-        <div class="hs-hdr${open?' open':''}" onclick="toggleSec('${sec.id}')" style="border-left-color:${stripe}">
-          <span class="hs-chev" ${open?`style="color:${stripe}"`:''}></span>
-          <span class="hs-lbl" ${open?`style="color:${stripe}"`:''}>${sec.lbl}</span>
-          <span class="hs-ct" ${open?`style="background:${stripe}15;color:${stripe}"`:''}>${plays.length}</span>
+        <div class="hs-hdr${open?' open':''}" onclick="toggleSec('${sec.id}')" style="--sec-color:${stripe}">
+          <span class="hs-chev">›</span>
+          <span class="hs-lbl-wrap">
+            <span class="hs-lbl">${sec.lbl}</span>
+            ${markerUnderlineSVG}
+          </span>
+          <span class="hs-lbl-spacer"></span>
+          <span class="hs-ct">${plays.length}</span>
         </div>
         <div class="hs-body${open?' open':''}">
-          ${rows}
-          ${plays.length ? `<div class="hs-foot"><button class="hs-add" onclick="newInSec('${sec.id}',event)">+ Add Play</button></div>` : ''}
+          ${open ? sectionBody(plays, sec.id, stripe, "newInSec('" + sec.id + "',event)", 'Add Play') : ''}
         </div>
       </div>`;
   }).join('');
 
-  // ── Drills section ──────────────────────────────────
-  const drills = S.plays.filter(p => p.playType === 'drill');
+  // Drill section uses the same bucket from the single-pass classification above
+  const drills = buckets.drill;
   const drillOpen = S.openSecs.has('drills');
-  const drillStripe = '#7C3AED';
-  const drillRows = drills.length
-    ? drills.map(p => `
-        <div class="hs-play" onclick="openPlay('${p.id}')">
-          <div class="hs-play-stripe" style="background:${drillStripe}"></div>
-          <div class="hs-play-thumb">${homeThumbSVG(p, 64, 48)}</div>
-          <div class="hs-play-info">
-            <span class="hs-play-name">${p.name}</span>
-            <span class="hs-play-sub">${p.desc ? p.desc.split('\n')[0].substring(0,60) : 'Drill'}</span>
-          </div>
-          <span class="hs-arr">›</span>
-        </div>`).join('')
-    : `<div class="hs-empty">
-         <div style="font-size:11px;color:var(--ink-4);line-height:1.5;margin-bottom:12px">Practice drills, skill work, and conditioning exercises.</div>
-         <button class="hs-empty-cta" onclick="newDrillFromHome(event)">
-           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><line x1="7" y1="4" x2="7" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="7" x2="10" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-           Add your first drill →
-         </button>
-       </div>`;
-
-  document.getElementById('home-secs').innerHTML += `
+  const drillStripe = SEC_COLORS.drill;
+  const drillSectionHtml = `
     <div class="hs">
-      <div class="hs-hdr${drillOpen?' open':''}" onclick="toggleSec('drills')" style="border-left-color:${drillStripe}">
-        <span class="hs-chev" ${drillOpen?`style="color:${drillStripe}"`:''}></span>
-        <span class="hs-lbl" ${drillOpen?`style="color:${drillStripe}"`:''}>Drills</span>
-        <span class="hs-ct" ${drillOpen?`style="background:${drillStripe}15;color:${drillStripe}"`:''}>${drills.length}</span>
+      <div class="hs-hdr${drillOpen?' open':''}" onclick="toggleSec('drills')" style="--sec-color:${drillStripe}">
+        <span class="hs-chev">›</span>
+        <span class="hs-lbl-wrap">
+          <span class="hs-lbl">Drills</span>
+          ${markerUnderlineSVG}
+        </span>
+        <span class="hs-lbl-spacer"></span>
+        <span class="hs-ct">${drills.length}</span>
       </div>
       <div class="hs-body${drillOpen?' open':''}">
-        ${drillRows}
-        ${drills.length ? `<div class="hs-foot"><button class="hs-add" onclick="newDrillFromHome(event)">+ Add Drill</button></div>` : ''}
+        ${drillOpen ? sectionBody(drills, 'drills', drillStripe, "newDrillFromHome(event)", 'Add Drill') : ''}
       </div>
     </div>`;
+
+  document.getElementById('home-secs').innerHTML = playSectionsHtml + drillSectionHtml;
 }
 
 function toggleSec(id) {
@@ -4340,16 +4734,217 @@ function toggleSec(id) {
   renderHomeScreen();
   save();
 }
+function setHomeView(mode) {
+  S.homeViewMode = mode;
+  renderHomeScreen();
+  debouncedSave();
+}
+
+// ══════════════════════════════════════════════════
+// CARD HOVER ANIMATION — plays the script on hover
+// ══════════════════════════════════════════════════
+// Per-segment cached values: playRef, pathMap, segSpeed.
+// Recomputed only when segment advances (in cardAnimPrepareSegment), not every rAF tick.
+const _EMPTY_MAP = new Map();
+const cardAnim = {
+  active: null, rafId: null,
+  segFrom: 0, segTo: 1, segStart: null,
+  playId: null,
+  _playRef: null, _pathMap: null, _segSpeed: 900,
+};
+
+function cardAnimStart(cardEl, playId) {
+  const pl = playById(playId);     // O(1) via _playIndex
+  if (!pl || pl.frames.length < 2) return;
+  cardAnimStop();
+  cardAnim.active = cardEl;
+  cardAnim.playId = playId;
+  cardAnim._playRef = pl;        // cache: avoid find() in every tick
+  cardAnim.segFrom = 0;
+  cardAnim.segTo = 1;
+  cardAnim.segStart = null;
+  cardAnimPrepareSegment();      // populate _pathMap + _segSpeed once per segment
+  cardAnim.rafId = requestAnimationFrame(cardAnimTick);
+}
+
+// Compute per-segment values (pathMap + speed) ONCE when segment changes.
+// These depend only on fromF/toF — invariant across the frames of one segment.
+function cardAnimPrepareSegment() {
+  const pl = cardAnim._playRef;
+  if (!pl) { cardAnim._pathMap = null; return; }
+  const fromF = pl.frames[cardAnim.segFrom];
+  const toF   = pl.frames[cardAnim.segTo];
+  if (!fromF || !toF) { cardAnim._pathMap = null; return; }
+
+  const pathMap = new Map();
+  [fromF, toF].forEach(f => {
+    if (!f.arrows) return;
+    f.arrows.forEach(a => {
+      if (a.points?.length >= 2 && (a.type === 'dribble' || a.type === 'cut') && a.fp) {
+        const fp = fromF.players.find(q => q.id === a.fp);
+        if (fp && Math.hypot(fp.x - a.x1, fp.y - a.y1) < 5) {
+          pathMap.set(a.fp, a.points);
+        }
+      }
+    });
+  });
+  cardAnim._pathMap = pathMap;
+
+  let segSpeed = 900;
+  if (pathMap.size > 0) {
+    let maxRatio = 1;
+    pathMap.forEach((pts) => {
+      let pathLen = 0;
+      for (let i = 1; i < pts.length; i++) pathLen += Math.hypot(pts[i].x - pts[i-1].x, pts[i].y - pts[i-1].y);
+      const straightLen = Math.hypot(pts[pts.length-1].x - pts[0].x, pts[pts.length-1].y - pts[0].y);
+      if (straightLen > 10) maxRatio = Math.max(maxRatio, pathLen / straightLen);
+    });
+    segSpeed = 900 * Math.min(maxRatio, 2.5);
+  }
+  cardAnim._segSpeed = segSpeed;
+}
+
+function cardAnimStop() {
+  if (cardAnim.rafId) { cancelAnimationFrame(cardAnim.rafId); cardAnim.rafId = null; }
+  if (cardAnim.active) {
+    // Reset to frame 0 static thumbnail
+    const thumb = cardAnim.active.querySelector('.hs-card-thumb');
+    const pl = cardAnim._playRef;   // use cached ref instead of S.plays.find()
+    if (thumb && pl) thumb.innerHTML = cardThumbSVG(pl);
+    cardAnim.active = null;
+    cardAnim.playId = null;
+    cardAnim._playRef = null;
+    cardAnim._pathMap = null;
+  }
+}
+
+function cardAnimTick(ts) {
+  if (!cardAnim.active) return;
+  const pl = cardAnim._playRef;       // cached at start, no find() per frame
+  if (!pl) { cardAnimStop(); return; }
+
+  if (!cardAnim.segStart) cardAnim.segStart = ts;
+
+  const fromF = pl.frames[cardAnim.segFrom];
+  const toF = pl.frames[cardAnim.segTo];
+  if (!fromF || !toF) { cardAnimStop(); return; }
+
+  // pathMap + segSpeed cached by cardAnimPrepareSegment() — invariant within a segment
+  const pathMap  = cardAnim._pathMap || _EMPTY_MAP;
+  const segSpeed = cardAnim._segSpeed;
+
+  const raw = Math.min((ts - cardAnim.segStart) / segSpeed, 1);
+  const t = ease(raw);
+
+  // Render interpolated frame into thumbnail
+  const thumb = cardAnim.active.querySelector('.hs-card-thumb');
+  if (!thumb) { cardAnimStop(); return; }
+
+  const W = 200, H = 150, sx = W/500, sy = H/510;
+  const tm = team();
+  const pr = 6, bdr = 3.5;
+
+  // Interpolate player positions
+  const players = fromF.players.map(p => {
+    const to = toF.players.find(q => q.id === p.id);
+    if (!to) return p;
+    const path = pathMap.get(p.id);
+    let x, y;
+    if (path) {
+      const pos = interpolateAlongPath(path, t);
+      x = pos.x; y = pos.y;
+    } else {
+      x = p.x + (to.x - p.x) * t;
+      y = p.y + (to.y - p.y) * t;
+    }
+    return { ...p, x, y };
+  });
+
+  // Determine ball holder (transitions at t > 0.5 if it changes)
+  let bh = fromF.ballHolder;
+  if (toF.ballHolder && toF.ballHolder !== fromF.ballHolder && t > 0.5) bh = toF.ballHolder;
+
+  // Render arrows from destination frame with opacity based on progress
+  const arrowOp = (0.15 + 0.85 * raw).toFixed(2);
+  const arrows = (toF.arrows||[]).map(a => {
+    const c = AC[a.type] || '#C4D4EE';
+    if (a.type === 'cut' && a.points?.length >= 2) {
+      const scaled = a.points.map(q => ({x:q.x*sx, y:q.y*sy}));
+      const d = cardinalSplinePath(scaled);
+      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="1.2" opacity="${arrowOp}"/>` : '';
+    }
+    if (a.type === 'screen') {
+      return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="2" opacity="${arrowOp}"/>`;
+    }
+    const dash = (a.type==='dribble'||a.type==='dho') ? ' stroke-dasharray="4,3"' : '';
+    return `<line x1="${(a.x1*sx).toFixed(1)}" y1="${(a.y1*sy).toFixed(1)}" x2="${(a.x2*sx).toFixed(1)}" y2="${(a.y2*sy).toFixed(1)}" stroke="${c}" stroke-width="1.2"${dash} opacity="${arrowOp}"/>`;
+  }).join('');
+
+  const playersSvg = players.map(q => {
+    const cx = (q.x*sx).toFixed(1), cy = (q.y*sy).toFixed(1);
+    const isH = q.id === bh;
+    const fill = q.off ? tm.p : '#B82020';
+    const stroke = q.off ? tm.s : '#E05050';
+    return `<circle cx="${cx}" cy="${cy}" r="${pr}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>
+      <text x="${cx}" y="${(q.y*sy+1).toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="6" fill="#fff">${escapeHtml(q.label||'')}</text>
+      ${isH ? `<circle cx="${(q.x*sx+pr+1).toFixed(1)}" cy="${(q.y*sy-pr).toFixed(1)}" r="${bdr}" fill="#F8A820" stroke="#9A6000" stroke-width=".7"/>` : ''}`;
+  }).join('');
+
+  // Progress bar
+  // Progress bar — guarded against divide-by-zero. Upstream cardAnimStart()
+  // enforces frames.length >= 2, but a frame deletion mid-animation could
+  // leave us with totalSegs === 0; Math.max keeps the SVG attr finite.
+  const totalSegs = Math.max(1, pl.frames.length - 1);
+  const progress = ((cardAnim.segFrom + raw) / totalSegs * 100).toFixed(1);
+
+  thumb.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <rect width="${W}" height="${H}" fill="#C08828"/>
+    <rect x="${(28*sx).toFixed(1)}" y="${(28*sy).toFixed(1)}" width="${(444*sx).toFixed(1)}" height="${(436*sy).toFixed(1)}" fill="#D4A840" rx="2"/>
+    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${tm.p}" opacity=".15"/>
+    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
+    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.45)" stroke-width=".7"/>
+    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
+    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.6)" stroke-width="1"/>
+    <line x1="${(28*sx).toFixed(1)}" y1="${(464*sy).toFixed(1)}" x2="${(472*sx).toFixed(1)}" y2="${(464*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
+    ${arrows}${playersSvg}
+  </svg><div class="card-anim-bar" style="width:${progress}%"></div>`;
+
+  if (raw < 1) { cardAnim.rafId = requestAnimationFrame(cardAnimTick); return; }
+
+  // Segment complete — advance
+  if (cardAnim.segTo >= pl.frames.length - 1) {
+    // Loop back to start after a brief pause
+    const pid = cardAnim.playId;
+    setTimeout(() => {
+      if (!cardAnim.active || cardAnim.playId !== pid) return;
+      cardAnim.segFrom = 0; cardAnim.segTo = 1; cardAnim.segStart = null;
+      cardAnimPrepareSegment();  // recompute pathMap/segSpeed for the new segment
+      cardAnim.rafId = requestAnimationFrame(cardAnimTick);
+    }, 400);
+    return;
+  }
+  cardAnim.segFrom = cardAnim.segTo;
+  cardAnim.segTo++;
+  cardAnim.segStart = null;
+  cardAnimPrepareSegment();      // recompute pathMap/segSpeed for the new segment
+  const pid2 = cardAnim.playId;
+  setTimeout(() => {
+    if (!cardAnim.active || cardAnim.playId !== pid2) return;
+    cardAnim.rafId = requestAnimationFrame(cardAnimTick);
+  }, 80);
+}
 function openPlay(id) {
+  // Validate before mutating — stale onclick handlers (e.g. clicking a card
+  // whose play was just deleted) or hand-edited HTML must not leave S.pid
+  // pointing at a non-existent play. Bail silently if invalid.
+  const opened = playById(id);
+  if (!opened) return;
   S.pid=id; S.fi=0; S.selArrow=null;
   undoStack.length=0; frameUndoStack.length=0; actionUndoStack.length=0;
   redoStack.length=0; frameRedoStack.length=0; actionRedoStack.length=0;
   // Auto-switch library tab to match the opened play/drill type
-  const opened = S.plays.find(p => p.id === id);
-  if (opened) {
-    const openedType = opened.playType || 'play';
-    if (S.libType !== openedType) setLibType(openedType);
-  }
+  const openedType = opened.playType || 'play';
+  if (S.libType !== openedType) setLibType(openedType);
   setView('editor');
 }
 function newInSec(sid, e) {
@@ -4430,17 +5025,23 @@ function setLibType(type) {
   renderLibrary();
 }
 
+// Library search — debounced to avoid re-rendering the entire play list
+// (including SVG thumbnails) on every keystroke. Clear-button visibility
+// stays instant for responsiveness; only the heavy render is deferred.
+let _libSearchTimer = null;
 function onLibSearch(val) {
   S.libSearch = val;
   const clearBtn = document.getElementById('lib-search-clear');
   clearBtn.classList.toggle('visible', val.length > 0);
-  renderLibrary();
+  clearTimeout(_libSearchTimer);
+  _libSearchTimer = setTimeout(renderLibrary, 120);
 }
 
 function clearLibSearch() {
   S.libSearch = '';
   document.getElementById('lib-search').value = '';
   document.getElementById('lib-search-clear').classList.remove('visible');
+  clearTimeout(_libSearchTimer);   // cancel any pending search render
   renderLibrary();
 }
 
@@ -4679,18 +5280,19 @@ function renderLibrary() {
       return out;
     }
 
-    return `<div class="pitem${isActive?' on':''}" onclick="selPlay('${p.id}')">
+    const safeId = isSafeId(p.id) ? p.id : '';
+    return `<div class="pitem${isActive?' on':''}" onclick="selPlay('${safeId}')">
       <div class="pi-thumb">${libThumbSVG(p)}</div>
       <div class="pi-body">
         <div class="pi-row">
-          <div class="pi-name-wrap" ondblclick="renamePlay('${p.id}',event)" title="Double-click to rename">
-            <span class="pi-name" id="pi-name-${p.id}">${p.name}</span>
+          <div class="pi-name-wrap" ondblclick="renamePlay('${safeId}',event)" title="Double-click to rename">
+            <span class="pi-name" id="pi-name-${safeId}">${escapeHtml(p.name)}</span>
           </div>
-          <span class="pi-del" onclick="delPlay('${p.id}',event)">✕</span>
+          <span class="pi-del" onclick="delPlay('${safeId}',event)">✕</span>
         </div>
         <div class="pi-meta">
           <span class="pi-frames">${p.frames.length} frames</span>
-          ${p.playType === 'drill' ? '<span class="pi-cat" style="background:#F5F3FF;color:#7C3AED">Drill</span>' : `<span class="pi-cat">${p.category}</span>`}
+          ${p.playType === 'drill' ? '<span class="pi-cat" style="background:#F5F3FF;color:#7C3AED">Drill</span>' : `<span class="pi-cat">${escapeHtml(p.category)}</span>`}
         </div>
       </div>
     </div>`;
@@ -5311,11 +5913,15 @@ function renderBallChips() {
   const offPlayers = fr.players.filter(p => p.off);
   if (!offPlayers.length) { container.innerHTML='<span style="font-size:11px;color:var(--ink-3)">No offensive players</span>'; return; }
 
-  const chips = offPlayers.map(p => `
+  const chips = offPlayers.map(p => {
+    const safeId = isSafeId(p.id) ? p.id : '';
+    const lbl = escapeHtml(p.label);
+    return `
     <button class="ball-chip${p.id===fr.ballHolder?' on':''}"
-      onclick="setBallHolder('${p.id}')"
-      title="Give ball to ${p.label}">${p.label}</button>
-  `).join('');
+      onclick="setBallHolder('${safeId}')"
+      title="Give ball to ${lbl}">${lbl}</button>
+  `;
+  }).join('');
 
   // "None" chip to clear possession
   const noneOn = !fr.ballHolder ? ' on' : '';
@@ -6722,7 +7328,7 @@ function showSnapGuide(sp) {
     <line x1="${sp.x-sz}" y1="${sp.y}" x2="${sp.x+sz}" y2="${sp.y}" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-dasharray="3,2"/>
     <line x1="${sp.x}" y1="${sp.y-sz}" x2="${sp.x}" y2="${sp.y+sz}" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-dasharray="3,2"/>
     <circle cx="${sp.x}" cy="${sp.y}" r="4" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
-    <text x="${sp.x}" y="${sp.y-14}" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="8" letter-spacing=".06em" fill="rgba(255,255,255,.45)">${sp.label}</text>`;
+    <text x="${sp.x}" y="${sp.y-14}" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="8" letter-spacing=".06em" fill="rgba(255,255,255,.45)">${escapeHtml(sp.label)}</text>`;
 }
 
 function clearSnapGuide() {
@@ -6861,7 +7467,7 @@ function renderTimeline() {
       <div class="flabel-wrap">
         <span class="flabel" id="flabel-${i}"
           ondblclick="editFrameLabel(${i},event)"
-          title="${f.label||`Frame ${i+1}`} — double-click to rename">${f.label||`Frame ${i+1}`}</span>
+          title="${escapeHtml(f.label||`Frame ${i+1}`)} — double-click to rename">${escapeHtml(f.label||`Frame ${i+1}`)}</span>
       </div>
       ${dots ? `<div class="faction-dots">${dots}</div>` : '<div class="faction-dots"></div>'}
     </div>`;
@@ -7453,16 +8059,17 @@ function renderFamilyPanel() {
 
   // --- Case 2: this play is a FAMILY ROOT (no parent, has children)
   if (!parent && kids.length>0) {
+    const safePlId = isSafeId(pl.id) ? pl.id : '';
     container.innerHTML = `
       <div class="family-status">
         <span class="family-root-label">Family Root</span>
         <span style="color:var(--ink-3)">${kids.length} variation${kids.length!==1?'s':''}</span>
       </div>
       <div style="font-size:10px;color:var(--ink-3);margin-bottom:9px;line-height:1.5">
-        ${kids.map(c=>`<div style="padding:2px 0;color:var(--ink-2)">· ${c.name}</div>`).join('')}
+        ${kids.map(c=>`<div style="padding:2px 0;color:var(--ink-2)">· ${escapeHtml(c.name)}</div>`).join('')}
       </div>
       <div class="family-actions">
-        <button class="btn btn-sm btn-primary" onclick="createVariation('${pl.id}')">
+        <button class="btn btn-sm btn-primary" onclick="createVariation('${safePlId}')">
           + Add Variation
         </button>
       </div>`;
@@ -7472,20 +8079,22 @@ function renderFamilyPanel() {
   // --- Case 3: this play is a VARIATION (has parent)
   if (parent) {
     const siblings = familyChildren(parent.id).filter(c=>c.id!==pl.id);
+    const safeParentId = isSafeId(parent.id) ? parent.id : '';
+    const safePlId = isSafeId(pl.id) ? pl.id : '';
     container.innerHTML = `
       <div class="family-status">
         <span class="family-var-label">Variation</span>
       </div>
       <div style="font-size:11px;color:var(--ink-2);margin-bottom:6px">
-        Part of <strong>${parent.name}</strong>
+        Part of <strong>${escapeHtml(parent.name)}</strong>
       </div>
       ${siblings.length ? `<div style="font-size:10px;color:var(--ink-3);margin-bottom:8px">
-        ${siblings.map(s=>`<div style="padding:2px 0">· ${s.name}</div>`).join('')}
+        ${siblings.map(s=>`<div style="padding:2px 0">· ${escapeHtml(s.name)}</div>`).join('')}
       </div>` : ''}
       <div class="family-actions">
-        <button class="btn btn-sm" onclick="selPlay('${parent.id}')">← Go to Root</button>
-        <button class="btn btn-sm" onclick="createVariation('${parent.id}')">+ Add Variation</button>
-        <button class="btn btn-sm btn-danger" onclick="setFamilyParent('${pl.id}',null)"
+        <button class="btn btn-sm" onclick="selPlay('${safeParentId}')">← Go to Root</button>
+        <button class="btn btn-sm" onclick="createVariation('${safeParentId}')">+ Add Variation</button>
+        <button class="btn btn-sm btn-danger" onclick="setFamilyParent('${safePlId}',null)"
           style="margin-top:5px;width:100%">Remove from Family</button>
       </div>`;
     return;
@@ -7622,6 +8231,7 @@ function save() {
     printMode: S.printMode,
     libSort:   S.libSort,
     libGroup:  S.libGroup,
+    homeViewMode: S.homeViewMode,
     roster:    S.roster,
   };
   _lastSaveData = data;
