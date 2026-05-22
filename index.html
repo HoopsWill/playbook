@@ -135,12 +135,12 @@ input, textarea, select { font-family: var(--font-ui); }
 .h-div { width: 1px; height: 16px; background: var(--line); margin: 0 var(--sp-5); flex-shrink: 0; }
 #back-btn {
   display: none; align-items: center; gap: var(--sp-1);
-  font-size: 12px; font-weight: 500; color: var(--ink-3);
+  font-size: 12px; font-weight: 600; color: var(--ink-2);
   padding: 5px 10px 5px 7px; border-radius: var(--r);
   transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
   white-space: nowrap; cursor: pointer;
 }
-#back-btn:hover { background: var(--surface-2); color: var(--ink-2); transform: translateX(-1px); }
+#back-btn:hover { background: var(--surface-2); color: var(--ink); transform: translateX(-1px); }
 #title-wrap { display: none; align-items: center; gap: var(--sp-1); }
 #title-wrap.visible { display: flex; }
 #title-input {
@@ -177,7 +177,7 @@ input, textarea, select { font-family: var(--font-ui); }
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; gap: var(--sp-1);
-  font-size: 12px; font-weight: 500; color: var(--ink-2);
+  font-size: 12px; font-weight: 600; color: var(--ink-2);
   padding: 6px 12px; border-radius: var(--r);
   border: 1px solid var(--line); background: var(--surface);
   transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast),
@@ -582,7 +582,7 @@ input, textarea, select { font-family: var(--font-ui); }
   text-align: center;
 }
 #player-name-input:focus { border-color: var(--brand); }
-#pcount { font-size: 10px; font-weight: 700; color: var(--ink-3); background: var(--surface-2); padding: 2px 8px; border-radius: 20px; }
+#pcount { font-size: 10px; font-weight: 700; color: var(--ink-2); background: var(--surface-2); padding: 2px 8px; border-radius: 20px; }
 /* Coverage filter — removed from UI */
 #lib-cov-wrap { display: none !important; }
 #lib-search-wrap { padding: 8px 10px; flex-shrink: 0; display: flex; align-items: center; gap: 6px; background: var(--surface); border-bottom: 1px solid var(--line); }
@@ -613,16 +613,16 @@ input, textarea, select { font-family: var(--font-ui); }
 .pi-thumb svg { display: block; width: 100%; height: 100%; }
 .pi-body { flex: 1; min-width: 0; }
 .pi-row { display: flex; align-items: flex-start; gap: var(--sp-1); }
-.pi-name { font-family: var(--font-disp); font-size: 14px; font-weight: 700; letter-spacing: .01em; color: var(--ink); flex: 1; line-height: 1.25; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pi-name { font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: -.005em; color: var(--ink); flex: 1; line-height: 1.25; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .pitem.on .pi-name { color: var(--brand); }
 .pi-del { display: none; color: var(--danger); font-size: 11px; padding: 2px 5px; border-radius: var(--r-sm); flex-shrink: 0; transition: background var(--t-fast); }
 .pitem:hover .pi-del { display: block; }
 .pi-del:hover { background: var(--danger-bg); }
 .pi-meta { display: flex; align-items: center; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
 .pi-frames { font-size: 10px; font-weight: 500; color: var(--ink-3); }
-.pi-cat { font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); background: var(--surface-2); padding: 2px 6px; border-radius: 10px; }
+.pi-cat { font-size: 8px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); background: var(--surface-2); padding: 2px 6px; border-radius: 10px; }
 .pi-name-wrap { flex: 1; min-width: 0; cursor: text; }
-.pi-name-input { width: 100%; font-family: var(--font-disp); font-size: 13px; font-weight: 700; color: var(--brand); background: var(--brand-bg); border: 1.5px solid var(--brand-light); border-radius: var(--r-sm); padding: 2px 5px; outline: none; }
+.pi-name-input { width: 100%; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--brand); background: var(--brand-bg); border: 1.5px solid var(--brand-light); border-radius: var(--r-sm); padding: 2px 5px; outline: none; }
 
 /* Family groups */
 .pfamily { border-bottom: 1px solid var(--line); }
@@ -634,7 +634,7 @@ input, textarea, select { font-family: var(--font-ui); }
 .pfamily-chev { font-size: 9px; color: var(--ink-4); width: 14px; flex-shrink: 0; transition: transform var(--t-mid) var(--ease-out), color var(--t-fast); }
 .pfamily-root.expanded .pfamily-chev { transform: rotate(90deg); color: var(--brand); }
 .pfamily-info { flex: 1; min-width: 0; }
-.pfamily-name { font-family: var(--font-disp); font-size: 14px; font-weight: 700; letter-spacing: .01em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.pfamily-name { font-family: var(--font-ui); font-size: 14px; font-weight: 600; letter-spacing: -.005em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
 .pfamily-root.on .pfamily-name { color: var(--brand); }
 .pfamily-meta { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
 .pfamily-badge { font-size: 9px; font-weight: 700; letter-spacing: .04em; padding: 2px 7px; border-radius: 20px; background: var(--brand-bg); color: var(--brand); }
@@ -647,7 +647,7 @@ input, textarea, select { font-family: var(--font-ui); }
 .pitem-child:last-child { border-bottom: none; }
 .pitem-child:hover { background: var(--surface-hover); transform: translateX(2px); }
 .pitem-child.on { background: var(--surface); border-left-color: var(--brand); }
-.pi-child-name { font-size: 12px; font-weight: 600; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; font-family: var(--font-disp); }
+.pi-child-name { font-size: 12px; font-weight: 500; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; font-family: var(--font-ui); }
 .pitem-child.on .pi-child-name { color: var(--brand); }
 .pi-child-row { display: flex; align-items: center; gap: var(--sp-1); }
 .pi-child-del { display: none; color: var(--danger); font-size: 10px; padding: 1px 3px; border-radius: 3px; margin-left: auto; }
@@ -670,12 +670,12 @@ input, textarea, select { font-family: var(--font-ui); }
 .lib-group-btn {
   font-size: 9px; font-weight: 700; letter-spacing: .04em;
   text-transform: uppercase; padding: 5px 10px; border-radius: var(--r);
-  cursor: pointer; color: var(--ink-4); background: transparent;
+  cursor: pointer; color: var(--ink-3); background: transparent;
   transition: background var(--t-fast), color var(--t-fast);
   border: 1px solid var(--line); white-space: nowrap;
   font-family: var(--font-ui);
 }
-.lib-group-btn:hover { background: var(--surface-2); color: var(--ink-2); }
+.lib-group-btn:hover { background: var(--surface-2); color: var(--ink); }
 .lib-group-btn.on { background: var(--brand); color: #fff; border-color: var(--brand); }
 
 /* Library section accordion — upgraded visual hierarchy */
@@ -693,31 +693,31 @@ input, textarea, select { font-family: var(--font-ui); }
   border-radius: 0 3px 3px 0;
   background: var(--lib-sec-color, var(--brand));
   transition: opacity var(--t-fast);
-  opacity: .5;
+  opacity: .85;
 }
 .lib-sec-hdr:hover { background: var(--surface-2); }
-.lib-sec-hdr:hover::before { opacity: .8; }
+.lib-sec-hdr:hover::before { opacity: 1; }
 .lib-sec-hdr.open { border-bottom: 1px solid var(--line); }
 .lib-sec-hdr.open::before { opacity: 1; }
 .lib-sec-lbl {
-  font-family: var(--font-disp); font-size: 12px; font-weight: 800; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3); flex: 1;
+  font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink); flex: 1;
   transition: color var(--t-fast);
 }
 .lib-sec-hdr.open .lib-sec-lbl { color: var(--ink); }
 .lib-sec-ct {
-  font-size: 9px; font-weight: 700; color: var(--ink-4);
-  background: var(--surface-2); padding: 2px 7px;
+  font-size: 10px; font-weight: 700; color: var(--ink-2);
+  background: var(--surface-2); padding: 2px 8px;
   border-radius: 20px; letter-spacing: .03em;
   transition: background var(--t-fast), color var(--t-fast);
 }
 .lib-sec-hdr.open .lib-sec-ct { background: var(--lib-sec-color, var(--brand)); color: #fff; }
 .lib-sec-chev {
-  font-size: 9px; color: var(--ink-4); width: 12px; text-align: center;
+  font-size: 10px; color: var(--ink-3); width: 12px; text-align: center;
   transition: transform var(--t-mid) var(--ease-out), color var(--t-fast);
   flex-shrink: 0;
 }
-.lib-sec-hdr.open .lib-sec-chev { transform: rotate(90deg); color: var(--ink-2); }
+.lib-sec-hdr.open .lib-sec-chev { transform: rotate(90deg); color: var(--ink); }
 .lib-sec-body { background: var(--bg); }
 #court-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #141210; }
 #toolbar {
@@ -733,12 +733,12 @@ input, textarea, select { font-family: var(--font-ui); }
 .t-div { width: 1px; height: 18px; background: var(--line); margin: 0 var(--sp-1); flex-shrink: 0; }
 .tbtn {
   display: flex; align-items: center; gap: 4px; padding: 4px 7px;
-  border-radius: var(--r); background: transparent; color: var(--ink-3);
+  border-radius: var(--r); background: transparent; color: var(--ink-2);
   font-size: 10px; font-weight: 600; letter-spacing: .01em;
   white-space: nowrap; border: 1px solid transparent; cursor: pointer; flex-shrink: 0;
   transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease), box-shadow var(--t-fast);
 }
-.tbtn:hover { background: var(--surface-2); color: var(--ink-2); transform: translateY(-1px); }
+.tbtn:hover { background: var(--surface-2); color: var(--ink); transform: translateY(-1px); }
 .tbtn:active { transform: translateY(0); }
 .tbtn.on { background: var(--surface-2); border-color: var(--line); color: var(--ink); box-shadow: var(--elev-1); }
 .tbtn[data-t="pass"].on    { border-color: #8AAAD4; color: #163A76; background: #E4EDF8; }
@@ -753,11 +753,11 @@ input, textarea, select { font-family: var(--font-ui); }
 .anno-path { fill: none; stroke: #A78BFA; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
 .ti { display: flex; align-items: center; justify-content: center; width: 14px; height: 14px; flex-shrink: 0; opacity: .6; }
 .tbtn.on .ti { opacity: 1; }
-.tbtn .kbd { font-size: 9px; font-weight: 500; color: var(--ink-4); background: var(--surface-2); border-radius: 3px; padding: 0 3px; line-height: 1.5; }
+.tbtn .kbd { font-size: 9px; font-weight: 600; color: var(--ink-3); background: var(--surface-2); border-radius: 3px; padding: 0 3px; line-height: 1.5; }
 .tbtn.on .kbd { opacity: .5; }
 #tb-right { margin-left: auto; display: flex; gap: 3px; align-items: center; flex-shrink: 0; }
-.tbtn-icon { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: var(--r); background: transparent; color: var(--ink-3); border: 1px solid transparent; cursor: pointer; flex-shrink: 0; transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-spring); }
-.tbtn-icon:hover { background: var(--surface-2); color: var(--ink-2); transform: scale(1.08); }
+.tbtn-icon { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: var(--r); background: transparent; color: var(--ink-2); border: 1px solid transparent; cursor: pointer; flex-shrink: 0; transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-spring); }
+.tbtn-icon:hover { background: var(--surface-2); color: var(--ink); transform: scale(1.08); }
 .tbtn-icon.on { background: var(--surface-2); border-color: var(--line); color: var(--ink); }
 .tbtn-icon.on.ghost { border-color: rgba(130,110,210,.4); color: #6050B0; background: rgba(130,110,210,.07); }
 .tbtn-icon.on.path  { border-color: rgba(20,150,120,.4); color: #0A7060; background: rgba(20,150,120,.07); }
@@ -809,8 +809,8 @@ input, textarea, select { font-family: var(--font-ui); }
   padding: 10px 12px 8px; border-bottom: 1px solid var(--line); flex-shrink: 0;
 }
 #script-hdr-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ink);
 }
 #script-ctrl { display: flex; gap: 4px; align-items: center; }
 #script-ctrl .cbtn { width: 24px; height: 24px; font-size: 9px; }
@@ -844,7 +844,7 @@ input, textarea, select { font-family: var(--font-ui); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .ss-sub {
-  font-size: 9px; color: var(--ink-4); margin-top: 1px;
+  font-size: 9px; font-weight: 500; color: var(--ink-3); margin-top: 1px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .ss-del {
@@ -884,41 +884,7 @@ input, textarea, select { font-family: var(--font-ui); }
 .ss.drag-over-top { box-shadow: 0 -2px 0 0 var(--brand) inset; }
 .ss.drag-over-bot { box-shadow: 0 2px 0 0 var(--brand) inset; }
 
-/* Timeline — floats above court */
-#timeline {
-  height: 108px; flex-shrink: 0; background: var(--surface);
-  box-shadow: 0 -1px 0 var(--line), 0 -4px 16px rgba(0,0,0,.10);
-  display: flex; align-items: center; padding: 0 var(--sp-3); z-index: 5;
-}
-#frame-list { flex: 1; display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 6px 2px; cursor: ew-resize; user-select: none; }
-.fthumb {
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  padding: 5px 5px 6px; border-radius: var(--r-lg); cursor: pointer;
-  border: 1.5px solid transparent; min-width: 78px; flex-shrink: 0;
-  position: relative;
-  transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-mid), transform var(--t-mid) var(--ease-spring), opacity var(--t-fast);
-}
-.fthumb:not(.on) { opacity: .58; }
-.fthumb:hover { background: var(--surface-2); transform: translateY(-2px); box-shadow: var(--elev-2); opacity: 1; }
-.fthumb.on { border-color: var(--brand); background: var(--brand-bg); box-shadow: 0 0 0 3px var(--brand-light), var(--elev-2); transform: translateY(-1px); opacity: 1; }
-/* mini court — larger */
-.fmini { width: 64px; height: 48px; border-radius: 3px; overflow: hidden; flex-shrink: 0; box-shadow: var(--elev-2); position: relative; transition: box-shadow var(--t-mid); }
-.fthumb.on .fmini { box-shadow: var(--elev-3); }
-/* frame number badge */
-.fnum { position: absolute; top: 3px; left: 3px; font-family: var(--font-disp); font-weight: 900; font-size: 9px; line-height: 1; color: rgba(255,255,255,.8); background: rgba(0,0,0,.35); padding: 1px 4px; border-radius: 3px; pointer-events: none; z-index: 2; letter-spacing: .04em; }
-/* ball holder indicator on thumb */
-.fball { position: absolute; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #F8A820; border: 1px solid rgba(0,0,0,.25); pointer-events: none; z-index: 2; }
-/* frame label */
-.flabel-wrap { display: flex; align-items: center; justify-content: center; width: 100%; }
-.flabel { font-size: 10px; font-weight: 600; color: var(--ink-3); letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 72px; text-align: center; cursor: text; }
-.fthumb.on .flabel { color: var(--brand); font-weight: 700; }
-.flabel-input { font-family: var(--font-ui); font-size: 10px; font-weight: 600; color: var(--brand); background: transparent; border: none; border-bottom: 1px solid var(--brand); outline: none; width: 68px; text-align: center; padding: 0; }
-/* action type dots */
-.faction-dots { display: flex; align-items: center; justify-content: center; gap: 3px; height: 7px; margin-top: 1px; }
-.faction-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-#tl-ctrl { display: flex; align-items: center; gap: 4px; padding-left: var(--sp-3); border-left: 1px solid var(--line); flex-shrink: 0; }
-.tl-div { width: 1px; height: 20px; background: var(--line); margin: 0 2px; }
-#frame-counter { font-size: 10px; font-weight: 500; color: var(--ink-4); white-space: nowrap; min-width: 40px; text-align: center; }
+/* Transport control buttons — used in script panel header */
 .cbtn {
   width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
   border-radius: var(--r); border: 1px solid var(--line); background: var(--surface);
@@ -950,15 +916,15 @@ input, textarea, select { font-family: var(--font-ui); }
 .rpp-hdr:hover { background: var(--surface-hover); }
 
 .rpp-lbl {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--ink);
   flex: 1;
   transition: color var(--t-fast);
 }
-.rpp-hdr.open .rpp-lbl { color: var(--ink-2); }
+.rpp-hdr.open .rpp-lbl { color: var(--ink); }
 
 /* Frame-specific panel header — shows current frame label inline */
 .rpp-frame-tag {
@@ -1002,7 +968,7 @@ input, textarea, select { font-family: var(--font-ui); }
   gap: 8px;
 }
 
-.rp-lbl { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+.rp-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 10px; }
 .rp-field {
   width: 100%; background: var(--bg); border: 1px solid var(--line);
   border-radius: var(--r); color: var(--ink); font-family: var(--font-ui);
@@ -1058,7 +1024,7 @@ textarea.rp-field { resize: vertical; line-height: 1.55; min-height: 56px; }
 .sc-key { font-size: 9px; font-weight: 600; color: var(--ink-3); background: var(--surface-2); border-radius: 3px; padding: 1px 5px; text-align: center; white-space: nowrap; letter-spacing: .03em; }
 .sc-val { font-size: 10px; color: var(--ink-4); align-self: center; }
 .cov-chips-row { display: flex; flex-wrap: wrap; gap: 4px; }
-.cov-chip { font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; background: var(--surface-2); color: var(--ink-3); cursor: pointer; transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-spring), box-shadow var(--t-fast); }
+.cov-chip { font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; background: var(--surface-2); color: var(--ink-2); cursor: pointer; transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-spring), box-shadow var(--t-fast); }
 .cov-chip:hover { background: var(--surface-3); color: var(--ink-2); transform: scale(1.05); }
 .cov-chip.on { background: var(--brand); color: #fff; box-shadow: var(--elev-1); }
 .family-status { font-size: 11px; color: var(--ink-2); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
@@ -1169,29 +1135,29 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   flex-wrap: wrap;
 }
 .ps-cat {
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: .1em;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.78);
 }
 .ps-cov-pill {
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: .06em;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  padding: 1.5px 7px;
+  padding: 2px 8px;
   border-radius: 10px;
-  background: rgba(255,255,255,.14);
-  color: rgba(255,255,255,.88);
-  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.22);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
 }
 .ps-tags {
-  font-size: 7px;
+  font-size: 8px;
   font-weight: 600;
-  color: rgba(255,255,255,.38);
-  letter-spacing: .03em;
-  margin-top: 1px;
+  color: rgba(255,255,255,.72);
+  letter-spacing: .04em;
+  margin-top: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1203,13 +1169,13 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   padding: 7px 14px;
   display: flex;
   align-items: center;
-  border-left: 1px solid rgba(255,255,255,.1);
+  border-left: 1px solid rgba(255,255,255,.18);
   position: relative;
   z-index: 1;
 }
 .ps-desc-text {
-  font-size: 7.5px;
-  color: rgba(255,255,255,.6);
+  font-size: 8px;
+  color: rgba(255,255,255,.82);
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -1224,7 +1190,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid rgba(255,255,255,.1);
+  border-left: 1px solid rgba(255,255,255,.18);
   padding: 0 8px;
   gap: 2px;
   position: relative;
@@ -1233,10 +1199,10 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-logo-text {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: 7px;
-  letter-spacing: .14em;
+  font-size: 7.5px;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
   text-align: center;
   line-height: 1.2;
 }
@@ -1263,7 +1229,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-final-diagram { flex: 1; min-width: 0; background: #C08828; }
 .ps-final-diagram svg { display: block; width: 100%; height: auto; }
 .ps-final-sidebar {
-  width: 320px;
+  width: 340px;
   flex-shrink: 0;
   border-left: 1px solid #E2DED6;
   display: flex;
@@ -1279,24 +1245,86 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   font-size: 8.5px;
   color: #3D3830;
   line-height: 1.55;
+  white-space: pre-wrap;
 }
-.ps-final-notes {
+/* Numbered action sequence — replaces per-frame notes dump */
+.ps-final-seq {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 12px;
+  padding: 10px 12px 12px;
+  background: #fff;
 }
-.ps-final-notes .ps-fn-group { margin-bottom: 6px; }
-.ps-final-notes .ps-fn-group:last-child { margin-bottom: 0; }
-.ps-fn-hdr {
+.ps-final-seq-hdr {
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 8px;
-  letter-spacing: .1em;
+  font-weight: 800;
+  font-size: 8.5px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: #9E9488;
-  margin-bottom: 3px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid #EDEAE4;
+  color: #6E665C;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 1.5px solid #1A3660;
+}
+.ps-seq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  counter-reset: seqcount;
+}
+.ps-seq-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  line-height: 1.35;
+  color: #2A2620;
+  padding: 3px 0;
+  border-bottom: 1px dotted #EDEAE4;
+}
+.ps-seq-item:last-child { border-bottom: none; }
+.ps-seq-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  color: #fff;
+  background: #1A3660;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+.ps-seq-chip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,.15);
+}
+.ps-seq-text {
+  flex: 1;
+  font-weight: 500;
+}
+
+/* Step caption color chip — appears in frame header next to caption text */
+.ps-step-chip {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,.15);
+}
+.ps-flabel-setup {
+  font-style: italic;
+  color: #6E665C;
 }
 
 /* ── Individual Frame Card ── */
@@ -1319,28 +1347,33 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-fnum {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
+  font-size: 13px;
   line-height: 1;
   color: #fff;
   background: #1A3660;
-  padding: 3px 7px;
-  min-width: 28px;
+  padding: 3px 8px;
+  min-width: 26px;
   text-align: center;
   align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  letter-spacing: .02em;
 }
 .ps-flabel {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  letter-spacing: .04em;
+  font-size: 11.5px;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: #131109;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 .ps-ball-badge {
   font-size: 7px;
@@ -1387,11 +1420,11 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   line-height: 1.35;
 }
 .ps-note-label {
-  font-size: 5.5px;
-  font-weight: 700;
-  letter-spacing: .1em;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  padding: 1px 3px;
+  padding: 1.5px 4px;
   border-radius: 2px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1402,8 +1435,8 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ps-note-spacing .ps-note-label { background: #C49410; color: #fff; }
 .ps-note-coach   .ps-note-label { background: #C03050; color: #fff; }
 .ps-note-text {
-  font-size: 7px;
-  color: #3D3830;
+  font-size: 7.5px;
+  color: #2A2620;
   line-height: 1.4;
   flex: 1;
   min-width: 0;
@@ -1549,7 +1582,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   font-weight: 700;
   letter-spacing: .05em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--ink-2);
   white-space: nowrap;
   transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast) var(--ease-spring);
   border: none;
@@ -1660,7 +1693,7 @@ select#family-parent-sel:focus { border-color: var(--brand); }
         <!-- Restricted area arc -->
         <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="currentColor" stroke-width="4"/>
         <!-- Backboard -->
-        <rect x="227" y="459" width="46" height="4" fill="none" stroke="currentColor" stroke-width="5" rx="1"/>
+        <rect x="223" y="432" width="54" height="4" fill="none" stroke="currentColor" stroke-width="5" rx="1"/>
         <!-- Basket ring -->
         <circle cx="250" cy="417" r="11" fill="none" stroke="currentColor" stroke-width="5"/>
       </svg>
@@ -1896,8 +1929,8 @@ select#family-parent-sel:focus { border-color: var(--brand); }
         <line x1="445" y1="464" x2="445" y2="336" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></line>
         <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></path>
         <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="rgba(255,255,255,.68)" stroke-width="1.4"></path>
-        <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" rx="1"></rect>
-        <line x1="250" y1="459" x2="250" y2="428" stroke="rgba(255,255,255,.25)" stroke-width="1.2"></line>
+        <rect x="223" y="432" width="54" height="4" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" rx="1"></rect>
+        <line x1="250" y1="432" x2="250" y2="428" stroke="rgba(255,255,255,.25)" stroke-width="1.2"></line>
         <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="2.4"></circle>
         <g id="far-court-layer"></g>
         <g id="play-name-layer" pointer-events="none"></g>
@@ -1930,22 +1963,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
       <div id="script-list"></div>
     </aside>
     </div><!-- /court-center -->
-
-    <!-- Timeline (legacy frame-based plays) -->
-    <div id="timeline">
-      <div id="frame-list"></div>
-      <div id="tl-ctrl">
-        <span id="frame-counter">1 / 1</span>
-        <div class="tl-div"></div>
-        <button class="cbtn" onclick="prevFrame()" title="Prev (←)">◀</button>
-        <button class="cbtn play-btn" id="play-btn" onclick="togglePlay()">▶</button>
-        <button class="cbtn" onclick="nextFrame()" title="Next (→)" style="font-size:9px">▶▶</button>
-        <div class="tl-div"></div>
-        <button class="cbtn" onclick="addFrame()" title="Add frame (A)" style="font-size:15px">+</button>
-        <button class="cbtn" onclick="dupFrame()" title="Duplicate frame (D)" style="font-size:11px">⧉</button>
-        <button class="cbtn" onclick="delFrame()" title="Delete frame" style="color:var(--danger);font-size:11px">✕</button>
-      </div>
-    </div>
   </div><!-- /court-area -->
 
   <!-- Right Panel -->
@@ -2361,11 +2378,6 @@ function alignDefenderTo(fr, offId) {
   def.y = pos.y;
 }
 
-// Align all defenders to their men in a frame (used on defense toggle and addFrame).
-function alignAllDefenders(fr) {
-  Object.keys(MAN_PAIRS).forEach(offId => alignDefenderTo(fr, offId));
-}
-
 const AC = {pass:'#C4D4EE', dribble:'#FFD166', cut:'#34D399', screen:'#F87171', dho:'#E8A830'};
 const SHOT_COLOR = '#FF5533'; // distinct from ball (gold) and team colors
 const PR = 20; // player radius
@@ -2441,15 +2453,12 @@ const S = {
   printMode:      'final', // 'final' or 'full' — card view rendering mode
 };
 
-const undoStack      = [];  // within-frame: player positions, arrows, ball holder
-const frameUndoStack = [];  // frame-level: add, duplicate, delete
-const UNDO_MAX       = 30;
-
-// Redo stacks — mirror each undo stack. Populated when undo pops state,
-// cleared when a new mutation pushes to the corresponding undo stack.
-const redoStack       = [];
-const frameRedoStack  = [];
-const actionRedoStack = [];
+// Action-based undo/redo — single pair of stacks.
+// Snapshots the full pl.actions array and S.fi; redo mirrors it.
+// Cleared on every play switch (see openPlay/createPlay/createVariation).
+const undoStack = [];
+const redoStack = [];
+const UNDO_MAX  = 30;
 
 const anim = { playing:false, rafId:null, segFrom:0, segTo:1, segStart:null };
 
@@ -2510,28 +2519,25 @@ function playById(id) {
 function invalidatePlayIndex() { _playIndex = null; _playIndexLen = -1; }
 const team  = () => TEAMS[S.ti];
 
-// Action-based play detection
-function isActionPlay(pl) { return !!(pl && pl.actions); }
-
-// Frame accessor — works for both legacy and action-based plays.
-// Action-based plays have pl.frames set by recompile().
+// Frame accessor. Frames are compiled from actions; this triggers
+// compilation lazily on first access if needed.
 function frame() {
   const pl = play(); if (!pl) return null;
-  if (isActionPlay(pl) && !pl._compiled) recompile(pl);
+  if (!pl._compiled) recompile(pl);
   return pl.frames?.[S.fi] || null;
 }
 
 // Total frame count for the current play.
 function frameCount(pl) {
   if (!pl) pl = play(); if (!pl) return 0;
-  if (isActionPlay(pl) && !pl._compiled) recompile(pl);
+  if (!pl._compiled) recompile(pl);
   return pl.frames?.length || 0;
 }
 
 // Frames array accessor
 function playFrames(pl) {
   if (!pl) pl = play(); if (!pl) return [];
-  if (isActionPlay(pl) && !pl._compiled) recompile(pl);
+  if (!pl._compiled) recompile(pl);
   return pl.frames || [];
 }
 
@@ -2689,7 +2695,7 @@ function compileActions(pl) {
 // Called after every action mutation (add, delete, reorder, group).
 function recompile(pl) {
   if (!pl) pl = play();
-  if (!pl || !isActionPlay(pl)) return;
+  if (!pl) return;
   pl._compiled = compileActions(pl);
   pl.frames = pl._compiled;
 
@@ -2712,8 +2718,8 @@ function recompile(pl) {
 // Advances S.fi to show the new action's result.
 // Returns the new action's id for visual feedback.
 function addAction(actionData) {
-  const pl = play(); if (!pl || !isActionPlay(pl)) return null;
-  pushActionUndo(pl);
+  const pl = play(); if (!pl) return null;
+  pushUndo(pl);
 
   // Determine insertion index in the flat action list.
   // S.fi=0 means setup — insert at beginning.
@@ -2741,7 +2747,7 @@ function addAction(actionData) {
   pl.actions.splice(insertIdx, 0, action);
   recompile(pl);
   S.fi = Math.min(S.fi + 1, pl._compiled.length - 1);
-  renderCourt(); renderScript(); renderTimeline(); renderGhosts(); renderPathOverlay(); renderBallChips();
+  renderCourt(); renderScript(); renderGhosts(); renderPathOverlay(); renderBallChips();
   debouncedSave();
   // Visual confirmation: pulse the newly created arrow
   requestAnimationFrame(() => pulseArrow(action.id));
@@ -2750,36 +2756,36 @@ function addAction(actionData) {
 
 // Delete an action by id
 function deleteScriptAction(actionId) {
-  const pl = play(); if (!pl || !isActionPlay(pl)) return;
-  pushActionUndo(pl);
+  const pl = play(); if (!pl) return;
+  pushUndo(pl);
   pl.actions = pl.actions.filter(a => a.id !== actionId);
   recompile(pl);
   S.fi = Math.min(S.fi, pl._compiled.length - 1);
-  renderCourt(); renderScript(); renderTimeline(); renderGhosts(); renderPathOverlay(); renderBallChips();
+  renderCourt(); renderScript(); renderGhosts(); renderPathOverlay(); renderBallChips();
   save(); // immediate — undo state must be persisted
 }
 
-// Action-level undo stack
-const actionUndoStack = [];
-function pushActionUndo(pl) {
+// Snapshot the full action list + current step for undo.
+// Called by every action mutation before it mutates pl.actions.
+function pushUndo(pl) {
   if (!pl) pl = play(); if (!pl) return;
-  actionUndoStack.push({
+  undoStack.push({
     actions: clone(pl.actions),
     fi: S.fi,
     initialBallHolder: pl.initialBallHolder ?? null,
   });
-  if (actionUndoStack.length > UNDO_MAX) actionUndoStack.shift();
-  actionRedoStack.length = 0;
+  if (undoStack.length > UNDO_MAX) undoStack.shift();
+  redoStack.length = 0;
 }
 
 // Move action in the flat list by delta (-1 = up, +1 = down)
 function moveScriptAction(actionId, delta) {
-  const pl = play(); if (!pl || !isActionPlay(pl)) return;
+  const pl = play(); if (!pl) return;
   const idx = pl.actions.findIndex(a => a.id === actionId);
   if (idx < 0) return;
   const newIdx = idx + delta;
   if (newIdx < 0 || newIdx >= pl.actions.length) return;
-  pushActionUndo(pl);
+  pushUndo(pl);
   const [item] = pl.actions.splice(idx, 1);
   // If moved away from group peers, break group
   if (item.groupId) {
@@ -2789,16 +2795,16 @@ function moveScriptAction(actionId, delta) {
   }
   pl.actions.splice(newIdx, 0, item);
   recompile(pl);
-  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay(); renderTimeline();
+  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay();
   save();
 }
 
 // Link two adjacent actions as simultaneous
 function toggleLink(idx) {
-  const pl = play(); if (!pl || !isActionPlay(pl)) return;
+  const pl = play(); if (!pl) return;
   if (idx < 0 || idx >= pl.actions.length - 1) return;
   const a = pl.actions[idx], b = pl.actions[idx + 1];
-  pushActionUndo(pl);
+  pushUndo(pl);
 
   if (a.groupId && a.groupId === b.groupId) {
     // Already linked — unlink: break b (and everything after it in this group) into a new group or solo
@@ -2818,7 +2824,7 @@ function toggleLink(idx) {
   }
 
   recompile(pl);
-  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay(); renderTimeline();
+  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay();
   save();
 }
 
@@ -2827,7 +2833,7 @@ function toggleLink(idx) {
 // that produced a given compiled frame. Frame 0 = setup (no actions).
 // Frame N (1-based) = action group N-1.
 function findPlayerActionForFrame(pl, playerId, fi) {
-  if (!pl || !isActionPlay(pl) || fi <= 0) return null;
+  if (!pl || fi <= 0) return null;
   const groups = groupActionSteps(pl.actions);
   const gi = fi - 1; // frame index → group index
   if (gi < 0 || gi >= groups.length) return null;
@@ -2838,10 +2844,10 @@ function findPlayerActionForFrame(pl, playerId, fi) {
 // For path-based actions (dribble/cut with points), adjusts the last waypoint.
 // Pushes undo, recompiles, and re-renders.
 function editActionEndpoint(actionId, newX, newY) {
-  const pl = play(); if (!pl || !isActionPlay(pl)) return;
+  const pl = play(); if (!pl) return;
   const action = pl.actions.find(a => a.id === actionId);
   if (!action) return;
-  pushActionUndo(pl);
+  pushUndo(pl);
 
   action.endX = newX;
   action.endY = newY;
@@ -2884,7 +2890,7 @@ function editActionEndpoint(actionId, newX, newY) {
   }
 
   recompile(pl);
-  renderCourt(); renderScript(); renderTimeline(); renderGhosts(); renderPathOverlay(); renderBallChips();
+  renderCourt(); renderScript(); renderGhosts(); renderPathOverlay(); renderBallChips();
   debouncedSave();
 }
 
@@ -2981,12 +2987,6 @@ function cardinalSplinePath(pts) {
 // Runs on every load. Safe to call on already-migrated data.
 // ══════════════════════════════════════════════════
 
-function migrateNotes(raw) {
-  if (!raw || typeof raw === 'object') return raw || emptyNotes();
-  // raw is a legacy string — put it in the action field
-  return { action: raw, keyRead: '', spacingCue: '', coachPoint: '' };
-}
-
 function emptyNotes() {
   return { action: '', keyRead: '', spacingCue: '', coachPoint: '' };
 }
@@ -2997,42 +2997,49 @@ function migratePlays(plays) {
     if (!('coverages' in pl)) pl.coverages = [];
     if (!Array.isArray(pl.coverages)) pl.coverages = [];
     if (!('familyId'  in pl)) pl.familyId  = null;
-    // Ensure stepNotes map exists for action-based plays
-    if (pl.actions && !pl.stepNotes) pl.stepNotes = {};
-    // Action-based plays have no frames until recompile() runs — skip frame migrations
-    // Guard against null or non-array frames (corrupt saves)
-    if (!pl.frames || !Array.isArray(pl.frames)) { pl.frames = []; return; }
-    pl.frames.forEach(fr => {
-      if (!fr || typeof fr !== 'object') return;
-      // Guard arrows — must be array before forEach below
-      if (!Array.isArray(fr.arrows)) fr.arrows = [];
-      if (!fr.notes || typeof fr.notes === 'string') {
-        fr.notes = migrateNotes(fr.notes);
+
+    // ── Legacy frame-only play conversion ──
+    // Plays imported from older versions may have only `frames` and no `actions`.
+    // Convert by snapshotting frame 0 into initialPositions and emptying actions.
+    // Subsequent frames are not converted (action-based plays are authored, not
+    // back-compiled from arrows) — but the play remains usable as a setup-only
+    // play and can be re-authored.
+    if (!Array.isArray(pl.actions)) {
+      const f0 = (pl.frames || [])[0];
+      pl.initialPositions  = Array.isArray(f0?.players) ? clone(f0.players.filter(p => p.off)) : clone(DEF_OFF);
+      pl.initialBallHolder = f0?.ballHolder || null;
+      pl.setupNotes        = f0?.notes && typeof f0.notes === 'object' ? clone(f0.notes) : emptyNotes();
+      pl.stepNotes         = {};
+      pl.actions           = [];
+      delete pl.frames; // recompile() will regenerate
+      return;
+    }
+
+    // Ensure required action-play fields
+    if (!pl.stepNotes) pl.stepNotes = {};
+    if (!pl.setupNotes || typeof pl.setupNotes !== 'object') pl.setupNotes = emptyNotes();
+    pl.setupNotes.action     = pl.setupNotes.action     ?? '';
+    pl.setupNotes.keyRead    = pl.setupNotes.keyRead    ?? '';
+    pl.setupNotes.spacingCue = pl.setupNotes.spacingCue ?? '';
+    pl.setupNotes.coachPoint = pl.setupNotes.coachPoint ?? '';
+    // Drop any cached compiled frames — recompile() will regenerate fresh
+    delete pl.frames;
+    delete pl._compiled;
+    // Normalize cut actions: ensure points array exists for curve rendering
+    pl.actions.forEach(a => {
+      if (a.type === 'cut' && !a.points && a.endX !== undefined) {
+        // Best-effort reconstruction: start at player's initial pos, end at action endpoint.
+        // Action compiler will overwrite with current frame positions at render time.
+        const src = pl.initialPositions?.find(p => p.id === a.playerId);
+        if (src) a.points = [{x: src.x, y: src.y}, {x: a.endX, y: a.endY}];
       }
-      fr.notes.action     = fr.notes.action     ?? '';
-      fr.notes.keyRead    = fr.notes.keyRead     ?? '';
-      fr.notes.spacingCue = fr.notes.spacingCue  ?? '';
-      fr.notes.coachPoint = fr.notes.coachPoint  ?? '';
-      if (!('ballHolder' in fr)) fr.ballHolder = null;
-      // Ensure markers array exists (shot indicators)
-      if (!Array.isArray(fr.markers)) fr.markers = [];
-      // Normalize cut arrows: ensure they have a points array
-      fr.arrows.forEach(a => {
-        if (a.type === 'cut' && !a.points) {
-          a.points = [{x:a.x1, y:a.y1}, {x:a.x2, y:a.y2}];
-        }
-      });
     });
   });
   return plays;
 }
 
 // ══════════════════════════════════════════════════
-// FEATURE 1: AUTO-ADVANCE PLAYER POSITIONS
-// When adding a new frame, players who have an outgoing
-// arrow in the current frame snap to that arrow's endpoint.
-// Players with no arrow remain at their current position.
-// Ball possession also auto-transfers on pass arrows.
+// DEFENSIVE TEMPLATES & ZONE DETECTION
 // ══════════════════════════════════════════════════
 
 // 2-3 Zone default positions
@@ -3053,204 +3060,53 @@ function isZonePlay() {
     || (pl.coverages || []).includes('Zone');
 }
 
-function computeAdvancedPositions(fr) {
-  // Build a direct map: player.id → the arrow they own (via fp).
-  // fp is now ALWAYS set for dribble/screen arrows at draw time.
-  const playerArrow = new Map();
-  fr.arrows.forEach(a => {
-    if (a.fp && !playerArrow.has(a.fp)) {
-      playerArrow.set(a.fp, a);
-    }
-  });
-
-  const advanced = fr.players.map(p => {
-    const a = playerArrow.get(p.id);
-    if (!a) return clone(p);
-
-    switch (a.type) {
-      case 'pass':
-        // Passer stays — ball left their hands, they don't follow it
-        return clone(p);
-
-      case 'dribble':
-        // Ball handler dribbled to this position
-        return { ...p, x: a.x2, y: a.y2 };
-
-      case 'screen':
-        // Screener moved to this position to set the screen
-        return { ...p, x: a.x2, y: a.y2 };
-
-      case 'cut':
-        // Cutter moves to the last waypoint of their path
-        if (a.points?.length >= 2) {
-          const last = a.points[a.points.length - 1];
-          return { ...p, x: last.x, y: last.y };
-        }
-        return { ...p, x: a.x2, y: a.y2 };
-
-      default:
-        return clone(p);
-    }
-  });
-
-  // Defender re-alignment for man-to-man plays only
-  if (S.showDef && !isZonePlay()) {
-    const byId = Object.fromEntries(advanced.map(p => [p.id, p]));
-    Object.entries(MAN_PAIRS).forEach(([offId, defId]) => {
-      const off = byId[offId], def = byId[defId];
-      if (!off || !def) return;
-      const pos = defenderPos(off.x, off.y);
-      def.x = pos.x; def.y = pos.y;
-    });
-  }
-
-  return advanced;
-}
-
-function computeNextBallHolder(fr) {
-  if (!fr.ballHolder) {
-    // Try to infer from any pass arrow
-    const anyPass = fr.arrows.find(a => a.type === 'pass' && a.tp);
-    return anyPass ? anyPass.tp : null;
-  }
-  // If current holder passed the ball, transfer to recipient
-  const passOut = fr.arrows.find(a => a.type === 'pass' && a.fp === fr.ballHolder && a.tp);
-  return passOut ? passOut.tp : fr.ballHolder;
-}
-
 // ══════════════════════════════════════════════════
-// UNDO
+// UNDO / REDO
+// Single stack pair operating on the action list.
+// Snapshots include pl.actions, S.fi, and pl.initialBallHolder.
 // ══════════════════════════════════════════════════
-
-// ══════════════════════════════════════════════════
-// UNDO
-// Two-tier: Ctrl+Z exhausts within-frame undo first
-// (player positions, arrows, ball holder), then falls
-// through to frame-level undo (add / dup / delete).
-// ══════════════════════════════════════════════════
-
-function pushUndo() {
-  const fr = frame(); if (!fr) return;
-  undoStack.push(clone({ players:fr.players, arrows:fr.arrows, markers:fr.markers, ballHolder:fr.ballHolder, annotations:fr.annotations }));
-  if (undoStack.length > UNDO_MAX) undoStack.shift();
-  redoStack.length = 0; // new mutation invalidates redo history
-}
-
-// Snapshot the entire frame array + current index before a structural mutation.
-// Called by addFrame(), dupFrame(), delFrame() before they modify pl.frames.
-function pushFrameUndo() {
-  const pl = play(); if (!pl) return;
-  frameUndoStack.push({ frames: clone(pl.frames), fi: S.fi });
-  if (frameUndoStack.length > UNDO_MAX) frameUndoStack.shift();
-  frameRedoStack.length = 0;
-}
 
 function undoLast() {
   const pl = play();
+  if (!pl || !undoStack.length) return;
 
-  // Priority 0: action-level undo (action-based plays)
-  if (isActionPlay(pl) && actionUndoStack.length) {
-    const prev = actionUndoStack.pop();
-    // Push current state to redo before restoring
-    actionRedoStack.push({
-      actions: clone(pl.actions),
-      fi: S.fi,
-      initialBallHolder: pl.initialBallHolder ?? null,
-    });
-    pl.actions = prev.actions;
-    if ('initialBallHolder' in prev) pl.initialBallHolder = prev.initialBallHolder;
-    S.fi = Math.min(prev.fi, frameCount(pl) - 1);
-    recompile(pl);
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderScript(); renderInfo();
-    renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
-    save();
-    return;
-  }
+  // Push current state to redo before restoring
+  redoStack.push({
+    actions: clone(pl.actions),
+    fi: S.fi,
+    initialBallHolder: pl.initialBallHolder ?? null,
+  });
 
-  // Priority 1: within-frame undo (drawings, player moves — legacy plays)
-  if (undoStack.length) {
-    const fr = frame(); if (!fr) return;
-    // Push current to redo
-    redoStack.push(clone({ players:fr.players, arrows:fr.arrows, markers:fr.markers, ballHolder:fr.ballHolder, annotations:fr.annotations }));
-    const prev = undoStack.pop();
-    fr.players    = prev.players;
-    fr.arrows     = prev.arrows;
-    fr.markers    = prev.markers || [];
-    fr.ballHolder = prev.ballHolder;
-    fr.annotations = prev.annotations || [];
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderGhosts(); renderBallChips(); renderAnnotations();
-    save();
-    return;
-  }
-  // Priority 2: frame-level undo (add / dup / delete — legacy plays)
-  if (frameUndoStack.length) {
-    if (!pl) return;
-    // Push current to redo
-    frameRedoStack.push({ frames: clone(pl.frames), fi: S.fi });
-    const prev = frameUndoStack.pop();
-    pl.frames = prev.frames;
-    S.fi = Math.min(prev.fi, pl.frames.length - 1);
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderScript(); renderInfo();
-    renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
-    save();
-  }
+  const prev = undoStack.pop();
+  pl.actions = prev.actions;
+  if ('initialBallHolder' in prev) pl.initialBallHolder = prev.initialBallHolder;
+  recompile(pl);
+  S.fi = Math.min(prev.fi, frameCount(pl) - 1);
+  hideArrowUI();
+  renderCourt(); renderScript(); renderInfo();
+  renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
+  save();
 }
 
 function redoLast() {
   const pl = play();
+  if (!pl || !redoStack.length) return;
 
-  // Priority 0: action-level redo
-  if (isActionPlay(pl) && actionRedoStack.length) {
-    const next = actionRedoStack.pop();
-    // Push current state back to undo (without clearing redo — we're mid-redo)
-    actionUndoStack.push({
-      actions: clone(pl.actions),
-      fi: S.fi,
-      initialBallHolder: pl.initialBallHolder ?? null,
-    });
-    pl.actions = next.actions;
-    if ('initialBallHolder' in next) pl.initialBallHolder = next.initialBallHolder;
-    S.fi = Math.min(next.fi, frameCount(pl) - 1);
-    recompile(pl);
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderScript(); renderInfo();
-    renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
-    save();
-    return;
-  }
+  undoStack.push({
+    actions: clone(pl.actions),
+    fi: S.fi,
+    initialBallHolder: pl.initialBallHolder ?? null,
+  });
 
-  // Priority 1: within-frame redo
-  if (redoStack.length) {
-    const fr = frame(); if (!fr) return;
-    // Push current back to undo
-    undoStack.push(clone({ players:fr.players, arrows:fr.arrows, markers:fr.markers, ballHolder:fr.ballHolder, annotations:fr.annotations }));
-    const next = redoStack.pop();
-    fr.players    = next.players;
-    fr.arrows     = next.arrows;
-    fr.markers    = next.markers || [];
-    fr.ballHolder = next.ballHolder;
-    fr.annotations = next.annotations || [];
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderGhosts(); renderBallChips(); renderAnnotations();
-    save();
-    return;
-  }
-
-  // Priority 2: frame-level redo
-  if (frameRedoStack.length) {
-    if (!pl) return;
-    frameUndoStack.push({ frames: clone(pl.frames), fi: S.fi });
-    const next = frameRedoStack.pop();
-    pl.frames = next.frames;
-    S.fi = Math.min(next.fi, pl.frames.length - 1);
-    hideArrowUI();
-    renderCourt(); renderTimeline(); renderScript(); renderInfo();
-    renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
-    save();
-  }
+  const next = redoStack.pop();
+  pl.actions = next.actions;
+  if ('initialBallHolder' in next) pl.initialBallHolder = next.initialBallHolder;
+  recompile(pl);
+  S.fi = Math.min(next.fi, frameCount(pl) - 1);
+  hideArrowUI();
+  renderCourt(); renderScript(); renderInfo();
+  renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
+  save();
 }
 
 // ══════════════════════════════════════════════════
@@ -3957,12 +3813,17 @@ function buildCardArrow(a, mId) {
   return '<line x1="'+sl.x1+'" y1="'+sl.y1+'" x2="'+sl.x2+'" y2="'+sl.y2+'" stroke="'+c+'" stroke-width="3" stroke-dasharray="'+dashAttr+'" marker-end="url(#'+mId+'-'+mkType+')" opacity=".92"/>';
 }
 
-// Build a standalone court SVG for card view
-// Uses the same 500×472 coordinate space; width/height scale it down
-function cardCourtSVG(fr, W, H, frameIdx) {
+// Build a standalone court SVG for card view.
+// 500×472 base coords. Pass `half: true` to crop the viewBox to the
+// half-court (y 20–464) so press-break and half-court plays print larger.
+function cardCourtSVG(fr, W, H, frameIdx, opts) {
+  opts = opts || {};
   const t   = team();
   const mId = 'cm-f' + (frameIdx != null ? frameIdx : Math.random().toString(36).slice(2,7));
   const lc  = 'rgba(255,255,255,.68)';
+
+  // viewBox — full court (0 0 500 472) or half (0 20 500 444)
+  const vb = opts.half ? '0 20 500 444' : '0 0 500 472';
 
   const players = fr.players.map(p => {
     const fill   = p.off ? t.p : '#B82020';
@@ -4010,7 +3871,7 @@ function cardCourtSVG(fr, W, H, frameIdx) {
     </g>`;
   }).join('');
 
-  return `<svg viewBox="0 0 500 472" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  return `<svg viewBox="${vb}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern id="${mId}-hw" x="0" y="0" width="500" height="15" patternUnits="userSpaceOnUse">
         <rect width="500" height="15" fill="#D8AC52"/>
@@ -4056,8 +3917,8 @@ function cardCourtSVG(fr, W, H, frameIdx) {
     <line x1="445" y1="464" x2="445" y2="336" stroke="${lc}" stroke-width="1.4"/>
     <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="${lc}" stroke-width="1.4"/>
     <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="${lc}" stroke-width="1.4"/>
-    <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" rx="1"/>
-    <line x1="250" y1="459" x2="250" y2="428" stroke="rgba(255,255,255,.25)" stroke-width="1.2"/>
+    <rect x="223" y="432" width="54" height="4" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" rx="1"/>
+    <line x1="250" y1="432" x2="250" y2="428" stroke="rgba(255,255,255,.25)" stroke-width="1.2"/>
     <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="2.4"/>
     ${arrows}
     ${shotMks}
@@ -4079,10 +3940,12 @@ function setPrintMode(mode) {
 // Landscape 11×8.5" play sheet. Fits one page.
 //
 // Layout modes:
-//   Final Frame: large diagram left, sidebar right (desc + all-frame notes)
-//   Key/All:     grid of frame cards, each = header + diagram + notes strip
+//   Final Frame: large diagram left + sidebar (description + numbered action sequence)
+//   Key/All:     grid of frame cards, each = caption header + diagram + notes strip
 //
-// Notes are truncated to 1 line per category when >=5 frames to guarantee fit.
+// Captions per step are auto-generated from action data (e.g. "PG passes to SG").
+// Half-court plays (pl.courtMode === 'half') print with cropped viewBox so the
+// diagram fills the card.
 //
 const PS_HEADER_H   = 56;   // header bar height px
 const PS_FOOTER_H   = 24;   // footer bar height px
@@ -4093,9 +3956,50 @@ const PS_NOTE_H     = 13;   // estimated height per note row px
 const PS_PAGE_H     = 749;  // usable landscape page height (8.5" @ 96dpi - margins)
 // ══════════════════════════════════════════════════
 
+// Build a short, scannable caption for one action group ("PG passes to SG",
+// "Stagger screen for SF", "SG shoots"). For groups with multiple actions,
+// joins with " + ".
+function actionGroupCaption(group, pl) {
+  if (!group || !group.length) return '';
+  const name = (id) => resolveLabel(id, pl);
+  const phrases = group.map(a => {
+    switch (a.type) {
+      case 'pass':    return name(a.playerId) + ' \u2192 ' + name(a.targetId || '?') + ' pass';
+      case 'dribble': return name(a.playerId) + ' dribble';
+      case 'cut':     return name(a.playerId) + ' cut';
+      case 'screen':  return name(a.playerId) + ' screen';
+      case 'move':    return name(a.playerId) + ' relocate';
+      case 'shot':    return name(a.playerId) + ' SHOT';
+      case 'dho':     return name(a.playerId) + ' DHO \u2192 ' + name(a.targetId || '?');
+      default:        return name(a.playerId) + ' ' + a.type;
+    }
+  });
+  return phrases.join(' + ');
+}
+
+// Lookup color for action type (includes 'shot' which isn't in AC)
+function actionColor(type) {
+  if (type === 'shot') return (typeof SHOT_COLOR !== 'undefined') ? SHOT_COLOR : '#FF5533';
+  return (typeof AC !== 'undefined' && AC[type]) || '#888';
+}
+
+// Build a per-step caption with action-type color chip prefix
+function stepCaptionHtml(group, pl) {
+  if (!group || !group.length) return '';
+  const primary = group[0];
+  const color = actionColor(primary.type);
+  return `<span class="ps-step-chip" style="background:${color}"></span>${escapeHtml(actionGroupCaption(group, pl))}`;
+}
+
 function renderCardView() {
   const pl = play();
   if (!pl) { closeCardView(); return; }
+
+  // Half-court detection — applies to all diagrams in this render
+  const half = pl.courtMode === 'half' || S.courtMode === 'half';
+  // Aspect ratio of the court diagram (W to H ratio)
+  const courtAspectH = half ? (444 / 500) : (472 / 500);
+  const courtHFromW = (w) => Math.round(w * courtAspectH);
 
   // ── Header ──────────────────────────────────────
   document.getElementById('ps-title').textContent = pl.name.toUpperCase();
@@ -4118,10 +4022,11 @@ function renderCardView() {
   const accentEl = document.getElementById('ps-accent');
   if (accentEl) accentEl.style.background = team().p;
 
-  // Description — clamped to 3 lines via CSS
+  // Description — clamped to 3 lines via CSS, hidden in Final mode (shown in sidebar instead)
   const descEl  = document.getElementById('ps-header-desc');
   const descTxt = document.getElementById('ps-desc-text');
-  if (pl.desc && pl.desc.trim()) {
+  const isFinalModeForHdr = S.printMode === 'final' && pl.frames.length > 1;
+  if (pl.desc && pl.desc.trim() && !isFinalModeForHdr) {
     descTxt.textContent = pl.desc;
     descEl.style.display = '';
   } else {
@@ -4149,16 +4054,22 @@ function renderCardView() {
     frameIndices   = allFrames.map((_, i) => i);
   }
 
-  // Footer
+  // Footer — coverages + family + step count
   const fi = document.getElementById('ps-footer-info');
   if (fi) {
-    const uLbl = isActionPlay(pl) ? 'Step' : 'Frame';
-    const mLbl = isFinalMode ? ' (Final)' : isKeyMode ? ` (${framesToRender.length} of ${allFrames.length})` : '';
-    fi.textContent = allFrames.length + ' ' + uLbl + (allFrames.length !== 1 ? 's' : '') + mLbl + ' \u00B7 ' + pl.category;
+    const stepCount = allFrames.length - 1; // exclude setup
+    const mLbl = isFinalMode ? '\u00A0(Final)' : isKeyMode ? `\u00A0(${framesToRender.length} shown)` : '';
+    const covLbl = (pl.coverages || []).length ? ' \u00B7 vs ' + pl.coverages.join(', ') : '';
+    const familyParent = pl.familyId ? S.plays.find(p => p.id === pl.familyId) : null;
+    const famLbl = familyParent ? ' \u00B7 Family: ' + familyParent.name : '';
+    const stepLbl = stepCount > 0 ? `${stepCount} Step${stepCount !== 1 ? 's' : ''}${mLbl}` : 'Setup only';
+    fi.textContent = stepLbl + ' \u00B7 ' + pl.category + covLbl + famLbl;
   }
 
   const grid = document.getElementById('ps-frames');
-  const courtHFromW = (w) => Math.round(w * 472 / 500);
+
+  // Precompute action groups (shared by both layouts)
+  const actionGroups = groupActionSteps(pl.actions);
 
   // ── Helper: build per-frame notes HTML ──────────
   function buildNotesHtml(notes, clamp) {
@@ -4177,43 +4088,45 @@ function renderCardView() {
 
   // ════════════════════════════════════════════════
   // FINAL FRAME MODE — diagram + sidebar layout
+  // Sidebar shows description (top) + numbered action sequence list.
   // ════════════════════════════════════════════════
   if (isFinalMode) {
     grid.className = 'ps-frames';
     grid.style.cssText = 'padding:0;gap:0;display:block;background:#fff';
 
-    const cW = 600, cH = courtHFromW(cW);
+    // Diagram width — 600 for full court, 540 for half (a little narrower
+    // since the diagram is closer to square when half-court)
+    const cW = half ? 540 : 600;
+    const cH = courtHFromW(cW);
     const lastFr = allFrames[allFrames.length - 1];
 
-    // Sidebar: play description + notes from every frame
-    let sidebarHtml = '';
-    if (pl.desc && pl.desc.trim()) {
-      sidebarHtml += `<div class="ps-final-desc"><div class="ps-final-desc-text">${escapeHtml(pl.desc)}</div></div>`;
+    // Build the action sequence list — numbered, one entry per step
+    let sequenceHtml = '';
+    if (actionGroups.length) {
+      const items = actionGroups.map((group, gi) => {
+        const primary = group[0];
+        const color = actionColor(primary.type);
+        return `<li class="ps-seq-item">
+          <span class="ps-seq-num">${gi + 1}</span>
+          <span class="ps-seq-chip" style="background:${color}"></span>
+          <span class="ps-seq-text">${escapeHtml(actionGroupCaption(group, pl))}</span>
+        </li>`;
+      }).join('');
+      sequenceHtml = `<div class="ps-final-seq">
+        <div class="ps-final-seq-hdr">PLAY SEQUENCE</div>
+        <ol class="ps-seq-list">${items}</ol>
+      </div>`;
     }
 
-    const noteGroups = allFrames.map((f, idx) => {
-      const notes = f.notes || {};
-      const rows = [
-        { label: 'ACTION',   cls: 'ps-note-action',   val: notes.action },
-        { label: 'READ',     cls: 'ps-note-read',     val: notes.keyRead },
-        { label: 'SPACING',  cls: 'ps-note-spacing',  val: notes.spacingCue },
-        { label: 'COACHING', cls: 'ps-note-coach',    val: notes.coachPoint },
-      ].filter(r => r.val && r.val.trim());
-      if (!rows.length) return '';
-      const lbl = f.label || ('Frame ' + (idx + 1));
-      return `<div class="ps-fn-group">
-        <div class="ps-fn-hdr">${escapeHtml(lbl)}</div>
-        ${rows.map(r => `<div class="ps-note-row ${r.cls}"><span class="ps-note-label">${r.label}</span><span class="ps-note-text">${escapeHtml(r.val)}</span></div>`).join('')}
-      </div>`;
-    }).filter(Boolean).join('');
-
-    if (noteGroups) {
-      sidebarHtml += `<div class="ps-final-notes">${noteGroups}</div>`;
+    // Description block (top of sidebar, if present)
+    let descBlock = '';
+    if (pl.desc && pl.desc.trim()) {
+      descBlock = `<div class="ps-final-desc"><div class="ps-final-desc-text">${escapeHtml(pl.desc)}</div></div>`;
     }
 
     grid.innerHTML = `<div class="ps-final-layout">
-      <div class="ps-final-diagram">${cardCourtSVG(lastFr, cW, cH, allFrames.length - 1)}</div>
-      ${sidebarHtml ? `<div class="ps-final-sidebar">${sidebarHtml}</div>` : ''}
+      <div class="ps-final-diagram">${cardCourtSVG(lastFr, cW, cH, allFrames.length - 1, {half})}</div>
+      <div class="ps-final-sidebar">${descBlock}${sequenceHtml}</div>
     </div>`;
     return;
   }
@@ -4247,8 +4160,6 @@ function renderCardView() {
   while (courtW > 80 && gridH(courtW) > availH) courtW -= 10;
 
   const courtH = courtHFromW(courtW);
-  const frameLabelSize = n <= 2 ? '15px' : n <= 4 ? '13px' : '11px';
-  const frameNumSize   = n <= 2 ? '18px' : n <= 4 ? '15px' : '13px';
 
   grid.className = `ps-frames ps-cols-${cols}`;
   grid.style.cssText = '';
@@ -4257,18 +4168,26 @@ function renderCardView() {
     const realIdx = frameIndices[i];
     const bh = fr.ballHolder;
     const bhLabel = bh ? fr.players.find(p => p.id === bh)?.label : null;
-    const bhBadge = bhLabel ? `<span class="ps-ball-badge">\u25CF ${bhLabel}</span>` : '';
-    const frameTitle = fr.label || ('Frame ' + (realIdx + 1));
+    const bhBadge = bhLabel ? `<span class="ps-ball-badge">\u25CF ${escapeHtml(bhLabel)}</span>` : '';
     const notesHtml = buildNotesHtml(fr.notes, clampNotes);
+
+    // Caption — Setup (realIdx 0) gets "SETUP"; later steps get auto-generated action caption
+    let captionHtml;
+    if (realIdx === 0) {
+      captionHtml = `<span class="ps-flabel ps-flabel-setup">Setup</span>`;
+    } else {
+      const group = actionGroups[realIdx - 1] || [];
+      captionHtml = `<span class="ps-flabel">${stepCaptionHtml(group, pl)}</span>`;
+    }
 
     return `<div class="ps-frame">
       <div class="ps-frame-header">
-        <div class="ps-fnum" style="font-size:${frameNumSize}">${realIdx + 1}</div>
-        <span class="ps-flabel" style="font-size:${frameLabelSize}">${escapeHtml(frameTitle)}</span>
+        <div class="ps-fnum">${realIdx}</div>
+        ${captionHtml}
         ${bhBadge}
       </div>
       <div class="ps-frame-body">
-        <div class="ps-diagram">${cardCourtSVG(fr, courtW, courtH, realIdx)}</div>
+        <div class="ps-diagram">${cardCourtSVG(fr, courtW, courtH, realIdx, {half})}</div>
         ${notesHtml}
       </div>
     </div>`;
@@ -4349,8 +4268,8 @@ function init() {
     S.pid = S.plays[0]?.id || null;
   }
 
-  // Recompile action-based plays — restores .frames from .actions
-  S.plays.forEach(p => { if (isActionPlay(p)) recompile(p); });
+  // Compile every play's frames from its action list
+  S.plays.forEach(p => recompile(p));
 
   renderTeamDots();
   applyTeam();
@@ -4374,8 +4293,6 @@ function init() {
   document.getElementById('pm-final').classList.toggle('on', S.printMode === 'final');
   document.getElementById('pm-key').classList.toggle('on', S.printMode === 'key');
   document.getElementById('pm-full').classList.toggle('on', S.printMode === 'full');
-  // Wire up timeline scrubbing after DOM is ready
-  setupTimelineScrub();
   // Initialize tool label (hidden for default 'select' tool)
   updateToolLabel(S.tool);
 
@@ -4394,8 +4311,7 @@ function init() {
   window.addEventListener('beforeprint', function() {
     const pl = play();
     if (!pl) return; // nothing selected — avoid rendering empty card
-    // Ensure action-based plays have their frames compiled
-    if (isActionPlay(pl) && !pl._compiled) recompile(pl);
+    if (!pl._compiled) recompile(pl);
     renderCardView();
     // Force synchronous reflow — the read of offsetHeight compels the
     // browser to lay out the newly-injected card-view content before
@@ -4420,7 +4336,7 @@ function setView(v) {
   document.getElementById('btn-import').style.display = isEditor ? 'block' : 'none';
   document.getElementById('btn-export').style.display = isEditor ? 'block' : 'none';
   if (isEditor) {
-    renderLibrary(); renderCourt(); renderTimeline(); renderScript(); renderInfo();
+    renderLibrary(); renderCourt(); renderScript(); renderInfo();
     renderGhosts(); renderPathOverlay();
   } else {
     renderHomeScreen();
@@ -4509,7 +4425,7 @@ function cardThumbSVG(p) {
     <!-- Restricted area arc -->
     <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="${lc}" stroke-width="${lw}"/>
     <!-- Backboard -->
-    <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
+    <rect x="223" y="432" width="54" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
     <!-- Basket ring -->
     <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="4"/>
     ${arrows}${players}
@@ -4965,7 +4881,7 @@ function cardAnimTick(ts) {
     <line x1="445" y1="464" x2="445" y2="336" stroke="${lc}" stroke-width="${lw}"/>
     <path d="M 55,336 A 211,211 0 0,1 445,336" fill="none" stroke="${lc}" stroke-width="${lw}"/>
     <path d="M 215,417 A 35,35 0 0,1 285,417" fill="none" stroke="${lc}" stroke-width="${lw}"/>
-    <rect x="227" y="459" width="46" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
+    <rect x="223" y="432" width="54" height="4" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" rx="1"/>
     <circle cx="250" cy="417" r="11" fill="none" stroke="#E07828" stroke-width="4"/>
     ${arrows}${playersSvg}
   </svg><div class="card-anim-bar" style="width:${progress}%"></div>`;
@@ -5001,8 +4917,8 @@ function openPlay(id) {
   const opened = playById(id);
   if (!opened) return;
   S.pid=id; S.fi=0; S.selArrow=null;
-  undoStack.length=0; frameUndoStack.length=0; actionUndoStack.length=0;
-  redoStack.length=0; frameRedoStack.length=0; actionRedoStack.length=0;
+  undoStack.length=0;
+  redoStack.length=0;
   // Auto-switch library tab to match the opened play/drill type
   const openedType = opened.playType || 'play';
   if (S.libType !== openedType) setLibType(openedType);
@@ -5123,7 +5039,7 @@ function applyTeam() {
 }
 function setTeam(i) {
   S.ti=i; applyTeam(); renderTeamDots();
-  if (S.view==='editor') { renderPlayers(); renderTimeline(); renderPathOverlay(); }
+  if (S.view==='editor') { renderPlayers(); renderPathOverlay(); }
   debouncedSave();
 }
 
@@ -5175,40 +5091,26 @@ function setFamilyParent(playId, parentId) {
 function createVariation(parentId) {
   const parent = S.plays.find(p => p.id === parentId); if (!parent) return;
   const now = Date.now();
-  var p;
-  if (isActionPlay(parent)) {
-    // Action-based: clone full action list, initial positions, and setup notes
-    p = {
-      id:uid(), name:parent.name + ' \u2014 Variation',
-      category:parent.category, tags:parent.tags, desc:'',
-      videoUrl:'', coverages:clone(parent.coverages||[]),
-      familyId:parentId,
-      createdAt: now, updatedAt: now,
-      initialPositions: clone(parent.initialPositions),
-      initialBallHolder: parent.initialBallHolder,
-      setupNotes: clone(parent.setupNotes || emptyNotes()),
-      stepNotes: clone(parent.stepNotes || {}),
-      actions: clone(parent.actions),
-    };
-    S.plays.push(p);
-    recompile(p);
-  } else {
-    // Legacy frame-based: clone ALL frames (not just frame 0)
-    p = {
-      id:uid(), name:parent.name + ' \u2014 Variation',
-      category:parent.category, tags:parent.tags, desc:'',
-      videoUrl:'', coverages:clone(parent.coverages||[]),
-      familyId:parentId,
-      createdAt: now, updatedAt: now,
-      frames: clone(parent.frames),
-    };
-    S.plays.push(p);
-  }
+  // Clone full action list, initial positions, and setup notes
+  const p = {
+    id: uid(), name: parent.name + ' \u2014 Variation',
+    category: parent.category, tags: parent.tags, desc: '',
+    videoUrl: '', coverages: clone(parent.coverages||[]),
+    familyId: parentId,
+    createdAt: now, updatedAt: now,
+    initialPositions: clone(parent.initialPositions),
+    initialBallHolder: parent.initialBallHolder,
+    setupNotes: clone(parent.setupNotes || emptyNotes()),
+    stepNotes: clone(parent.stepNotes || {}),
+    actions: clone(parent.actions),
+  };
+  S.plays.push(p);
+  recompile(p);
   S.openFamilies.add(parentId);
-  S.pid=p.id; S.fi=0; S.selArrow=null; undoStack.length=0; frameUndoStack.length=0; actionUndoStack.length=0;
-  redoStack.length=0; frameRedoStack.length=0; actionRedoStack.length=0;
+  S.pid = p.id; S.fi = 0; S.selArrow = null;
+  undoStack.length = 0; redoStack.length = 0;
   save(); setView('editor');
-  setTimeout(function(){ var ti=document.getElementById('title-input'); ti.focus(); ti.select(); },50);
+  setTimeout(() => { const ti = document.getElementById('title-input'); ti.focus(); ti.select(); }, 50);
 }
 function toggleFamily(id, e) {
   e.stopPropagation();
@@ -5469,10 +5371,10 @@ function renamePlay(id, e) {
 }
 function selPlay(id) {
   S.pid=id; S.fi=0; S.selArrow=null;
-  undoStack.length=0; frameUndoStack.length=0; actionUndoStack.length=0;
-  redoStack.length=0; frameRedoStack.length=0; actionRedoStack.length=0;
+  undoStack.length=0;
+  redoStack.length=0;
   hideArrowUI();
-  renderLibrary(); renderCourt(); renderTimeline(); renderScript(); renderInfo();
+  renderLibrary(); renderCourt(); renderScript(); renderInfo();
   renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
   loadDrillUI(); loadRosterUI();
 }
@@ -5498,8 +5400,8 @@ function createPlay(category) {
   };
   S.plays.push(p);
   S.pid = p.id; S.fi = 0; S.selArrow = null;
-  undoStack.length = 0; frameUndoStack.length = 0; actionUndoStack.length = 0;
-  redoStack.length = 0; frameRedoStack.length = 0; actionRedoStack.length = 0;
+  undoStack.length = 0;
+  redoStack.length = 0;
   recompile(p);
   save(); setView('editor');
   setTimeout(() => { const ti = document.getElementById('title-input'); ti.focus(); ti.select(); }, 50);
@@ -5514,7 +5416,7 @@ function delPlay(id, e) {
   S.openFamilies.delete(id);
   save();
   if (S.view==='home') renderHomeScreen();
-  else { renderLibrary(); renderCourt(); renderTimeline(); renderScript(); renderInfo(); }
+  else { renderLibrary(); renderCourt(); renderScript(); renderInfo(); }
 }
 
 // ══════════════════════════════════════════════════
@@ -5923,64 +5825,34 @@ function hideArrowUI() {
   });
 }
 function deleteSelectedArrow() {
-  const pl = play();
-  const fr = frame(); if (!fr) return;
-
   if (S.selArrow) {
-    // Action-based plays: delete through the action model so recompile
-    // doesn't resurrect the arrow from pl.actions on the next mutation.
-    if (isActionPlay(pl)) {
-      deleteScriptAction(S.selArrow);
-      hideArrowUI();
-      return;
-    }
-    pushUndo();
-    fr.arrows = fr.arrows.filter(a => a.id !== S.selArrow);
+    deleteScriptAction(S.selArrow);
   } else if (S.selMarker) {
-    // Shot markers: same pattern — delete from action model if action-based.
-    if (isActionPlay(pl)) {
-      deleteScriptAction(S.selMarker);
-      hideArrowUI();
-      return;
-    }
-    pushUndo();
-    fr.markers = (fr.markers||[]).filter(m => m.id !== S.selMarker);
+    deleteScriptAction(S.selMarker);
   } else return;
-
-  hideArrowUI(); renderArrows(); renderTimeline(); debouncedSave();
+  hideArrowUI();
 }
 
 function clearArrows() {
-  const pl = play();
-  const fr = frame(); if (!fr) return;
-
-  if (isActionPlay(pl)) {
-    // Remove all actions for the current step's group, then recompile.
-    // This mirrors what a "clear frame" would mean in the action model.
-    pushActionUndo(pl);
-    const groups = groupActionSteps(pl.actions);
-    const gi = S.fi - 1;
-    if (gi >= 0 && gi < groups.length) {
-      const idsToRemove = new Set(groups[gi].map(a => a.id));
-      pl.actions = pl.actions.filter(a => !idsToRemove.has(a.id));
-    }
-    recompile(pl);
-    hideArrowUI();
-    renderCourt(); renderScript(); renderTimeline(); renderGhosts(); renderPathOverlay(); renderBallChips();
-    debouncedSave();
-    return;
+  const pl = play(); if (!pl) return;
+  // Remove all actions for the current step's group, then recompile.
+  pushUndo(pl);
+  const groups = groupActionSteps(pl.actions);
+  const gi = S.fi - 1;
+  if (gi >= 0 && gi < groups.length) {
+    const idsToRemove = new Set(groups[gi].map(a => a.id));
+    pl.actions = pl.actions.filter(a => !idsToRemove.has(a.id));
   }
-
-  pushUndo();
-  fr.arrows = []; fr.markers = [];
-  hideArrowUI(); renderArrows(); renderTimeline(); debouncedSave();
+  recompile(pl);
+  hideArrowUI();
+  renderCourt(); renderScript(); renderGhosts(); renderPathOverlay(); renderBallChips();
+  debouncedSave();
 }
 
 // ══════════════════════════════════════════════════
-// FEATURE 2: BALL POSSESSION CHIPS
-// Right panel chips let you click which player has the ball.
-// Chips are labeled with position abbreviations.
-// Ball auto-transfers via computeNextBallHolder on addFrame.
+// BALL POSSESSION CHIPS
+// Right panel chips show ball holder. Click to set on Setup step;
+// later steps derive ball holder from pass/DHO actions.
 // ══════════════════════════════════════════════════
 
 function renderBallChips() {
@@ -6012,25 +5884,15 @@ function renderBallChips() {
 }
 
 function setBallHolder(id) {
-  const fr=frame(); if (!fr) return;
-  const pl = play();
+  const pl = play(); if (!pl) return;
+  // Ball holder is only directly editable on the setup step.
+  // Later-step ball state is driven by pass/DHO actions.
+  if (S.fi !== 0) return;
 
-  if (isActionPlay(pl) && S.fi === 0) {
-    // Frame 0 on action play: persist to initialBallHolder so it survives recompile.
-    // Use pushActionUndo (not pushUndo) so the snapshot includes initialBallHolder
-    // and undo correctly restores the source-of-truth, not just the compiled frame.
-    pushActionUndo(pl);
-    pl.initialBallHolder = id;
-    fr.ballHolder = id;
-    recompile(pl);
-  } else {
-    // Legacy plays or later frames: direct frame mutation.
-    // On action plays, later-frame ball state is driven by pass/DHO actions.
-    pushUndo();
-    fr.ballHolder = id;
-  }
-
-  renderPlayers(); renderBallChips(); renderTimeline(); debouncedSave();
+  pushUndo(pl);
+  pl.initialBallHolder = id;
+  recompile(pl);
+  renderPlayers(); renderBallChips(); debouncedSave();
 }
 
 // ══════════════════════════════════════════════════
@@ -6074,7 +5936,7 @@ function setupEvents() {
       const fr2 = frame(); if (!fr2) return;
       const aid = ev.target.dataset.aid || S.selArrow; if (!aid) return;
       const a = fr2.arrows.find(a2 => a2.id === aid); if (!a) return;
-      pushUndo();
+      // Undo snapshot happens on commit (in onUp), capturing the source action.
       S.editArrow = { id: aid };
       document.getElementById('court-svg').setPointerCapture(ev.pointerId);
       return;
@@ -6097,7 +5959,7 @@ function setupEvents() {
       const fr2 = frame(); if (!fr2) return;
       const mid = ev.target.dataset.mid;
       const m = (fr2.markers||[]).find(mk => mk.id === mid); if (!m) return;
-      pushUndo();
+      // Undo snapshot happens on commit (in onUp).
       S.editMarker = { id: mid };
       document.getElementById('court-svg').setPointerCapture(ev.pointerId);
       return;
@@ -6156,8 +6018,7 @@ function setupEvents() {
     if (k==='ArrowLeft')  { e.preventDefault(); prevFrame(); return; }
     if (k==='ArrowRight') { e.preventDefault(); nextFrame(); return; }
     if (k===' ')  { e.preventDefault(); togglePlay(); return; }
-    if (k==='a'||k==='A') { addFrame(); return; }
-    if (k==='d'||k==='D') { dupFrame(); return; }
+    if (k==='d'||k==='D') { dupSelectedAction(); return; }
     if (k==='g'||k==='G') { toggleGhost(); return; }
     if (k==='p'||k==='P') { togglePath(); return; }
     if (k==='f'||k==='F') { toggleCourtMode(); return; }
@@ -6237,38 +6098,19 @@ function onDown(e) {
   // ── Shot tool: place marker on click ─────────────
   if (S.tool === 'shot') {
     const fr2 = frame(); if (!fr2) return;
-    const pl3 = play();
-    if (isActionPlay(pl3)) {
-      // Find nearest offensive player to shot location
-      let bestDist = Infinity, bestPl = null;
-      fr2.players.forEach(p => {
-        if (!p.off) return;
-        const d = Math.hypot(p.x - pt.x, p.y - pt.y);
-        if (d < bestDist) { bestDist = d; bestPl = p; }
-      });
-      addAction({
-        type: 'shot',
-        playerId: bestPl?.id || 'pg',
-        endX: Math.round(pt.x),
-        endY: Math.round(pt.y),
-      });
-    } else {
-      pushUndo();
-      if (!fr2.markers) fr2.markers = [];
-      // Find nearest offensive player as shooter
-      let bestDist2 = Infinity, bestPl2 = null;
-      fr2.players.forEach(p => {
-        if (!p.off) return;
-        const d = Math.hypot(p.x - pt.x, p.y - pt.y);
-        if (d < bestDist2) { bestDist2 = d; bestPl2 = p; }
-      });
-      fr2.markers.push({
-        id: uid(), x: Math.round(pt.x), y: Math.round(pt.y),
-        playerId: bestPl2?.id || null,
-        shooterX: bestPl2?.x || pt.x, shooterY: bestPl2?.y || pt.y
-      });
-      renderArrows(); renderTimeline(); debouncedSave();
-    }
+    // Find nearest offensive player to shot location
+    let bestDist = Infinity, bestPl = null;
+    fr2.players.forEach(p => {
+      if (!p.off) return;
+      const d = Math.hypot(p.x - pt.x, p.y - pt.y);
+      if (d < bestDist) { bestDist = d; bestPl = p; }
+    });
+    addAction({
+      type: 'shot',
+      playerId: bestPl?.id || 'pg',
+      endX: Math.round(pt.x),
+      endY: Math.round(pt.y),
+    });
     setTool('select');
     e.preventDefault(); return;
   }
@@ -6362,12 +6204,13 @@ function onMove(e) {
 
   // ── Drag-start threshold — must run synchronously on every event ──
   // We need to detect the first 5px of movement immediately so the
-  // drag-active class, undo push, and lift effect happen without a frame delay.
+  // drag-active class and lift effect happen without a frame delay.
+  // Undo snapshot is taken on commit (in onUp), not at drag-start, because
+  // the commit decides which action mutates (move, editEndpoint, etc).
   if (S.dragging) {
     const dx = pt.x - S.dragging.sx, dy = pt.y - S.dragging.sy;
     if (!S.dragging.dragged && Math.hypot(dx, dy) > 5) {
       S.dragging.dragged = true;
-      pushUndo();
       hideCtxMenu();
       const el = document.getElementById('pg-' + S.dragging.id);
       if (el) {
@@ -6513,47 +6356,47 @@ function onUp(e) {
     S.dragging=null;
     if (wasDrag) {
       const pl = play();
-      if (isActionPlay(pl)) {
-        const fr2 = frame();
-        const draggedPlayer = fr2?.players.find(p => p.id === dragId);
-        if (!draggedPlayer) {
-          // Player not found — shouldn't happen, but bail safely
-        } else if (!draggedPlayer.off) {
-          // ── Defender drag on action play ──
-          // Defenders live outside the action model. Update the stored
-          // defenderPositions so they survive recompile, then re-render.
-          if (pl.defenderPositions) {
-            const dp = pl.defenderPositions.find(d => d.id === dragId);
-            if (dp) { dp.x = draggedPlayer.x; dp.y = draggedPlayer.y; }
-          }
-          renderCourt(); renderTimeline(); renderGhosts(); renderPathOverlay(); debouncedSave();
-        } else if (S.fi === 0) {
-          // Setup step — update initial positions directly
-          const ip = pl.initialPositions.find(p => p.id === dragId);
-          if (ip) { ip.x = draggedPlayer.x; ip.y = draggedPlayer.y; }
-          recompile(pl);
-          renderCourt(); renderTimeline(); renderScript(); renderGhosts(); renderPathOverlay(); debouncedSave();
-        } else if (draggedPlayer) {
-          // Later step — check if this player already has an action in
-          // the current step's action group. If so, edit that action's
-          // endpoint instead of creating a redundant new "move" action.
-          // This is the key fix: dragging a player who dribbled/cut/screened
-          // to a location should adjust that action, not add a second one.
-          const existingAction = findPlayerActionForFrame(pl, dragId, S.fi);
-          if (existingAction) {
-            editActionEndpoint(existingAction.id, draggedPlayer.x, draggedPlayer.y);
-          } else {
-            addAction({
-              type: 'move',
-              playerId: dragId,
-              endX: draggedPlayer.x,
-              endY: draggedPlayer.y,
-            });
+      const fr2 = frame();
+      const draggedPlayer = fr2?.players.find(p => p.id === dragId);
+      if (!draggedPlayer || !pl) {
+        // Player not found — shouldn't happen, but bail safely
+      } else if (!draggedPlayer.off) {
+        // ── Defender drag ──
+        // Defenders live outside the action model. Update the stored
+        // defenderPositions so they survive recompile, then re-render.
+        if (pl.defenderPositions) {
+          const dp = pl.defenderPositions.find(d => d.id === dragId);
+          if (dp) {
+            pushUndo(pl);
+            dp.x = draggedPlayer.x;
+            dp.y = draggedPlayer.y;
           }
         }
+        renderCourt(); renderGhosts(); renderPathOverlay(); debouncedSave();
+      } else if (S.fi === 0) {
+        // Setup step — update initial positions directly
+        const ip = pl.initialPositions.find(p => p.id === dragId);
+        if (ip) {
+          pushUndo(pl);
+          ip.x = draggedPlayer.x;
+          ip.y = draggedPlayer.y;
+          recompile(pl);
+        }
+        renderCourt(); renderScript(); renderGhosts(); renderPathOverlay(); debouncedSave();
       } else {
-        // Legacy frame-based — existing behavior
-        renderArrows(); renderTimeline(); renderGhosts(); renderPathOverlay(); debouncedSave();
+        // Later step — if this player already has an action in this step,
+        // edit that action's endpoint; otherwise add a new "move" action.
+        const existingAction = findPlayerActionForFrame(pl, dragId, S.fi);
+        if (existingAction) {
+          editActionEndpoint(existingAction.id, draggedPlayer.x, draggedPlayer.y);
+        } else {
+          addAction({
+            type: 'move',
+            playerId: dragId,
+            endX: draggedPlayer.x,
+            endY: draggedPlayer.y,
+          });
+        }
       }
     } else {
       // Tap with no movement — show ctx menu + selection glow
@@ -6587,13 +6430,13 @@ function onUp(e) {
       }
       // dribble/screen: no snapping — destination is wherever the coach released
 
-      // For action-based plays, propagate the edit back to the source action and recompile.
+      // Propagate the edit back to the source action and recompile.
       // Arrow ids equal action ids, so we can find the source directly.
       const pl = play();
-      if (isActionPlay(pl)) {
+      if (pl) {
         const srcAction = pl.actions.find(act => act.id === a.id);
         if (srcAction) {
-          pushActionUndo(pl);
+          pushUndo(pl);
           srcAction.endX = a.x2;
           srcAction.endY = a.y2;
           if (a.tp !== undefined) srcAction.targetId = a.tp;
@@ -6603,7 +6446,7 @@ function onUp(e) {
       }
     }
     S.editArrow=null;
-    renderArrows(); renderTimeline(); renderScript(); renderBallChips(); debouncedSave();
+    renderArrows(); renderScript(); renderBallChips(); debouncedSave();
     return;
   }
 
@@ -6612,12 +6455,12 @@ function onUp(e) {
     const fr=frame(); if (!fr) { S.editMarker=null; return; }
     const m = (fr.markers||[]).find(mk => mk.id === S.editMarker.id);
     if (m) {
-      // For action-based plays, propagate back to the source action
+      // Propagate back to the source action
       const pl = play();
-      if (isActionPlay(pl)) {
+      if (pl) {
         const srcAction = pl.actions.find(act => act.id === m.id);
         if (srcAction) {
-          pushActionUndo(pl);
+          pushUndo(pl);
           srcAction.endX = m.x;
           srcAction.endY = m.y;
           recompile(pl);
@@ -6625,7 +6468,7 @@ function onUp(e) {
       }
     }
     S.editMarker = null;
-    renderArrows(); renderTimeline(); renderScript(); debouncedSave();
+    renderArrows(); renderScript(); debouncedSave();
     return;
   }
 
@@ -6634,8 +6477,11 @@ function onUp(e) {
     const pts = S.drawing.points;
     if (pts.length >= 3) {
       const fr2 = frame();
-      if (fr2) {
-        pushUndo();
+      const pl = play();
+      if (fr2 && pl) {
+        // Annotations live on the frame (transient) — for action plays they're
+        // persisted on the compiled frame and survive only until next recompile.
+        // This is intentional: annotations are sketch-pad scratch, not part of the play.
         if (!fr2.annotations) fr2.annotations = [];
         fr2.annotations.push({ id: uid(), points: pts });
         renderAnnotations();
@@ -6679,30 +6525,14 @@ function onUp(e) {
       if (Math.hypot(endPt.x-last.x, endPt.y-last.y) > 8) pts.push(endPt);
 
       if (pts.length >= 2) {
-        const pl2 = play();
-        if (isActionPlay(pl2)) {
-          // Action-based play — add cut action
-          addAction({
-            type: 'cut',
-            playerId: d.fromId,
-            endX: pts[pts.length-1].x,
-            endY: pts[pts.length-1].y,
-            targetId: nearP?.id || null,
-            points: pts,
-          });
-        } else {
-          pushUndo();
-          const newId = uid();
-          fr.arrows.push({
-            id:newId, type:'cut',
-            points: pts,
-            x1:pts[0].x, y1:pts[0].y,
-            x2:pts[pts.length-1].x, y2:pts[pts.length-1].y,
-            fp:d.fromId, tp:nearP?.id||null,
-          });
-          renderArrows(); renderTimeline(); debouncedSave();
-          requestAnimationFrame(() => pulseArrow(newId));
-        }
+        addAction({
+          type: 'cut',
+          playerId: d.fromId,
+          endX: pts[pts.length-1].x,
+          endY: pts[pts.length-1].y,
+          targetId: nearP?.id || null,
+          points: pts,
+        });
       }
       S.drawing = null;
       document.getElementById('preview-layer').innerHTML = '';
@@ -6726,27 +6556,12 @@ function onUp(e) {
 
     if (pts.length >= 2 && Math.hypot(pts[pts.length-1].x - pts[0].x, pts[pts.length-1].y - pts[0].y) > 16) {
       const endPt = pts[pts.length - 1];
-      const pl2 = play();
-      if (isActionPlay(pl2)) {
-        addAction({
-          type: 'dribble',
-          playerId: d.fromId,
-          endX: endPt.x, endY: endPt.y,
-          points: pts,
-        });
-      } else {
-        pushUndo();
-        const newId = uid();
-        fr.arrows.push({
-          id: newId, type: 'dribble',
-          points: pts,
-          x1: pts[0].x, y1: pts[0].y,
-          x2: endPt.x, y2: endPt.y,
-          fp: d.fromId, tp: null,
-        });
-        renderPlayers(); renderArrows(); renderTimeline(); debouncedSave();
-        requestAnimationFrame(() => pulseArrow(newId));
-      }
+      addAction({
+        type: 'dribble',
+        playerId: d.fromId,
+        endX: endPt.x, endY: endPt.y,
+        points: pts,
+      });
     } else {
       // Too short — cancel, snap player back
       const player = fr.players.find(p => p.id === d.fromId);
@@ -6779,10 +6594,10 @@ function onUp(e) {
       } else if (S.drawing.type === 'dho') {
         // DHO: endpoint is the dribble destination; target is the nearest teammate
         x2 = pt.x; y2 = pt.y;
-        var bestDHO = null, bestDHODist = Infinity;
-        fr.players.forEach(function(p) {
+        let bestDHO = null, bestDHODist = Infinity;
+        fr.players.forEach(p => {
           if (!p.off || p.id === S.drawing.fromId) return;
-          var d2 = Math.hypot(p.x - pt.x, p.y - pt.y);
+          const d2 = Math.hypot(p.x - pt.x, p.y - pt.y);
           if (d2 < bestDHODist) { bestDHODist = d2; bestDHO = p; }
         });
         tp = bestDHO ? bestDHO.id : null;
@@ -6795,26 +6610,12 @@ function onUp(e) {
         tp = tpPlayer?.id || null;
       }
 
-      const pl = play();
-      if (isActionPlay(pl)) {
-        // Action-based play — add to action list, compiler generates frames
-        addAction({
-          type: S.drawing.type,
-          playerId: S.drawing.fromId,
-          endX: x2, endY: y2,
-          targetId: tp,
-        });
-      } else {
-        // Legacy frame-based play — direct frame mutation
-        pushUndo();
-        const newId = uid();
-        fr.arrows.push({ id:newId, type:S.drawing.type, x1:S.drawing.x1, y1:S.drawing.y1, x2, y2, fp:S.drawing.fromId, tp });
-        if ((S.drawing.type === 'pass' || S.drawing.type === 'dho') && tp) {
-          fr.ballHolder = tp;
-        }
-        renderPlayers(); renderArrows(); renderTimeline(); renderBallChips(); debouncedSave();
-        requestAnimationFrame(() => pulseArrow(newId));
-      }
+      addAction({
+        type: S.drawing.type,
+        playerId: S.drawing.fromId,
+        endX: x2, endY: y2,
+        targetId: tp,
+      });
     }
     S.drawing=null; document.getElementById('preview-layer').innerHTML='';
     setTool('select');
@@ -6878,14 +6679,14 @@ function updateRoster() {
     if (val) { roster[pid] = val; anySet = true; }
   });
   S.roster = anySet ? roster : null;
-  renderPlayers(); renderScript(); renderTimeline();
+  renderPlayers(); renderScript();
   debouncedSave();
 }
 
 function clearRoster() {
   S.roster = null;
   document.querySelectorAll('.roster-input').forEach(inp => inp.value = '');
-  renderPlayers(); renderScript(); renderTimeline();
+  renderPlayers(); renderScript();
   debouncedSave();
 }
 
@@ -6952,7 +6753,8 @@ function renderAnnotations() {
 
 function clearAnnotations() {
   const fr = frame(); if (!fr) return;
-  pushUndo();
+  // Annotations are ephemeral — they live on compiled frames and reset
+  // on the next recompile. No undo snapshot needed.
   fr.annotations = [];
   renderAnnotations();
   debouncedSave();
@@ -7012,7 +6814,7 @@ function showPlayerNameEdit(pid, gEl) {
     // Sync the settings roster inputs
     const rosterInput = document.querySelector(`.roster-input[data-pid="${pid}"]`);
     if (rosterInput) rosterInput.value = val;
-    renderPlayers(); renderScript(); renderTimeline();
+    renderPlayers(); renderScript();
     debouncedSave();
   };
 
@@ -7190,26 +6992,12 @@ function ctxTool(toolType) {
 
   // Shot from context menu: immediately place shot at the player's position
   if (toolType === 'shot') {
-    const pl2 = play();
-    if (isActionPlay(pl2)) {
-      addAction({
-        type: 'shot',
-        playerId: p.id,
-        endX: Math.round(p.x),
-        endY: Math.round(p.y),
-      });
-    } else {
-      const fr2 = frame();
-      if (fr2) {
-        pushUndo();
-        if (!fr2.markers) fr2.markers = [];
-        fr2.markers.push({
-          id: uid(), x: Math.round(p.x), y: Math.round(p.y),
-          playerId: p.id, shooterX: p.x, shooterY: p.y
-        });
-        renderArrows(); renderTimeline(); debouncedSave();
-      }
-    }
+    addAction({
+      type: 'shot',
+      playerId: p.id,
+      endX: Math.round(p.x),
+      endY: Math.round(p.y),
+    });
     hideCtxMenu();
     return;
   }
@@ -7240,16 +7028,27 @@ function ctxTool(toolType) {
   hideCtxMenu();
 }
 
-// Remove a player from the current frame (defense players only by default,
-// but allow any player if it was added via toggleDefense)
+// Remove the selected player. Strips them from initialPositions (offense)
+// or defenderPositions (defense), and removes any actions that reference them.
 function ctxDelPlayer() {
-  const fr = frame(); if (!fr || !S.selPl) return;
-  pushUndo();
-  fr.players = fr.players.filter(p => p.id !== S.selPl);
-  // Also remove arrows connected to this player
-  fr.arrows = fr.arrows.filter(a => a.fp !== S.selPl && a.tp !== S.selPl);
+  const pl = play(); if (!pl || !S.selPl) return;
+  const pid = S.selPl;
+  pushUndo(pl);
+  // Remove from initial positions (offense) if present
+  pl.initialPositions = (pl.initialPositions || []).filter(p => p.id !== pid);
+  // Remove from defender positions (defense) if present
+  if (pl.defenderPositions) {
+    pl.defenderPositions = pl.defenderPositions.filter(p => p.id !== pid);
+  }
+  // Remove actions referencing this player
+  pl.actions = pl.actions.filter(a => a.playerId !== pid && a.targetId !== pid);
+  // If this was the initial ball holder, clear it
+  if (pl.initialBallHolder === pid) pl.initialBallHolder = null;
+  recompile(pl);
   hideCtxMenu();
-  renderCourt(); renderTimeline(); save();
+  renderCourt(); renderScript(); renderInfo(); renderBallChips();
+  renderGhosts(); renderPathOverlay();
+  save();
 }
 
 // ── 3a: Player selection glow ──────────────────────
@@ -7271,83 +7070,23 @@ function pulseArrow(id) {
   el.addEventListener('animationend', () => el.classList.remove('arrow-pulse'), {once:true});
 }
 
-// ══════════════════════════════════════════════════
-// FEATURE 2: TIMELINE SCRUBBING
-// Drag across frame thumbnails to scrub through frames.
-// Uses existing gotoFrame(). Throttled via rAF.
-// ══════════════════════════════════════════════════
-
-function setupTimelineScrub() {
-  let scrubbing = false, rafPending = false, captureTarget = null;
-
-  function scrubAt(clientX) {
-    const list = document.getElementById('frame-list'); if (!list) return;
-    const thumbs = list.querySelectorAll('.fthumb');
-    for (let i = 0; i < thumbs.length; i++) {
-      const r = thumbs[i].getBoundingClientRect();
-      if (clientX >= r.left && clientX <= r.right) {
-        if (i !== S.fi) gotoFrame(i);
-        return;
-      }
-    }
-  }
-
-  document.addEventListener('pointerdown', e => {
-    const thumb = e.target.closest('.fthumb');
-    if (!thumb) return;
-    const list = document.getElementById('frame-list');
-    if (!list || !list.contains(thumb)) return;
-    scrubbing = true;
-    captureTarget = e.target;
-    // Capture on the element that received the event
-    try { e.target.setPointerCapture(e.pointerId); } catch(_) {}
-  });
-
-  document.addEventListener('pointermove', e => {
-    if (!scrubbing || rafPending) return;
-    rafPending = true;
-    const cx = e.clientX;
-    requestAnimationFrame(() => { scrubAt(cx); rafPending = false; });
-  });
-
-  document.addEventListener('pointerup', () => { scrubbing = false; captureTarget = null; });
-}
-
-
-
 function toggleDefense() {
   S.showDef = !S.showDef;
   const pl = play(); if (!pl) return;
   const zone = isZonePlay();
   const template = zone ? DEF_ZONE_23 : DEF_DEF;
 
-  if (isActionPlay(pl)) {
-    // Action-based plays: store defender positions on the play object.
-    // recompile() injects them into compiled frames.
-    if (S.showDef) {
-      // Seed from existing stored positions or template
-      if (!pl.defenderPositions) {
-        pl.defenderPositions = clone(template);
-      }
-      recompile(pl);
-    } else {
-      // Remove defenders from frames but keep stored positions
-      // so they restore if toggled back on
-      pl.frames.forEach(fr => {
-        fr.players = fr.players.filter(p => p.off);
-      });
+  // Defenders are stored on the play (pl.defenderPositions); recompile
+  // injects them into compiled frames. Toggling off filters them out but
+  // keeps the stored positions so they restore when re-enabled.
+  if (S.showDef) {
+    if (!pl.defenderPositions) {
+      pl.defenderPositions = clone(template);
     }
+    recompile(pl);
   } else {
-    // Legacy frame-based plays: direct frame mutation
     pl.frames.forEach(fr => {
-      if (S.showDef) {
-        if (!fr.players.find(p => p.id === 'x1')) {
-          template.forEach(d => fr.players.push(clone(d)));
-        }
-        if (!zone) alignAllDefenders(fr);
-      } else {
-        fr.players = fr.players.filter(p => p.off);
-      }
+      fr.players = fr.players.filter(p => p.off);
     });
   }
 
@@ -7501,104 +7240,36 @@ function buildFarCourt() {
     // Rim
     '<circle cx="250" cy="-361" r="11" fill="none" stroke="#E07828" stroke-width="2.4"/>';
 }
+// Reset offensive positions and clear all actions/ball.
+// This is a full play reset — use with caution.
 function resetPos() {
-  pushUndo();
-  const fr=frame(); if (!fr) return;
-  fr.players=clone(DEF_OFF); fr.ballHolder=null;
-  fr.arrows=[]; fr.markers=[];
-  if (S.showDef) {
+  const pl = play(); if (!pl) return;
+  if (!confirm('Reset all positions and clear all actions?')) return;
+  pushUndo(pl);
+  pl.initialPositions = clone(DEF_OFF);
+  pl.initialBallHolder = null;
+  pl.actions = [];
+  if (S.showDef && pl.defenderPositions) {
     const template = isZonePlay() ? DEF_ZONE_23 : DEF_DEF;
-    template.forEach(d=>fr.players.push(clone(d)));
-    if (!isZonePlay()) alignAllDefenders(fr);
+    pl.defenderPositions = clone(template);
   }
+  S.fi = 0;
+  recompile(pl);
   hideArrowUI();
-  renderCourt(); renderGhosts(); renderPathOverlay(); renderBallChips(); save();
-}
-
-// ══════════════════════════════════════════════════
-// FRAMES
-// ══════════════════════════════════════════════════
-
-// Action type → dot color mapping for timeline
-const ACTION_DOTS = Object.assign({}, AC); // reuse arrow colors for timeline dots
-
-function renderTimeline() {
-  const pl=play(), list=document.getElementById('frame-list');
-  if (!pl) { list.innerHTML=''; return; }
-
-  list.innerHTML = pl.frames.map((f,i) => {
-    const isActive = i === S.fi;
-    // Ball badge — show if this frame has a ball holder assigned
-    const ballBadge = f.ballHolder ? '<div class="fball"></div>' : '';
-
-    // Action type dots — unique types present in this frame's arrows
-    const types = [...new Set(f.arrows.map(a=>a.type))].filter(t => ACTION_DOTS[t]);
-    const dots = types.map(t =>
-      `<div class="faction-dot" style="background:${ACTION_DOTS[t]}" title="${t}"></div>`
-    ).join('');
-
-    return `<div class="fthumb${isActive?' on':''}" onclick="gotoFrame(${i})">
-      <div class="fmini" style="position:relative">
-        ${miniSVG(f)}
-        <div class="fnum">${String(i+1).padStart(2,'0')}</div>
-        ${ballBadge}
-      </div>
-      <div class="flabel-wrap">
-        <span class="flabel" id="flabel-${i}"
-          ondblclick="editFrameLabel(${i},event)"
-          title="${escapeHtml(f.label||`Frame ${i+1}`)} — double-click to rename">${escapeHtml(f.label||`Frame ${i+1}`)}</span>
-      </div>
-      ${dots ? `<div class="faction-dots">${dots}</div>` : '<div class="faction-dots"></div>'}
-    </div>`;
-  }).join('');
-
-  // Add-frame ghost thumb at the end of the list
-  const addThumb = `<div class="fthumb fthumb-add" onclick="addFrame()" title="Add frame (A)">
-    <div class="fmini fmini-add">
-      <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="64" height="48" fill="#1E1A14" opacity=".7"/>
-        <circle cx="32" cy="24" r="12" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-dasharray="3,3"/>
-        <line x1="32" y1="18" x2="32" y2="30" stroke="rgba(255,255,255,.4)" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="26" y1="24" x2="38" y2="24" stroke="rgba(255,255,255,.4)" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="flabel-wrap"><span class="flabel" style="color:var(--ink-4)">Add Frame</span></div>
-    <div class="faction-dots"></div>
-  </div>`;
-
-  list.insertAdjacentHTML('beforeend', addThumb);
-  document.getElementById('frame-counter').textContent = `${S.fi+1} / ${frameCount(pl)}`;
-}
-
-// Lightweight timeline update for animation — only toggles the active class
-// and updates the frame counter. Avoids rebuilding all miniSVGs between segments.
-function highlightTimelineFrame(fi) {
-  const list = document.getElementById('frame-list');
-  if (!list) return;
-  const thumbs = list.querySelectorAll('.fthumb:not(.fthumb-add)');
-  thumbs.forEach((el, i) => el.classList.toggle('on', i === fi));
-  const pl = play();
-  if (pl) document.getElementById('frame-counter').textContent = `${fi+1} / ${frameCount(pl)}`;
+  renderCourt(); renderScript(); renderInfo();
+  renderGhosts(); renderPathOverlay(); renderBallChips(); save();
 }
 
 // ══════════════════════════════════════════════════
 // SCRIPT PANEL RENDER
-// Action-by-action play script for action-based plays.
-// Replaces the timeline strip.
+// Action-by-action play script — the primary frame-navigation UI.
 // ══════════════════════════════════════════════════
 
 function renderScript() {
   const pl = play();
   const panel = document.getElementById('script-panel');
-  const timeline = document.getElementById('timeline');
-  if (!pl || !isActionPlay(pl)) {
-    panel.classList.remove('on');
-    timeline.style.display = '';
-    return;
-  }
-  // Show script panel, hide legacy timeline
+  if (!pl) { panel.classList.remove('on'); return; }
   panel.classList.add('on');
-  timeline.style.display = 'none';
 
   const list = document.getElementById('script-list');
   const groups = groupActionSteps(pl.actions);
@@ -7687,12 +7358,12 @@ function onScriptDrop(e) {
   const targetId = row.dataset.actionId;
   if (targetId === _scriptDragId) return;
 
-  const pl = play(); if (!pl || !isActionPlay(pl)) return;
+  const pl = play(); if (!pl) return;
   const fromIdx = pl.actions.findIndex(a => a.id === _scriptDragId);
   const toIdx = pl.actions.findIndex(a => a.id === targetId);
   if (fromIdx < 0 || toIdx < 0) return;
 
-  pushActionUndo(pl);
+  pushUndo(pl);
   const [item] = pl.actions.splice(fromIdx, 1);
   // If dragged away from group, break group
   if (item.groupId) {
@@ -7702,7 +7373,7 @@ function onScriptDrop(e) {
   }
   pl.actions.splice(toIdx, 0, item);
   recompile(pl);
-  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay(); renderTimeline();
+  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay();
   save();
 }
 function onScriptDragEnd(e) {
@@ -7712,65 +7383,10 @@ function onScriptDragEnd(e) {
   });
 }
 
-function miniSVG(fr) {
-  const t=team(), W=64, H=48, sx=W/500, sy=H/472;
-  const bh=fr.ballHolder;
-
-  // Players
-  const players = fr.players.map(p => {
-    const isHolder = p.id===bh;
-    const fill = p.off ? t.p : '#B82020';
-    return `<circle cx="${(p.x*sx).toFixed(1)}" cy="${(p.y*sy).toFixed(1)}" r="3.8" fill="${fill}"/>
-      ${isHolder ? `<circle cx="${(p.x*sx+3.5).toFixed(1)}" cy="${(p.y*sy-3.5).toFixed(1)}" r="2.2" fill="#F8A820"/>` : ''}`;
-  }).join('');
-
-  // Arrows — use cardinalSplinePath for cuts so they match the actual court
-  const arrows = fr.arrows.map(a => {
-    const c = AC[a.type] || '#C4D4EE';
-    if (a.type === 'cut' && a.points?.length >= 2) {
-      const scaled = a.points.map(p => ({x:p.x*sx, y:p.y*sy}));
-      const d = cardinalSplinePath(scaled);
-      return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width=".85" opacity=".8"/>` : '';
-    }
-    const x1=(a.x1*sx).toFixed(1), y1=(a.y1*sy).toFixed(1);
-    const x2=(a.x2*sx).toFixed(1), y2=(a.y2*sy).toFixed(1);
-    const dash = a.type==='dribble' ? 'stroke-dasharray="3,2"' : '';
-    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width=".85" ${dash} opacity=".8"/>`;
-  }).join('');
-
-  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${W}" height="${H}" fill="#C89838"/>
-    <rect x="3" y="3" width="${W-6}" height="${H-6}" fill="#D2A640" opacity=".6"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="${t.p}" opacity=".22"/>
-    <rect x="${(179*sx).toFixed(1)}" y="${(295*sy).toFixed(1)}" width="${(142*sx).toFixed(1)}" height="${(169*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
-    <line x1="${(179*sx).toFixed(1)}" y1="${(295*sy).toFixed(1)}" x2="${(321*sx).toFixed(1)}" y2="${(295*sy).toFixed(1)}" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>
-    <path d="M ${(55*sx).toFixed(1)},${(464*sy).toFixed(1)} A ${(211*sx).toFixed(1)},${(211*sy).toFixed(1)} 0 0,1 ${(445*sx).toFixed(1)},${(464*sy).toFixed(1)}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
-    <circle cx="${(250*sx).toFixed(1)}" cy="${(417*sy).toFixed(1)}" r="${(11*sx).toFixed(1)}" fill="none" stroke="rgba(220,120,40,.7)" stroke-width="1.2"/>
-    ${arrows}${players}
-  </svg>`;
-}
-
-function editFrameLabel(idx, e) {
-  e.stopPropagation();
-  const pl=play(); if (!pl) return;
-  const fr=pl.frames[idx];
-  const span=document.getElementById('flabel-'+idx); if (!span) return;
-  const input=document.createElement('input');
-  input.className='flabel-input'; input.value=fr.label||`Frame ${idx+1}`;
-  span.replaceWith(input); input.focus(); input.select();
-  const done=()=>{ fr.label=input.value.trim()||`Frame ${idx+1}`; save(); renderTimeline(); };
-  input.addEventListener('blur', done);
-  input.addEventListener('keydown', e2=>{
-    if (e2.key==='Enter') input.blur();
-    if (e2.key==='Escape') { input.value=fr.label; input.blur(); }
-    e2.stopPropagation();
-  });
-}
-
 function gotoFrame(i) {
   S.fi=i; S.selArrow=null; S.editArrow=null; S.editMarker=null;
   hideArrowUI(); hideCtxMenu();
-  renderCourt(); renderTimeline(); renderScript(); renderInfo();
+  renderCourt(); renderScript(); renderInfo();
   renderGhosts(); renderPathOverlay(); renderBallChips(); renderAnnotations();
 
   // Auto-expand Frame Notes section if this frame has any note content
@@ -7788,70 +7404,35 @@ function prevFrame() { if (S.fi>0) gotoFrame(S.fi-1); }
 function nextFrame() { const pl=play(); if (pl && S.fi < frameCount(pl)-1) gotoFrame(S.fi+1); }
 
 // ══════════════════════════════════════════════════
-// FEATURE 1: addFrame with auto-advance
-// Players advance to their arrow endpoints.
-// Ball auto-transfers based on pass arrows.
-// dupFrame() is a copy — does NOT auto-advance.
+// ACTION DUPLICATION (D shortcut)
+// Duplicates the currently selected action — handy for
+// repeated cuts, screens, or passes between the same players.
+// The duplicate is inserted right after the original and
+// becomes the active step.
 // ══════════════════════════════════════════════════
 
-function addFrame() {
-  const pl=play(); if (!pl) return;
-  // Action-based plays don't have manual frames — actions generate them
-  if (isActionPlay(pl)) return;
-  const cur=frame();
-  pushFrameUndo();
-
-  let newPlayers, newBallHolder;
-  if (cur && cur.arrows.length > 0) {
-    // AUTO-ADVANCE: move players to their arrow endpoints
-    newPlayers    = computeAdvancedPositions(cur);
-    newBallHolder = computeNextBallHolder(cur);
-  } else {
-    // No arrows — copy positions as-is
-    newPlayers    = clone(cur?.players || DEF_OFF);
-    newBallHolder = cur?.ballHolder || null;
-  }
-
-  const frameNum = pl.frames.length + 1;
-  const nf = {
-    id:         uid(),
-    label:      `Frame ${frameNum}`,
-    ballHolder: newBallHolder,
-    notes:      emptyNotes(),
-    players:    newPlayers,
-    arrows:     [],
-    markers:    [],
-  };
-
-  pl.frames.push(nf);
-  S.fi = pl.frames.length - 1;
-  renderLibrary(); renderCourt(); renderTimeline(); renderScript(); renderInfo();
-  renderGhosts(); renderPathOverlay(); renderBallChips(); save();
-}
-
-function dupFrame() {
-  const pl=play(), cur=frame(); if (!pl||!cur) return;
-  if (isActionPlay(pl)) return;
-  pushFrameUndo();
-  // Duplicate is a COPY — does not auto-advance positions
-  const nf = clone(cur);
-  nf.id     = uid();
-  nf.label  = `${cur.label} (copy)`;
-  nf.arrows = nf.arrows.map(a => ({...a, id:uid()}));
-  if (nf.markers) nf.markers = nf.markers.map(m => ({...m, id:uid()}));
-  pl.frames.splice(S.fi+1, 0, nf); S.fi++;
-  renderCourt(); renderTimeline(); renderBallChips();
-  renderGhosts(); renderPathOverlay(); save();
-}
-
-function delFrame() {
-  const pl=play(); if (!pl||pl.frames.length<=1) return;
-  if (isActionPlay(pl)) return;
-  if (!confirm('Delete this frame?')) return;
-  pushFrameUndo();
-  pl.frames.splice(S.fi,1); S.fi=Math.min(S.fi,pl.frames.length-1);
-  renderCourt(); renderTimeline(); renderScript(); renderInfo();
-  renderGhosts(); renderPathOverlay(); renderBallChips(); save();
+function dupSelectedAction() {
+  const pl = play(); if (!pl) return;
+  const aid = S.selArrow || S.selMarker;
+  if (!aid) return;
+  const idx = pl.actions.findIndex(a => a.id === aid);
+  if (idx < 0) return;
+  pushUndo(pl);
+  const copy = { ...clone(pl.actions[idx]), id: uid() };
+  // If the original was grouped, break the copy out into its own step
+  copy.groupId = null;
+  pl.actions.splice(idx + 1, 0, copy);
+  recompile(pl);
+  S.selArrow = null; S.selMarker = null;
+  hideArrowUI();
+  // Move to the new action's compiled frame
+  const groups = groupActionSteps(pl.actions);
+  const copyGroupIdx = groups.findIndex(g => g.some(a => a.id === copy.id));
+  if (copyGroupIdx >= 0) S.fi = copyGroupIdx + 1;
+  renderCourt(); renderScript(); renderInfo();
+  renderGhosts(); renderPathOverlay(); renderBallChips();
+  save();
+  requestAnimationFrame(() => pulseArrow(copy.id));
 }
 
 // ══════════════════════════════════════════════════
@@ -7862,8 +7443,6 @@ function togglePlay() { anim.playing ? stopPlay() : startPlay(); }
 function startPlay() {
   const pl=play(); if (!pl||pl.frames.length<2) return;
   anim.playing=true;
-  document.getElementById('play-btn').classList.add('active');
-  document.getElementById('play-btn').textContent='⏸';
   const spb = document.getElementById('script-play-btn');
   if (spb) { spb.classList.add('active'); spb.textContent='⏸'; }
   anim.segFrom=S.fi; anim.segTo=Math.min(S.fi+1,pl.frames.length-1);
@@ -8003,7 +7582,7 @@ function animTick(ts) {
   if (markerLayer) { markerLayer.style.opacity = ''; markerLayer.style.transition = ''; }
   S.fi=anim.segTo;
   updateBallDots();
-  renderArrows(); highlightTimelineFrame(S.fi); renderScript();
+  renderArrows(); renderScript();
   if (anim.segTo>=pl.frames.length-1) { stopPlay(); return; }
   anim.segFrom=anim.segTo; anim.segTo++; anim.segStart=null;
   // Brief inter-segment pause: show ghost trails for the just-completed
@@ -8018,8 +7597,6 @@ function animTick(ts) {
 }
 function stopPlay() {
   anim.playing=false; if(anim.rafId){cancelAnimationFrame(anim.rafId);anim.rafId=null;}
-  document.getElementById('play-btn').classList.remove('active');
-  document.getElementById('play-btn').textContent='▶';
   const spb = document.getElementById('script-play-btn');
   if (spb) { spb.classList.remove('active'); spb.textContent='▶'; }
   // Reset arrow/marker layer opacity in case animation was interrupted mid-crossfade
@@ -8257,10 +7834,10 @@ Object.entries(FRAME_NOTE_MAP).forEach(([elId, noteKey]) => {
     if (!fr.notes || typeof fr.notes !== 'object') fr.notes = emptyNotes();
     fr.notes[noteKey] = document.getElementById(elId).value;
 
-    // For action-based plays, persist notes to the source data so they
-    // survive recompilation. Frame 0 → pl.setupNotes, steps 1+ → pl.stepNotes[stepIndex].
+    // Persist notes to the source play data so they survive recompilation.
+    // Frame 0 → pl.setupNotes, steps 1+ → pl.stepNotes[stepIndex].
     const pl = play();
-    if (pl && isActionPlay(pl)) {
+    if (pl) {
       if (S.fi === 0) {
         if (!pl.setupNotes || typeof pl.setupNotes !== 'object') pl.setupNotes = emptyNotes();
         pl.setupNotes[noteKey] = document.getElementById(elId).value;
@@ -8289,7 +7866,8 @@ function save() {
   if (activePl) activePl.updatedAt = Date.now();
 
   const cleanPlays = S.plays.map(p => {
-    if (!isActionPlay(p)) return p;
+    // Strip compiled frame caches from the persisted form — they're
+    // regenerated on load via recompile().
     const { _compiled, frames, ...rest } = p;
     return rest;
   });
@@ -8408,7 +7986,7 @@ function savePlaybook() {
 
 function exportPlay() {
   const pl=play(); if (!pl) return;
-  const exportData = isActionPlay(pl) ? (({_compiled, frames, ...rest}) => rest)(pl) : pl;
+  const { _compiled, frames, ...exportData } = pl;
   const a=document.createElement('a');
   const url = URL.createObjectURL(new Blob([JSON.stringify({play:exportData},null,2)],{type:'application/json'}));
   a.href = url;
