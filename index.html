@@ -1448,7 +1448,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.ps-no-notes { display: none; }
 
 /* ── Sheet Footer ── */
 .ps-footer {
@@ -1594,12 +1593,6 @@ select#family-parent-sel:focus { border-color: var(--brand); }
 .ctx-back { padding: 6px 6px; min-width: 24px; }
 .ctx-back:hover { background: var(--surface-2); }
 #ctx-main, #ctx-sub { display: flex; gap: 4px; }
-
-/* Add-frame ghost thumb */
-.fthumb-add { opacity: .5; border-style: dashed; border-color: var(--line-2); }
-.fthumb-add:hover { opacity: 1; border-color: var(--brand); background: var(--brand-bg); }
-.fthumb-add:hover .flabel { color: var(--brand) !important; }
-.fmini-add { background: #1E1A14; }
 
 /* ── 3b. Active tool label ── */
 #tool-label {
@@ -2369,16 +2362,7 @@ function defenderPos(ox, oy) {
 
 // In a given frame, move the defender paired to offId to the correct position.
 // Updates the data model only — caller is responsible for re-rendering.
-function alignDefenderTo(fr, offId) {
-  const defId = MAN_PAIRS[offId]; if (!defId) return;
-  const off = fr.players.find(p => p.id === offId); if (!off) return;
-  const def = fr.players.find(p => p.id === defId); if (!def) return;
-  const pos = defenderPos(off.x, off.y);
-  def.x = pos.x;
-  def.y = pos.y;
-}
-
-const AC = {pass:'#C4D4EE', dribble:'#FFD166', cut:'#34D399', screen:'#F87171', dho:'#E8A830'};
+const ARROW_COLORS = {pass:'#C4D4EE', dribble:'#FFD166', cut:'#34D399', screen:'#F87171', dho:'#E8A830'};
 const SHOT_COLOR = '#FF5533'; // distinct from ball (gold) and team colors
 const PR = 20; // player radius
 const BALL_R = 6; // ball indicator radius
@@ -2535,12 +2519,6 @@ function frameCount(pl) {
 }
 
 // Frames array accessor
-function playFrames(pl) {
-  if (!pl) pl = play(); if (!pl) return [];
-  if (!pl._compiled) recompile(pl);
-  return pl.frames || [];
-}
-
 // ══════════════════════════════════════════════════
 // ACTION COMPILER
 // Converts an ordered list of actions into frame
@@ -2779,26 +2757,6 @@ function pushUndo(pl) {
 }
 
 // Move action in the flat list by delta (-1 = up, +1 = down)
-function moveScriptAction(actionId, delta) {
-  const pl = play(); if (!pl) return;
-  const idx = pl.actions.findIndex(a => a.id === actionId);
-  if (idx < 0) return;
-  const newIdx = idx + delta;
-  if (newIdx < 0 || newIdx >= pl.actions.length) return;
-  pushUndo(pl);
-  const [item] = pl.actions.splice(idx, 1);
-  // If moved away from group peers, break group
-  if (item.groupId) {
-    const hasAdjacentPeer = (pl.actions[newIdx - 1]?.groupId === item.groupId) ||
-                            (pl.actions[newIdx]?.groupId === item.groupId);
-    if (!hasAdjacentPeer) item.groupId = null;
-  }
-  pl.actions.splice(newIdx, 0, item);
-  recompile(pl);
-  renderScript(); renderCourt(); renderGhosts(); renderPathOverlay();
-  save();
-}
-
 // Link two adjacent actions as simultaneous
 function toggleLink(idx) {
   const pl = play(); if (!pl) return;
@@ -3780,7 +3738,7 @@ function printFromEditor() {
 // Render an arrow for the card court SVG (uses same coordinate space as main court)
 // Print-optimized: heavier strokes than editor for readability at print scale
 function buildCardArrow(a, mId) {
-  const c = AC[a.type] || '#C4D4EE';
+  const c = ARROW_COLORS[a.type] || '#C4D4EE';
   if (a.type === 'screen') {
     const dx=a.x2-a.x1, dy=a.y2-a.y1, len=Math.hypot(dx,dy)||1;
     const px=-dy/len*16, py=dx/len*16;
@@ -3977,10 +3935,10 @@ function actionGroupCaption(group, pl) {
   return phrases.join(' + ');
 }
 
-// Lookup color for action type (includes 'shot' which isn't in AC)
+// Lookup color for action type (includes 'shot' which isn't in ARROW_COLORS)
 function actionColor(type) {
   if (type === 'shot') return (typeof SHOT_COLOR !== 'undefined') ? SHOT_COLOR : '#FF5533';
-  return (typeof AC !== 'undefined' && AC[type]) || '#888';
+  return (typeof ARROW_COLORS !== 'undefined' && ARROW_COLORS[type]) || '#888';
 }
 
 // Build a per-step caption with action-type color chip prefix
@@ -4388,7 +4346,7 @@ function cardThumbSVG(p) {
 
   const sw = 3.2; // arrow stroke in court-space units
   const arrows = (fr.arrows||[]).map(a => {
-    const c = AC[a.type] || '#C4D4EE';
+    const c = ARROW_COLORS[a.type] || '#C4D4EE';
     if (a.type === 'cut' && a.points?.length >= 2) {
       const d = cardinalSplinePath(a.points);
       return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity=".85"/>` : '';
@@ -4454,7 +4412,7 @@ function homeThumbSVG(p, w, h) {
   }).join('');
 
   const arrows = (p.frames[0]?.arrows||[]).map(a =>
-    `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${AC[a.type]||'#C4D4EE'}" stroke-width="${sw}" opacity=".85"/>`
+    `<line x1="${a.x1}" y1="${a.y1}" x2="${a.x2}" y2="${a.y2}" stroke="${ARROW_COLORS[a.type]||'#C4D4EE'}" stroke-width="${sw}" opacity=".85"/>`
   ).join('');
 
   return `<svg viewBox="24 24 452 444" width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
@@ -4843,7 +4801,7 @@ function cardAnimTick(ts) {
   // Arrows from destination frame, fading in with progress
   const arrowOp = (0.15 + 0.85 * raw).toFixed(2);
   const arrows = (toF.arrows||[]).map(a => {
-    const c = AC[a.type] || '#C4D4EE';
+    const c = ARROW_COLORS[a.type] || '#C4D4EE';
     if (a.type === 'cut' && a.points?.length >= 2) {
       const d = cardinalSplinePath(a.points); // points already in court-space
       return d ? `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" opacity="${arrowOp}"/>` : '';
@@ -5070,10 +5028,6 @@ function applyRpOpen() {
 function renderCoverageFilterChips() {
   // Coverage filter bar removed from UI — no-op
 }
-function setCoverageFilter(val) {
-  // Coverage filter bar removed from UI — no-op
-}
-
 // Family helpers
 function familyChildren(pid) { return S.plays.filter(p => p.familyId === pid); }
 function rootPlays() {
@@ -5142,7 +5096,7 @@ function libThumbSVG(p) {
   }).join('');
 
   const arrows = (fr.arrows||[]).map(a => {
-    const c = AC[a.type] || '#C4D4EE';
+    const c = ARROW_COLORS[a.type] || '#C4D4EE';
     if (a.type === 'cut' && a.points?.length >= 2) {
       const scaled = a.points.map(q => ({x:q.x*sx, y:q.y*sy}));
       const d = cardinalSplinePath(scaled);
@@ -5643,7 +5597,7 @@ function renderArrows() {
   if (S.selArrow) {
     const selA = fr.arrows.find(a => a.id === S.selArrow);
     if (selA) {
-      const c = AC[selA.type] || '#C4D4EE';
+      const c = ARROW_COLORS[selA.type] || '#C4D4EE';
       html += `<circle class="arrow-ep-drag" cx="${selA.x2}" cy="${selA.y2}" r="7"
         fill="${c}" stroke="rgba(255,255,255,.9)" stroke-width="2" opacity=".9"
         style="cursor:move" data-aid="${selA.id}"/>`;
@@ -5759,7 +5713,7 @@ function renderMarkers() {
 }
 
 function buildArrow(a, sel) {
-  const c=AC[a.type]||'#C4D4EE', op=sel?.4:.9;
+  const c=ARROW_COLORS[a.type]||'#C4D4EE', op=sel?.4:.9;
   if (a.type==='screen') {
     const dx=a.x2-a.x1, dy=a.y2-a.y1, len=Math.hypot(dx,dy)||1;
     const px=-dy/len*16, py=dx/len*16;
@@ -6624,7 +6578,7 @@ function onUp(e) {
 
 // Render live preview of a multi-point cut path with waypoint dots
 function renderCutPreview(pts, fromId) {
-  const c = AC.cut;
+  const c = ARROW_COLORS.cut;
   const d = cardinalSplinePath(pts);
   // Waypoint dots (all except start and current mouse)
   const dots = pts.slice(1, -1).map(p =>
@@ -6640,7 +6594,7 @@ function renderCutPreview(pts, fromId) {
 
 function renderDribblePreview(pts) {
   if (!pts || pts.length < 2) { document.getElementById('preview-layer').innerHTML = ''; return; }
-  const c = AC.dribble;
+  const c = ARROW_COLORS.dribble;
   const d = cardinalSplinePath(pts);
   if (!d) { document.getElementById('preview-layer').innerHTML = ''; return; }
   document.getElementById('preview-layer').innerHTML =
@@ -6648,7 +6602,7 @@ function renderDribblePreview(pts) {
 }
 
 function renderPreview(x1,y1,x2,y2,type) {
-  const c=AC[type]||'#C4D4EE';
+  const c=ARROW_COLORS[type]||'#C4D4EE';
   let d;
   if (type==='screen') {
     const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy)||1,px=-dy/len*14,py=dx/len*14;
@@ -6749,15 +6703,6 @@ function renderAnnotations() {
     const d = 'M ' + a.points.map((p,i) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' L ');
     return `<path class="anno-path" d="${d}" id="anno-${a.id}"/>`;
   }).join('');
-}
-
-function clearAnnotations() {
-  const fr = frame(); if (!fr) return;
-  // Annotations are ephemeral — they live on compiled frames and reset
-  // on the next recompile. No undo snapshot needed.
-  fr.annotations = [];
-  renderAnnotations();
-  debouncedSave();
 }
 
 // ══════════════════════════════════════════════════
@@ -7647,9 +7592,6 @@ function renderInfo() {
   document.getElementById('fn-read').value    = notes.keyRead    ||'';
   document.getElementById('fn-spacing').value = notes.spacingCue ||'';
   document.getElementById('fn-coach').value   = notes.coachPoint ||'';
-
-  const fnl=document.getElementById('fnotes-lbl');
-  if (fnl&&fr) fnl.textContent=`Frame Notes — ${fr.label||`Frame ${S.fi+1}`}`;
 
   // Update frame tag in collapsible header
   const ftag = document.getElementById('fnotes-tag');
